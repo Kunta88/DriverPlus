@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="8.0dp" android:paddingRight="8.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dp">
+        <Spinner android:id="@id/order_price_Spinner_payment_type" android:layout_width="146.0dp" android:layout_height="wrap_content" style="@style/Widget.AppCompat.Spinner.Underlined" />
+        <EditText android:id="@id/order_price_EditText_price" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/price" android:maxLength="8" android:inputType="numberDecimal" />
+    </LinearLayout>
+    <EditText android:id="@id/order_price_EditText_check_number" android:paddingLeft="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:hint="@string/slip_number" android:maxLength="20" />
+</LinearLayout>

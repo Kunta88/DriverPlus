@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Server">
+        <EditTextPreference android:title="@string/web_address" android:key="pref_web_server" android:defaultValue="@string/server_address" />
+        <EditTextPreference android:title="@string/address" android:key="pref_primary_server_address" android:defaultValue="@string/server_address" />
+        <com.txdriver.ui.view.IntEditTextPreference android:numeric="integer" android:title="@string/port" android:key="pref_primary_server_port" android:defaultValue="@integer/server_port" />
+    </PreferenceCategory>
+</PreferenceScreen>

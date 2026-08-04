@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/rating_recyclerView" android:layout_width="match_parent" android:layout_height="match_parent" />
+        <TextView android:id="@android:id/empty" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ProgressBar android:id="@android:id/progress" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="?android:progressBarStyleLarge" />
+    </RelativeLayout>
+    <com.txdriver.ui.view.SplitToolbar android:id="@id/toolbar" android:padding="0.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" app:popupTheme="?toolbarPopupTheme" app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+        <LinearLayout android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
+            <Button android:id="@id/rating_button_drivers_ratings" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/drivers_ratings" style="@style/ActionButton" />
+        </LinearLayout>
+    </com.txdriver.ui.view.SplitToolbar>
+</LinearLayout>

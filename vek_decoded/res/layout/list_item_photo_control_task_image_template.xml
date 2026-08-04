@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/task_image0" android:layout_width="match_parent" android:layout_height="match_parent" android:adjustViewBounds="true" android:contentDescription="@string/photo_template" />
+    <ImageButton android:id="@id/image_button_make_photo" android:background="@drawable/share_rounded_corner_with_border_gray" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/ic_outline_monochrome_photos_48" android:adjustViewBounds="true" android:contentDescription="@string/make_photo" />
+</androidx.constraintlayout.widget.ConstraintLayout>

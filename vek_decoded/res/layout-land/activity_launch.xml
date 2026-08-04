@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/launch_layout_error" android:padding="48.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+        <TextView android:textAppearance="?android:textAppearanceLarge" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dp" android:text="@string/error_connection_failed" />
+        <Button android:id="@id/launch_button_retry" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/retry_connect" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/launch_layout_content" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginLeft="48.0dp" android:layout_marginRight="48.0dp" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:id="@id/launch_layout_city" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/accent" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dp" android:text="@string/city" android:textAllCaps="true" />
+                <Spinner android:id="@id/launch_spinner_city" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dp" android:spinnerMode="dialog" style="@style/Widget.AppCompat.Spinner.Underlined" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/launch_layout_company" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/accent" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="8.0dp" android:text="@string/taxi_service" android:textAllCaps="true" />
+                <Spinner android:id="@id/launch_spinner_company" android:layout_width="match_parent" android:layout_height="wrap_content" android:spinnerMode="dialog" style="@style/Widget.AppCompat.Spinner.Underlined" />
+            </LinearLayout>
+        </LinearLayout>
+        <Button android:layout_gravity="center_horizontal" android:id="@id/launch_button_save" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="16.0dp" android:text="@string/save" />
+    </LinearLayout>
+    <include layout="@layout/progress_layout" />
+</FrameLayout>

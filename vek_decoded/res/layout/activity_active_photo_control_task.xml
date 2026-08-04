@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/layout_active_task_header" android:layout_width="0.0dp" android:layout_height="0.0dp" android:weightSum="3.0" app:layout_constraintBottom_toTopOf="@id/guideline_after_active_task_name" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/active_task_name_and_date_layout" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/textSizeLarge" android:layout_gravity="center_horizontal" android:id="@id/textView_active_task_time_to_complete" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_gravity="center_horizontal" android:id="@id/textView_active_task_date_to_complete" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/textSizeMedium" android:layout_gravity="center" android:id="@id/text_view_active_task_name" android:layout_width="0.0dp" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="2.0" />
+    </LinearLayout>
+    <View android:background="@android:color/darker_gray" android:layout_width="match_parent" android:layout_height="1.0dp" app:layout_constraintBottom_toTopOf="@id/guideline_after_active_task_name" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/guideline_after_active_task_name" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.1" />
+    <ScrollView android:id="@id/scroll_view_active_task_description" android:layout_width="0.0dp" android:layout_height="0.0dp" android:layout_margin="8.0dp" app:layout_constraintBottom_toTopOf="@id/guidelineAfterText" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/guideline_after_active_task_name">
+        <TextView android:id="@id/textView_task_description_in_proceed_task" android:layout_width="match_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/guidelineAfterText" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.5" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerview_active_task_images" android:layout_width="0.0dp" android:layout_height="0.0dp" app:layout_constraintBottom_toTopOf="@id/guideline_before_buttons" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/guidelineAfterText" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/guideline_before_buttons" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.91" />
+    <Button android:textColor="@android:color/white" android:id="@id/button_go_back_to_task_list" android:background="@android:color/holo_red_dark" android:layout_width="0.0dp" android:layout_height="0.0dp" android:text="@string/go_back_to_task_list" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/guideline_before_buttons" />
+</androidx.constraintlayout.widget.ConstraintLayout>

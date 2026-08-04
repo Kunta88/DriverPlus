@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/order_textView_time" android:visibility="@integer/pickup_time_visibility" android:layout_width="0.0dp" android:layout_marginLeft="4.0dp" android:text="12:00" android:layout_weight="1.0" style="@style/listFirstLine" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="2.0">
+            <TextView android:ellipsize="end" android:id="@id/order_textView_carType" android:padding="4.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dp" android:singleLine="true" />
+            <TextView android:ellipsize="end" android:id="@id/order_textView_orderType" android:padding="4.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:gravity="right" android:id="@id/order_textView_date" android:visibility="@integer/pickup_time_visibility" android:layout_width="0.0dp" android:layout_marginRight="4.0dp" android:text="12.12.12" android:singleLine="true" android:layout_weight="1.0" style="@style/listSecondLine" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="0.0dp" android:text="@string/departure" android:layout_weight="1.0" style="@style/sectionHeader" />
+        <TextView android:gravity="right" android:id="@id/order_textView_parking" android:layout_width="0.0dp" android:layout_weight="1.0" style="@style/sectionHeader" />
+    </LinearLayout>
+    <TextView android:id="@id/order_textView_address" style="@style/section" />
+    <LinearLayout android:orientation="vertical" android:id="@id/order_layout_destination" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="0.0dp" android:text="@string/where" android:layout_weight="1.0" style="@style/sectionHeader" />
+            <TextView android:textColor="?android:textColorPrimary" android:gravity="center_horizontal" android:id="@id/order_textView_distance" android:layout_width="0.0dp" android:layout_weight="1.0" style="@style/sectionHeader" />
+            <TextView android:gravity="right" android:id="@id/order_textView_destination_parking" android:layout_width="0.0dp" android:layout_weight="1.0" style="@style/sectionHeader" />
+        </LinearLayout>
+        <TextView android:id="@id/order_textView_destination_address" style="@style/section" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/order_layout_price" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:text="@string/price" style="@style/sectionHeader" />
+            <LinearLayout android:orientation="horizontal" style="@style/section">
+                <TextView android:id="@id/order_textView_price" style="@style/Text.Wrap" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/order_layout_commission" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:gravity="right" android:text="@string/commission" style="@style/sectionHeader" />
+            <LinearLayout android:gravity="right" android:orientation="horizontal" style="@style/section">
+                <TextView android:id="@id/order_textView_commission" style="@style/Text.Wrap" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/order_layout_markup" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:text="@string/markup" style="@style/sectionHeader" />
+        <TextView android:id="@id/order_textView_markup" style="@style/section" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/order_layout_discount" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:text="@string/discount" style="@style/sectionHeader" />
+        <TextView android:id="@id/order_textView_discount" style="@style/section" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/order_linearLayout_extras" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:text="@string/extra" style="@style/sectionHeader" />
+        <TextView android:id="@id/order_textView_extras" style="@style/section" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/order_linearLayout_payment_types" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:text="@string/payment_type" style="@style/sectionHeader" />
+        <TextView android:id="@id/order_textView_payment_types" style="@style/section" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/order_linearLayout_seller" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:text="@string/taxi_service" style="@style/sectionHeader" />
+        <TextView android:id="@id/order_textView_seller" style="@style/section" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/order_linearLayout_note" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:text="@string/note" style="@style/sectionHeader" />
+        <TextView android:id="@id/order_textView_note" style="@style/section" />
+    </LinearLayout>
+</LinearLayout>

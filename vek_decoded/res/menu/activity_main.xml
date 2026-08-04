@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@id/main_menu_item_driver_info" android:visible="true" android:orderInCategory="9" android:title="@string/driver_info" app:showAsAction="never" />
+    <item android:id="@id/main_menu_item_newsletters" android:visible="true" android:orderInCategory="8" android:title="@string/newsletters" app:showAsAction="never" />
+    <item android:id="@id/main_menu_item_illegitimate_order" android:visible="true" android:orderInCategory="8" android:title="@string/illegitimate_order" app:showAsAction="never" />
+    <item android:id="@id/main_menu_item_taximeter" android:visible="true" android:orderInCategory="8" android:title="@string/taximeter" app:showAsAction="never" />
+    <item android:id="@id/main_menu_item_store" android:visible="true" android:orderInCategory="8" android:title="@string/store" app:showAsAction="never" />
+    <item android:id="@id/main_menu_item_map" android:visible="true" android:orderInCategory="8" android:title="@string/map" app:showAsAction="never" />
+    <item android:id="@id/main_menu_item_take_a_break" android:visible="false" android:title="@string/take_a_break" app:showAsAction="never" />
+    <item android:id="@id/menu_item_send_message" android:visible="true" android:title="@string/message_to_dispatcher" app:showAsAction="never" />
+    <item android:icon="@drawable/ic_action_settings" android:id="@id/menu_item_settings" android:visible="true" android:orderInCategory="100" android:title="@string/settings" app:showAsAction="never" />
+</menu>

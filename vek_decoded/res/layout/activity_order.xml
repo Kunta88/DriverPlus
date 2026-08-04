@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+            <com.txdriver.ui.view.MapViewPager android:id="@id/order_viewPager" android:layout_width="match_parent" android:layout_height="match_parent" />
+            <FrameLayout android:background="@android:color/transparent" android:layout_width="match_parent" android:layout_height="match_parent" />
+        </FrameLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="@dimen/ab_size">
+            <ImageButton android:id="@id/toolbar_button_danger" android:background="@drawable/btn_grey" android:layout_width="48.0dp" android:layout_height="match_parent" android:src="@drawable/ic_action_danger_on" android:contentDescription="@string/driver_in_danger" style="@style/ToolbarButton" />
+            <ImageButton android:id="@id/toolbar_button_client_info" android:background="@drawable/btn_grey" android:visibility="gone" android:layout_width="48.0dp" android:layout_height="match_parent" android:src="@drawable/ic_baseline_person_add_36" android:contentDescription="@string/add_client_info_button" style="@style/ToolbarButton" />
+            <ImageButton android:id="@id/order_button_call_to_dispatcher" android:background="@drawable/btn_grey" android:visibility="gone" android:layout_width="48.0dp" android:layout_height="match_parent" android:src="@drawable/ic_outline_call_24" android:contentDescription="@string/call_to_dispatcher_button_description" style="@style/ToolbarButton" />
+            <Button android:id="@id/toolbar_button_start_performing" android:background="@drawable/btn_purple" android:visibility="gone" android:layout_width="0.0dp" android:text="@string/start_performing" android:layout_weight="1.0" style="@style/ToolbarButton" />
+            <Button android:id="@id/toolbar_button_arrived" android:background="@drawable/btn_orange" android:visibility="gone" android:layout_width="0.0dp" android:text="@string/arrived" android:layout_weight="1.0" style="@style/ToolbarButton" />
+            <Button android:id="@id/toolbar_button_on_route" android:background="@drawable/btn_blue" android:visibility="gone" android:layout_width="0.0dp" android:text="@string/on_route" android:layout_weight="1.0" style="@style/ToolbarButton" />
+            <Button android:id="@id/toolbar_button_take_client" android:background="@drawable/btn_blue" android:visibility="gone" android:layout_width="0.0dp" android:text="@string/take_client" android:layout_weight="1.3" style="@style/ToolbarButton" />
+            <Button android:id="@id/toolbar_button_done" android:background="@drawable/btn_green" android:visibility="gone" android:layout_width="0.0dp" android:text="@string/done" android:layout_weight="1.0" style="@style/ToolbarButton" />
+            <Button android:id="@id/toolbar_button_navigator" android:background="@drawable/btn_brown" android:visibility="gone" android:layout_width="0.0dp" android:layout_margin="0.0dp" android:text="@string/navigator" android:layout_weight="1.2" style="@style/ToolbarButton" />
+            <ImageButton android:id="@id/toolbar_button_menu" android:background="@drawable/btn_grey" android:layout_width="48.0dp" android:src="@drawable/ic_more" android:contentDescription="@string/menu_button_description" style="@style/ToolbarButton" />
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/progress_layout" />
+</FrameLayout>

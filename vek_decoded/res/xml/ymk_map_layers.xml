@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map_layers>
+    <l allows_night_mode="1" id="1" name="Схема" request="map" service="0" size_in_pixels="128" ver="1" />
+    <l allows_night_mode="0" id="2" name="Спутник" request="sat,skl" service="0" size_in_pixels="128" ver="1" />
+    <l allows_night_mode="1" id="3" name="Народная карта" request="pmap" service="0" size_in_pixels="128" ver="1" />
+    <l id="4" name="" request="meta" service="1" ver="1" />
+</map_layers>

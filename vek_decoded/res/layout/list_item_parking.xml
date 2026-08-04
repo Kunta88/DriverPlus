@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="?listSelector" style="@style/listItem"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/parking_textView_name" style="@style/listFirstLine" />
+        <TextView android:textColor="@color/accent" android:gravity="right" android:id="@id/parking_textView_position" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/listFirstLine" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/accent" android:id="@id/parking_textView_count" style="@style/listSecondLine" />
+        <TextView android:ellipsize="end" android:id="@id/parking_textView_queue" style="@style/listSecondLine" />
+    </LinearLayout>
+</LinearLayout>

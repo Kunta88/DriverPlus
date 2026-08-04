@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ab_action_textSize">22.0sp</dimen>
+    <dimen name="ab_size">74.0dp</dimen>
+    <dimen name="ab_tab_textSize">18.0sp</dimen>
+    <dimen name="activity_horizontal_margin">64.0dp</dimen>
+    <dimen name="order_item_textSize">18.0sp</dimen>
+    <dimen name="textSize">28.0sp</dimen>
+    <dimen name="textSizeLarge">35.0sp</dimen>
+    <dimen name="textSizeMedium">28.0sp</dimen>
+    <dimen name="textSizeSmall">25.0sp</dimen>
+</resources>

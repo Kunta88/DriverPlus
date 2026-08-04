@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingTop="8.0dp" android:baselineAligned="false" style="@style/listItem">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:id="@id/rating_textView_time" android:layout_width="wrap_content" android:singleLine="true" style="@style/listFirstLine" />
+            <TextView android:ellipsize="end" android:id="@id/rating_textView_event" style="@style/listSecondLine" />
+        </LinearLayout>
+        <LinearLayout android:gravity="end" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/accent" android:id="@id/rating_textView_points" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/listFirstLine" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dp" android:text="@string/rating_points" style="@style/listSecondLine" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/expire_rating" style="@style/listSecondLine" />
+                <TextView android:id="@id/rating_textView_expire" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dp" style="@style/listSecondLine" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <View android:background="@android:color/darker_gray" android:layout_width="match_parent" android:layout_height="1.0dp" />
+</LinearLayout>

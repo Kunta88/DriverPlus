@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="8.0dp" android:paddingBottom="8.0dp" android:layout_width="match_parent" android:layout_height="match_parent" style="?bottomSheetStyle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/order_sheet_item_send_message" android:padding="8.0dp" android:focusable="true" android:visibility="visible" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:foreground="?selectableItemBackground">
+        <ImageView android:layout_width="24.0dp" android:layout_height="24.0dp" android:layout_marginRight="32.0dp" android:src="@drawable/ic_outline_contact_mail_24" android:contentDescription="@string/message_to_dispatcher" android:layout_marginEnd="32.0dp" style="?bottomSheetStyle" />
+        <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/message_to_dispatcher" style="?bottomSheetStyle" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/order_sheet_item_return_order" android:padding="8.0dp" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:foreground="?selectableItemBackground">
+        <ImageView android:layout_width="24.0dp" android:layout_height="24.0dp" android:layout_marginRight="32.0dp" android:src="@drawable/ic_outline_arrow_back_36" android:contentDescription="@string/return_order" android:layout_marginEnd="32.0dp" style="?bottomSheetStyle" />
+        <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/return_order" style="?bottomSheetStyle" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/order_sheet_item_cancel_order" android:padding="8.0dp" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:foreground="?selectableItemBackground">
+        <ImageView android:layout_width="24.0dp" android:layout_height="24.0dp" android:layout_marginRight="32.0dp" android:src="@drawable/ic_outline_cancel_24" android:contentDescription="@string/cancel_order" android:layout_marginEnd="32.0dp" style="?bottomSheetStyle" />
+        <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel_order" style="?bottomSheetStyle" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/order_sheet_item_edit_order_extras" android:padding="8.0dp" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:foreground="?selectableItemBackground">
+        <ImageView android:layout_width="24.0dp" android:layout_height="24.0dp" android:layout_marginRight="32.0dp" android:src="@drawable/ic_outline_edit_24" android:contentDescription="@string/cancel_order" android:layout_marginEnd="32.0dp" style="?bottomSheetStyle" />
+        <TextView android:layout_gravity="center_vertical" android:id="@id/item_edit_order_extras_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/edit_order_extras" style="?bottomSheetStyle" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/order_sheet_item_call_to_client" android:padding="8.0dp" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:foreground="?selectableItemBackground">
+        <ImageView android:layout_width="24.0dp" android:layout_height="24.0dp" android:layout_marginRight="32.0dp" android:src="@drawable/ic_outline_call_24" android:contentDescription="@string/call_to_client" android:layout_marginEnd="32.0dp" style="?bottomSheetStyle" />
+        <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/call_to_client" style="?bottomSheetStyle" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/order_sheet_item_settings" android:padding="8.0dp" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:foreground="?selectableItemBackground">
+        <ImageView android:layout_width="24.0dp" android:layout_height="24.0dp" android:layout_marginRight="32.0dp" android:src="@drawable/ic_outline_settings_24" android:contentDescription="@string/settings" android:layout_marginEnd="32.0dp" style="?bottomSheetStyle" />
+        <TextView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/settings" style="?bottomSheetStyle" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/hiddenWebAppLayout" android:layout_width="match_parent" android:layout_height="wrap_content" />
+</LinearLayout>

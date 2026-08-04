@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="abc_action_bar_embed_tabs">true</bool>
+    <bool name="abc_allow_stacked_button_bar">false</bool>
+    <bool name="abc_config_actionMenuItemAllCaps">true</bool>
+    <bool name="active_cancel_order_button">true</bool>
+    <bool name="ask_question_for_accepting_order">false</bool>
+    <bool name="ask_question_for_decline_order">false</bool>
+    <bool name="check_distance_on_route">false</bool>
+    <bool name="driver_can_checkin_parking">true</bool>
+    <bool name="driver_can_close_session">true</bool>
+    <bool name="hide_drivers_info_on_map">false</bool>
+    <bool name="is_dev">false</bool>
+    <bool name="is_log_push_allowed">false</bool>
+    <bool name="is_personal">true</bool>
+    <bool name="mtrl_btn_textappearance_all_caps">true</bool>
+    <bool name="order_discount_visible_in_broadcast">true</bool>
+    <bool name="play_broadcast_sound_on_order">true</bool>
+    <bool name="show_busy_drivers_on_map">true</bool>
+    <bool name="show_client_bonus_balance">true</bool>
+    <bool name="show_distance_without_destination">true</bool>
+    <bool name="show_markup">true</bool>
+    <bool name="show_order_id_in_arhive">true</bool>
+    <bool name="show_parkings">true</bool>
+    <bool name="show_sos_button">false</bool>
+    <bool name="taximeter_round_price">true</bool>
+    <bool name="use_server_address_first">false</bool>
+</resources>

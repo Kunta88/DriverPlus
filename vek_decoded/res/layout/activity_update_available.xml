@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/activity_inbound_message" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/update_textView_message" android:paddingTop="8.0dp" android:visibility="gone" android:text="@string/update_required" android:drawableLeft="@drawable/ic_warning" android:drawablePadding="8.0dp" style="@style/Text.Line" />
+            <TextView android:id="@id/update_textView_whats_new_label" android:visibility="gone" android:text="@string/whats_new" style="@style/sectionHeader" />
+            <TextView android:id="@id/update_textView_whats_new" android:visibility="gone" style="@style/section" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="64.0dp">
+        <View android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <Button android:id="@id/update_button_cancel" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@android:string/cancel" android:layout_weight="0.0" style="@style/BorderlessButton" />
+        <View android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <Button android:id="@id/update_button_ok" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@string/update" android:layout_weight="0.0" style="@style/BorderlessButton" />
+        <View android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/notification" android:key="filtersCategory">
+        <CheckBoxPreference android:title="@string/filters_enabled" android:key="pref_filter_enable" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/auto_accept" android:key="pref_auto_accept" android:dependency="pref_filter_enable" android:defaultValue="false" />
+        <EditTextPreference android:numeric="integer" android:title="@string/radius" android:key="pref_filter_radius" android:dependency="pref_filter_enable" android:defaultValue="3000" />
+        <EditTextPreference android:numeric="integer" android:title="@string/minimum_price" android:key="pref_filter_min_price" android:dependency="pref_filter_enable" android:defaultValue="0" />
+        <CheckBoxPreference android:title="@string/none_price" android:key="pref_filter_none_price" android:summary="@string/show_none_price_orders" android:dependency="pref_filter_enable" android:defaultValue="true" />
+        <com.txdriver.ui.view.MultiSelectListPreference android:entries="@array/empty_array" android:title="@string/destination_parking" android:key="pref_filter_destination_parking" android:summary="" android:dependency="pref_filter_enable" android:defaultValue="@array/empty_array" android:dialogTitle="@string/destination_parking" android:entryValues="@array/empty_array" />
+    </PreferenceCategory>
+</PreferenceScreen>

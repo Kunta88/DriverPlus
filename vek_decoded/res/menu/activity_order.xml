@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@id/order_menu_item_return_order" android:visible="false" android:title="@string/return_order" app:showAsAction="never" />
+    <item android:id="@id/order_menu_item_cancel_order" android:visible="false" android:title="@string/cancel_order" app:showAsAction="never" />
+    <item android:id="@id/order_menu_item_call_to_client" android:visible="false" android:title="@string/call_to_client" app:showAsAction="never" />
+    <item android:id="@id/menu_item_send_message" android:visible="true" android:title="@string/message_to_dispatcher" app:showAsAction="never" />
+    <item android:icon="@drawable/ic_action_settings" android:id="@id/menu_item_settings" android:visible="true" android:orderInCategory="100" android:title="@string/settings" app:showAsAction="never" />
+</menu>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:ellipsize="end" android:gravity="center" android:id="@id/order_price_TextView_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dp" android:layout_marginBottom="9.0dp" style="?android:textAppearanceLarge" />
+    <TextView android:textAppearance="?android:textAppearanceLarge" android:textColor="@color/accent" android:paddingLeft="13.0dp" android:paddingBottom="0.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="0.0dp" android:text="@string/input_payments" />
+    <LinearLayout android:orientation="vertical" android:id="@id/order_price_layout_payments" android:layout_width="match_parent" android:layout_height="wrap_content" />
+</LinearLayout>

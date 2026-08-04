@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="16.0dp" android:paddingRight="16.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/update_textView_message" android:paddingTop="8.0dp" android:visibility="gone" android:text="@string/update_required" android:drawableLeft="@drawable/ic_warning" android:drawablePadding="8.0dp" style="@style/Text.Line" />
+    <TextView android:id="@id/update_textView_whats_new_label" android:visibility="gone" android:text="@string/whats_new" style="@style/sectionHeader" />
+    <TextView android:id="@id/update_textView_whats_new" android:visibility="gone" style="@style/section" />
+</LinearLayout>

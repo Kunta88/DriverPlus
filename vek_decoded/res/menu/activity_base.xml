@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group>
+        <item android:icon="@drawable/ic_action_settings" android:id="@id/base_menu_item_settings" android:visible="true" android:orderInCategory="1000" android:title="@string/settings" app:showAsAction="never" />
+        <item android:id="@id/base_menu_item_send_message" android:visible="false" android:orderInCategory="7" android:title="@string/message_to_dispatcher" app:showAsAction="never" />
+        <item android:icon="@drawable/ic_action_danger_off" android:id="@id/base_menu_item_danger" android:visible="true" android:orderInCategory="0" android:title="@string/danger" app:actionLayout="@layout/action_danger" app:showAsAction="always" />
+    </group>
+</menu>

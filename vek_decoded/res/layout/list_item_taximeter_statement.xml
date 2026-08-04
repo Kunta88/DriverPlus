@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="16.0dp" android:paddingRight="16.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/taximeter_statement_textView_title" style="@style/sectionListHeader" />
+    <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="1" android:shrinkColumns="1">
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/distance" style="@style/Column.Left" />
+            <TextView android:id="@id/taximeter_statement_textView_distance" style="@style/Column.Right" />
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/drive_duration" style="@style/Column.Left" />
+            <TextView android:id="@id/taximeter_statement_textView_time" style="@style/Column.Right" />
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/paid_distance" style="@style/Column.Left" />
+            <LinearLayout android:orientation="vertical" style="@style/Column.Right">
+                <TextView android:textAppearance="?android:textAppearance" android:id="@id/taximeter_statement_textView_distance_price" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:id="@id/taximeter_statement_textView_distance_price_descr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/paid_time" style="@style/Column.Left" />
+            <LinearLayout android:orientation="vertical" style="@style/Column.Right">
+                <TextView android:textAppearance="?android:textAppearance" android:id="@id/taximeter_statement_textView_time_price" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:id="@id/taximeter_statement_textView_time_price_descr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:id="@id/taximeter_statement_linearLayout_min_price" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/min_price" style="@style/Column.Left" />
+            <TextView android:id="@id/taximeter_statement_textView_min_price" style="@style/Column.Right" />
+        </TableRow>
+        <TableRow android:id="@id/taximeter_statement_linearLayout_start_charge" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/start_charge" style="@style/Column.Left" />
+            <TextView android:id="@id/taximeter_statement_textView_start_charge" style="@style/Column.Right" />
+        </TableRow>
+        <TableRow android:id="@id/taximeter_statement_linearLayout_end_charge" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/end_charge" style="@style/Column.Left" />
+            <TextView android:id="@id/taximeter_statement_textView_end_charge" style="@style/Column.Right" />
+        </TableRow>
+        <TableRow android:id="@id/taximeter_statement_linearLayout_zone_charge" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/zone_charge" style="@style/Column.Left" />
+            <TextView android:id="@id/taximeter_statement_textView_zone_charge" style="@style/Column.Right" />
+        </TableRow>
+        <TableRow android:id="@id/taximeter_statement_linearLayout_wait" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/waiting" style="@style/Column.Left" />
+            <LinearLayout android:orientation="vertical" style="@style/Column.Right">
+                <TextView android:textAppearance="?android:textAppearance" android:id="@id/taximeter_statement_textView_wait" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:id="@id/taximeter_statement_textView_wait_descr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:id="@id/taximeter_statement_linearLayout_extras" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/extras" style="@style/Column.Left" />
+            <TextView android:id="@id/taximeter_statement_textView_extras" style="@style/Column.Right" />
+        </TableRow>
+        <TableRow android:id="@id/taximeter_statement_linearLayout_discount" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/discount" style="@style/Column.Left" />
+            <TextView android:id="@id/taximeter_statement_textView_discount" style="@style/Column.Right" />
+        </TableRow>
+        <TableRow android:id="@id/taximeter_statement_linearLayout_markup" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:text="@string/markup" style="@style/Column.Left" />
+            <TextView android:id="@id/taximeter_statement_textView_markup" style="@style/Column.Right" />
+        </TableRow>
+    </TableLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textStyle="bold" android:layout_width="wrap_content" android:text="@string/sum_lbl" style="@style/Column.Left" />
+        <TextView android:textSize="28.0sp" android:textStyle="bold" android:gravity="right" android:id="@id/taximeter_statement_textView_sum" android:layout_width="match_parent" style="@style/Column.Right" />
+    </LinearLayout>
+</LinearLayout>

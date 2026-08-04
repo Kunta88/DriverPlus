@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/scrollview" android:scrollbars="none" android:descendantFocusability="beforeDescendants" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8.0dp">
+            <TextView android:textSize="96.0sp" android:textColor="@color/accent" android:id="@id/taximeter_textView_price_int" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_00" android:singleLine="true" />
+            <TextView android:textSize="48.0sp" android:id="@id/taximeter_textView_price_fractional" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@string/_00" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:layout_marginBottom="8.0dp" android:baselineAligned="false">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textAppearance="?android:textAppearanceLarge" android:gravity="start|center" android:id="@id/taximeter_textView_time" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4.0dp" android:text="@string/_00_00_00" android:singleLine="true" android:drawableLeft="@drawable/ic_idle_time" android:drawablePadding="6.0dp" android:drawableStart="@drawable/ic_idle_time" />
+                <LinearLayout android:gravity="end" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="4.0dp">
+                    <TextView android:textAppearance="?android:textAppearanceLarge" android:id="@id/taximeter_textView_distance" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_0_00" />
+                    <TextView android:textAppearance="?android:textAppearanceLarge" android:textColor="@color/accent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/distance_unit" />
+                </LinearLayout>
+            </LinearLayout>
+            <FrameLayout android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0">
+                <Button android:textColor="@color/accent" android:layout_gravity="end" android:id="@id/taximeter_button_start" android:layout_width="96.0dp" android:layout_height="match_parent" android:layout_marginRight="4.0dp" android:text="@string/start" android:drawableTop="@drawable/ic_start" android:layout_marginEnd="4.0dp" />
+                <LinearLayout android:layout_gravity="end" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginRight="4.0dp" android:layout_marginEnd="4.0dp">
+                    <Button android:textColor="@color/accent" android:id="@id/taximeter_button_idle" android:layout_width="96.0dp" android:layout_height="match_parent" android:text="@string/idle" android:drawableTop="@drawable/ic_idle_off" />
+                    <Button android:textColor="@color/accent" android:id="@id/taximeter_button_receipt" android:layout_width="96.0dp" android:layout_height="match_parent" android:text="@string/receipt" android:drawableTop="@drawable/ic_receipt" />
+                </LinearLayout>
+                <LinearLayout android:gravity="end" android:id="@id/taximeter_LinearLayout_speed" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="8.0dp">
+                    <TextView android:textSize="36.0sp" android:id="@id/taximeter_textView_speed" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <TextView android:textSize="28.0sp" android:textColor="@color/accent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/speed_unit" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="0.0dp" android:text="@string/tariff" android:layout_weight="1.0" style="@style/sectionListHeader" />
+            <TextView android:gravity="end" android:id="@id/taximeter_TextView_zone" android:layout_width="0.0dp" android:layout_weight="1.0" style="@style/sectionListHeader" />
+        </LinearLayout>
+        <TextView android:layout_gravity="center" android:id="@id/taximeter_textView_tariff" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8.0dp" style="?android:spinnerStyle" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/accent" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/min_price" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:gravity="center" android:id="@id/taximeter_textView_min_price" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/_0" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/accent" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/includes" />
+                <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_weight="1.0">
+                        <TextView android:textAppearance="?android:textAppearanceMedium" android:gravity="end" android:id="@id/taximeter_textView_min_price_includes_kms" android:paddingBottom="0.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="0.0dp" android:text="@string/_0" android:includeFontPadding="false" />
+                        <TextView android:textColor="@color/accent" android:gravity="end" android:layout_gravity="end" android:paddingTop="0.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dp" android:text="@string/distance_unit" android:includeFontPadding="false" />
+                    </LinearLayout>
+                    <TextView android:textColor="@color/accent" android:gravity="center" android:id="@id/taximeter_textView_min_price_operation" android:paddingBottom="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dp" android:layout_marginRight="6.0dp" android:text="@string/or" />
+                    <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_weight="1.0">
+                        <TextView android:textAppearance="?android:textAppearanceMedium" android:gravity="start" android:id="@id/taximeter_textView_min_price_includes_minutes" android:paddingBottom="0.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="0.0dp" android:text="@string/_0" android:includeFontPadding="false" />
+                        <TextView android:textColor="@color/accent" android:paddingTop="0.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dp" android:text="@string/minute_min" android:includeFontPadding="false" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="@color/accent" android:layout_width="1.0dp" android:layout_height="match_parent" android:layout_marginTop="4.0dp" android:layout_marginBottom="4.0dp" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/accent" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/kilometer" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:gravity="center" android:id="@id/taximeter_textView_price_per_km" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/_0" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/accent" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/minute" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:gravity="center" android:id="@id/taximeter_textView_price_per_minute" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/_0" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/taximeter_linear_layout_extra_charge" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/accent" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/start_charge" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:gravity="center_horizontal" android:id="@id/taximeter_textView_extra_charge" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

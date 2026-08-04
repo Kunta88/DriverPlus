@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="16.0dp" android:paddingRight="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:text="@string/driver" style="@style/sectionHeader" />
+        <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="1" android:shrinkColumns="1">
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/balance" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_balance" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/name" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_name" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/phone_number" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_phone_number" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/auto" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_car" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:id="@id/driver_info_tableRow_rating" android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/rating" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_rating" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:id="@id/driver_info_tableRow_rating_position" android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/rating_position" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_rating_position" style="@style/Column.Right" />
+            </TableRow>
+        </TableLayout>
+        <TextView android:text="@string/driver_statistic" style="@style/sectionHeader" />
+        <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="1" android:shrinkColumns="1">
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/session" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_session_statistic" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/week" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_week_statistic" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/month" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_month_statistic" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/last_30_days" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_last_30_days_statistic" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/last_month" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_last_month_statistic" style="@style/Column.Right" />
+            </TableRow>
+        </TableLayout>
+        <TextView android:visibility="@integer/driver_earnings_visibility" android:text="@string/driver_earnings" style="@style/sectionHeader" />
+        <TableLayout android:visibility="@integer/driver_earnings_visibility" android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="1" android:shrinkColumns="1">
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/session" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_session_earnings" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/week" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_week_earnings" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/month" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_month_earnings" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/last_30_days" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_last_30_days_earnings" style="@style/Column.Right" />
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView android:text="@string/last_month" style="@style/Column.Left" />
+                <TextView android:id="@id/driver_info_textView_last_month_earnings" style="@style/Column.Right" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>

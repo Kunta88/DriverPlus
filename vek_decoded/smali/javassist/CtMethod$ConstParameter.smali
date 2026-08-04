@@ -1,0 +1,111 @@
+.class public Ljavassist/CtMethod$ConstParameter;
+.super Ljava/lang/Object;
+.source "CtMethod.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Ljavassist/CtMethod;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "ConstParameter"
+.end annotation
+
+
+# direct methods
+.method constructor <init>()V
+    .locals 0
+
+    .line 337
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method static defaultConstDescriptor()Ljava/lang/String;
+    .locals 1
+
+    const-string v0, "([Ljava/lang/Object;)V"
+
+    return-object v0
+.end method
+
+.method static defaultDescriptor()Ljava/lang/String;
+    .locals 1
+
+    const-string v0, "([Ljava/lang/Object;)Ljava/lang/Object;"
+
+    return-object v0
+.end method
+
+.method public static integer(I)Ljavassist/CtMethod$ConstParameter;
+    .locals 1
+
+    .line 316
+    new-instance v0, Ljavassist/CtMethod$IntConstParameter;
+
+    invoke-direct {v0, p0}, Ljavassist/CtMethod$IntConstParameter;-><init>(I)V
+
+    return-object v0
+.end method
+
+.method public static integer(J)Ljavassist/CtMethod$ConstParameter;
+    .locals 1
+
+    .line 325
+    new-instance v0, Ljavassist/CtMethod$LongConstParameter;
+
+    invoke-direct {v0, p0, p1}, Ljavassist/CtMethod$LongConstParameter;-><init>(J)V
+
+    return-object v0
+.end method
+
+.method public static string(Ljava/lang/String;)Ljavassist/CtMethod$ConstParameter;
+    .locals 1
+
+    .line 334
+    new-instance v0, Ljavassist/CtMethod$StringConstParameter;
+
+    invoke-direct {v0, p0}, Ljavassist/CtMethod$StringConstParameter;-><init>(Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method compile(Ljavassist/bytecode/Bytecode;)I
+    .locals 0
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljavassist/CannotCompileException;
+        }
+    .end annotation
+
+    const/4 p1, 0x0
+
+    return p1
+.end method
+
+.method constDescriptor()Ljava/lang/String;
+    .locals 1
+
+    .line 363
+    invoke-static {}, Ljavassist/CtMethod$ConstParameter;->defaultConstDescriptor()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method descriptor()Ljava/lang/String;
+    .locals 1
+
+    .line 347
+    invoke-static {}, Ljavassist/CtMethod$ConstParameter;->defaultDescriptor()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

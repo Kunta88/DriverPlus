@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.otaliastudios.cameraview.CameraView android:id="@id/cameraView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:keepScreenOn="true" app:cameraAudio="off" app:cameraPictureFormat="jpeg" app:cameraUseDeviceOrientation="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageButton android:id="@id/photo_image_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/view_of_camera" />
+</com.otaliastudios.cameraview.CameraView>

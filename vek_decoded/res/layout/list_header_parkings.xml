@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/parkings_LinearLayout_drivers_count" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="0.0dp" android:text="@string/total_drivers_count" android:layout_weight="0.75" android:textAllCaps="false" style="@style/sectionListHeader" />
+        <TextView android:gravity="end" android:id="@id/parkings_textView_drivers_count" android:layout_width="0.0dp" android:text="@string/_0" android:layout_weight="0.25" style="@style/sectionListHeader" />
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView android:id="@id/parkings_nested_scroll_view" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/parkings_LinearLayout_driver_parkings" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.txdriver.ui.view.DriverParkingsView android:orientation="vertical" android:id="@id/parkings_DriverParkingsView" android:layout_width="match_parent" android:layout_height="wrap_content" android:divider="?android:dividerHorizontal" android:showDividers="middle" />
+            <View android:id="@id/parkings_View_divider" android:background="@color/accent" android:visibility="gone" android:layout_width="match_parent" android:layout_height="2.0dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

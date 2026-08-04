@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference android:entries="@array/settings_themes" android:title="@string/theme" android:key="pref_theme" android:summary="@string/set_application_theme" android:defaultValue="@string/light" android:entryValues="@array/settings_themes" />
+    <ListPreference android:entries="@array/settings_maps" android:title="@string/map" android:key="pref_map" android:summary="@string/set_map_provider" android:defaultValue="@string/osm" android:entryValues="@array/settings_maps" />
+    <ListPreference android:entries="@array/settings_navigator" android:title="@string/navigator" android:key="pref_navigator" android:summary="@string/set_navigator" android:defaultValue="@string/default_navigator" android:entryValues="@array/settings_navigator" />
+    <CheckBoxPreference android:title="@string/map_visibility" android:key="pref_accept_order_map_visibility" android:defaultValue="true" android:summaryOn="@string/map_visibility_on" android:summaryOff="@string/map_visibility_off" />
+    <CheckBoxPreference android:title="@string/action_confirm" android:key="pref_action_confirm" android:defaultValue="true" android:summaryOn="@string/action_confirm_on" android:summaryOff="@string/action_confirm_off" />
+    <CheckBoxPreference android:title="@string/driver_parkings" android:key="pref_driver_parkings" android:defaultValue="true" android:summaryOn="@string/driver_parkings_on" android:summaryOff="@string/driver_parkings_off" />
+    <PreferenceCategory android:title="@string/notification">
+        <RingtonePreference android:title="@string/personal_order" android:key="pref_personal_order_sound" android:summary="@string/set_notification_sound" android:showSilent="false" />
+        <RingtonePreference android:title="@string/live_now" android:key="pref_live_now_sound" android:summary="@string/set_notification_sound" android:showSilent="true" />
+        <SwitchPreference android:title="@string/vibrate" android:key="pref_vibrate" android:defaultValue="true" android:summaryOn="@string/vibrate_on" android:summaryOff="@string/vibrate_off" />
+        <SwitchPreference android:title="@string/parkings" android:key="pref_parking_moving_notify" android:defaultValue="true" android:summaryOn="@string/parking_notification_on" android:summaryOff="@string/parking_notification_off" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/push_notification">
+        <ListPreference android:entries="@array/settings_notification_type" android:title="@string/notification_type_title" android:key="pref_type_notifications_for_broadcast_order" android:summary="@string/notification_type" android:defaultValue="@string/notification_toast" android:entryValues="@array/settings_notification_type" />
+        <ListPreference android:entries="@array/settings_max_notifications_for_order" android:title="@string/max_notifications_for_order_title" android:key="pref_max_notifications_for_broadcast_order" android:summary="@string/max_notifications_for_order" android:defaultValue="@string/hide_notifications" android:entryValues="@array/settings_max_notifications_for_order" />
+        <ListPreference android:entries="@array/settings_pause_notifications_for_order" android:title="@string/pause_notifications_for_order_title" android:key="pref_pause_notifications_for_broadcast_order" android:defaultValue="@string/show_all_notifications" android:entryValues="@array/settings_pause_notifications_for_order" />
+        <ListPreference android:entries="@array/settings_lifetime_notifications_for_order" android:title="@string/lifetime_notifications_for_order_title" android:key="pref_lifetime_notifications_for_broadcast_order" android:defaultValue="@string/five_seconds" android:entryValues="@array/settings_lifetime_notifications_for_order" />
+    </PreferenceCategory>
+</PreferenceScreen>

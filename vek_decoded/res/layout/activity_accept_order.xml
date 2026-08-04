@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/activity_accept_order" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dp">
+                <ImageView android:id="@id/order_imageView_map" android:layout_width="match_parent" android:layout_height="200.0dp" android:src="@drawable/map_placeholder" android:scaleType="fitXY" android:adjustViewBounds="true" android:contentDescription="@string/map" />
+                <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/order_layout_map_info" android:background="@color/bg_grey" android:paddingLeft="8.0dp" android:paddingTop="4.0dp" android:paddingRight="8.0dp" android:paddingBottom="4.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@android:color/white" android:id="@id/order_textView_distance_to_client" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <TextView android:textColor="@android:color/white" android:gravity="end" android:id="@id/order_textView_time_to_client" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                </LinearLayout>
+            </FrameLayout>
+            <com.txdriver.ui.view.OrderView android:id="@id/orderView" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="horizontal" android:id="@id/linearLayoutDeliveryTimeButtons" android:layout_width="match_parent" android:layout_height="64.0dp" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="64.0dp">
+        <ImageButton android:id="@id/order_button_call_to_dispatcher" android:background="@drawable/btn_grey" android:visibility="gone" android:layout_width="48.0dp" android:layout_height="match_parent" android:src="@drawable/ic_outline_call_24" android:layout_weight="1.0" android:contentDescription="@string/call_to_dispatcher_button_description" style="@style/BorderlessButton" />
+        <Button android:textColor="@android:color/white" android:id="@id/order_button_reject" android:background="@drawable/btn_red" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@string/reject" style="@style/BorderlessButton" />
+        <Button android:textColor="@android:color/white" android:id="@id/order_button_accept" android:background="@drawable/btn_green" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@string/accept" style="@style/BorderlessButton" />
+    </LinearLayout>
+</LinearLayout>

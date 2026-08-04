@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:background="?listSelector" android:clickable="true" style="@style/section"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

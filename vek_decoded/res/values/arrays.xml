@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="blacklisted_apps" />
+    <array name="empty_array" />
+    <string-array name="settings_lifetime_notifications_for_order">
+        <item>@string/five_seconds</item>
+        <item>@string/ten_seconds</item>
+        <item>@string/fifteen_seconds</item>
+    </string-array>
+    <string-array name="settings_maps">
+        <item>@string/osm</item>
+        <item>@string/google</item>
+    </string-array>
+    <string-array name="settings_max_notifications_for_order">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>@string/hide_notifications</item>
+    </string-array>
+    <string-array name="settings_navigator">
+        <item>@string/yandex</item>
+        <item>@string/google</item>
+        <item>@string/osm</item>
+        <item>@string/waze</item>
+    </string-array>
+    <string-array name="settings_notification_type">
+        <item>@string/notification_activity</item>
+        <item>@string/notification_toast</item>
+    </string-array>
+    <string-array name="settings_pause_notifications_for_order">
+        <item>@string/show_all_notifications</item>
+        <item>@string/one_min</item>
+        <item>@string/two_min</item>
+    </string-array>
+    <string-array name="settings_themes">
+        <item>@string/light</item>
+        <item>@string/dark</item>
+    </string-array>
+</resources>

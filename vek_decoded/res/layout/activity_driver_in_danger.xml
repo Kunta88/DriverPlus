@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+        <TextView android:id="@id/danger_textView" android:layout_width="match_parent" android:layout_height="wrap_content" android:drawableLeft="@drawable/ic_warning" android:drawablePadding="8.0dp" />
+    </ScrollView>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="64.0dp">
+        <View android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <Button android:id="@id/danger_button_cancel" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@android:string/cancel" android:layout_weight="0.0" style="@style/BorderlessButton" />
+        <View android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <Button android:id="@id/danger_button_help" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@string/give_a_hand" android:layout_weight="0.0" style="@style/BorderlessButton" />
+        <View android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>
