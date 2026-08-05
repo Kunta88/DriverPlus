@@ -3,6 +3,11 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout android:orientation="vertical" android:id="@id/activity_main_layout" android:layout_width="match_parent" android:layout_height="match_parent">
         <com.google.android.material.tabs.TabLayout android:id="@id/activity_main_tabLayout" android:background="@android:color/black" android:layout_width="match_parent" android:layout_height="wrap_content" app:tabGravity="center" app:tabMode="auto" app:tabTextColor="@color/bg_section_header_light" />
+        <LinearLayout android:orientation="horizontal" android:background="@android:color/black" android:paddingLeft="8.0dp" android:paddingTop="4.0dp" android:paddingRight="8.0dp" android:paddingBottom="4.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/server_status_text" android:text="🟢 Server connected" android:textColor="@android:color/white" android:textSize="12.0sp" android:singleLine="true" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <TextView android:id="@id/server_ping_text" android:text="Ping: -- ms" android:textColor="@android:color/white" android:textSize="12.0sp" android:singleLine="true" android:gravity="center" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <TextView android:id="@id/server_last_update_text" android:text="Last update: -- s" android:textColor="@android:color/white" android:textSize="12.0sp" android:singleLine="true" android:gravity="end" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        </LinearLayout>
         <androidx.viewpager2.widget.ViewPager2 android:id="@id/main_viewPager" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0" />
         <LinearLayout android:layout_width="match_parent" android:layout_height="@dimen/ab_size">
             <ImageButton android:id="@id/toolbar_button_danger" android:background="@drawable/btn_grey" android:layout_width="48.0dp" android:layout_height="match_parent" android:src="@drawable/ic_action_danger_on" android:contentDescription="@string/driver_in_danger" style="@style/ToolbarButton" />

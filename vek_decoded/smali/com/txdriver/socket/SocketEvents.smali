@@ -15,7 +15,8 @@
         Lcom/txdriver/socket/SocketEvents$ConnectedEvent;,
         Lcom/txdriver/socket/SocketEvents$ConnectingEvent;,
         Lcom/txdriver/socket/SocketEvents$PacketWriteEvent;,
-        Lcom/txdriver/socket/SocketEvents$PacketReadEvent;
+        Lcom/txdriver/socket/SocketEvents$PacketReadEvent;,
+        Lcom/txdriver/socket/SocketEvents$RttEvent;
     }
 .end annotation
 

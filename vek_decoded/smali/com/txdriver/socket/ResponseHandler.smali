@@ -22,6 +22,8 @@
     .end annotation
 .end field
 
+.field private pendingStartedAt:J
+
 .field private final runnable:Ljava/lang/Runnable;
 
 
@@ -123,7 +125,7 @@
 .end method
 
 .method public onRead(Lcom/txdriver/socket/packet/ServerPacket;)V
-    .locals 2
+    .locals 7
 
     .line 34
     iget-object v0, p0, Lcom/txdriver/socket/ResponseHandler;->pendingQueue:Ljava/util/Set;
@@ -141,6 +143,30 @@
     move-result p1
 
     if-eqz p1, :cond_0
+
+    iget-wide v0, p0, Lcom/txdriver/socket/ResponseHandler;->pendingStartedAt:J
+
+    const-wide/16 v2, 0x0
+
+    cmp-long v4, v0, v2
+
+    if-lez v4, :cond_rtt
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v2
+
+    sub-long/2addr v2, v0
+
+    iget-object v0, p0, Lcom/txdriver/socket/ResponseHandler;->eventBus:Lde/greenrobot/event/EventBus;
+
+    new-instance v1, Lcom/txdriver/socket/SocketEvents$RttEvent;
+
+    invoke-direct {v1, v2, v3}, Lcom/txdriver/socket/SocketEvents$RttEvent;-><init>(J)V
+
+    invoke-virtual {v0, v1}, Lde/greenrobot/event/EventBus;->post(Ljava/lang/Object;)V
+
+    :cond_rtt
 
     iget-object p1, p0, Lcom/txdriver/socket/ResponseHandler;->pendingQueue:Ljava/util/Set;
 
@@ -173,7 +199,7 @@
 .end method
 
 .method public onWrite(Lcom/txdriver/socket/packet/ClientPacket;)V
-    .locals 3
+    .locals 5
 
     .line 41
     invoke-virtual {p1}, Lcom/txdriver/socket/packet/ClientPacket;->onWrite()V
@@ -184,6 +210,12 @@
     move-result v0
 
     if-eqz v0, :cond_0
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v0
+
+    iput-wide v0, p0, Lcom/txdriver/socket/ResponseHandler;->pendingStartedAt:J
 
     .line 43
     iget-object v0, p0, Lcom/txdriver/socket/ResponseHandler;->pendingQueue:Ljava/util/Set;

@@ -38,6 +38,8 @@
 
 .field private driverParkingCount:Landroid/widget/TextView;
 
+.field private lastServerUpdateTime:J
+
 .field private driverParkingsCount:I
 
 .field private isNotificationReceived:Z
@@ -64,6 +66,12 @@
 .field private menuButton:Landroid/widget/ImageButton;
 
 .field private orderButton:Landroid/widget/Button;
+
+.field private serverLastUpdateText:Landroid/widget/TextView;
+
+.field private serverPingText:Landroid/widget/TextView;
+
+.field private serverStatusText:Landroid/widget/TextView;
 
 .field private sessionButton:Landroid/widget/Button;
 
@@ -421,6 +429,36 @@
     check-cast v0, Lcom/google/android/material/tabs/TabLayout;
 
     iput-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->tabLayout:Lcom/google/android/material/tabs/TabLayout;
+
+    const v0, 0x7f09036b
+
+    invoke-virtual {p0, v0}, Lcom/txdriver/ui/activity/MainActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/TextView;
+
+    iput-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
+
+    const v0, 0x7f09036a
+
+    invoke-virtual {p0, v0}, Lcom/txdriver/ui/activity/MainActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/TextView;
+
+    iput-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverPingText:Landroid/widget/TextView;
+
+    const v0, 0x7f090369
+
+    invoke-virtual {p0, v0}, Lcom/txdriver/ui/activity/MainActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/TextView;
+
+    iput-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverLastUpdateText:Landroid/widget/TextView;
 
     .line 149
     invoke-virtual {p0}, Lcom/txdriver/ui/activity/MainActivity;->getResources()Landroid/content/res/Resources;
@@ -2032,6 +2070,169 @@
     .line 142
     invoke-direct {p0}, Lcom/txdriver/ui/activity/MainActivity;->stopAnimation()V
 
+    return-void
+.end method
+
+.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$ConnectionStateEvent;)V
+    .locals 2
+
+    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
+
+    if-eqz v0, :cond_2
+
+    iget p1, p1, Lcom/txdriver/socket/SocketEvents$ConnectionStateEvent;->state:I
+
+    const/4 v1, 0x4
+
+    if-ne p1, v1, :cond_0
+
+    const-string p1, "🟢 Server connected"
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    goto :goto_0
+
+    :cond_0
+    const/4 v1, 0x3
+
+    if-ne p1, v1, :cond_1
+
+    const-string p1, "🟡 Server connecting"
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    goto :goto_0
+
+    :cond_1
+    const-string p1, "🔴 Server disconnected"
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_2
+    :goto_0
+    return-void
+.end method
+
+.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$ExceptionEvent;)V
+    .locals 1
+
+    iget-object p1, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
+
+    if-eqz p1, :cond_0
+
+    const-string v0, "🔴 Server disconnected"
+
+    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_0
+    return-void
+.end method
+
+.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$PacketReadEvent;)V
+    .locals 2
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v0
+
+    iput-wide v0, p0, Lcom/txdriver/ui/activity/MainActivity;->lastServerUpdateTime:J
+
+    invoke-direct {p0}, Lcom/txdriver/ui/activity/MainActivity;->updateLastServerUpdateText()V
+
+    return-void
+.end method
+
+.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$RttEvent;)V
+    .locals 4
+
+    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverPingText:Landroid/widget/TextView;
+
+    if-eqz v0, :cond_0
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Ping: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-wide v2, p1, Lcom/txdriver/socket/SocketEvents$RttEvent;->rttMs:J
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v1, " ms"
+
+    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_0
+    return-void
+.end method
+
+.method private updateLastServerUpdateText()V
+    .locals 6
+
+    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverLastUpdateText:Landroid/widget/TextView;
+
+    if-eqz v0, :cond_0
+
+    iget-wide v1, p0, Lcom/txdriver/ui/activity/MainActivity;->lastServerUpdateTime:J
+
+    const-wide/16 v3, 0x0
+
+    cmp-long v5, v1, v3
+
+    if-lez v5, :cond_0
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v3
+
+    sub-long/2addr v3, v1
+
+    const-wide/16 v1, 0x3e8
+
+    div-long/2addr v3, v1
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Last update: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, " s"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_0
     return-void
 .end method
 

@@ -1740,6 +1740,12 @@
 
 .field public static final wrap_content:I = 0x7f09035e
 
+.field public static final server_last_update_text:I = 0x7f090369
+
+.field public static final server_ping_text:I = 0x7f09036a
+
+.field public static final server_status_text:I = 0x7f09036b
+
 .field public static final ymk_balloon_text_view:I = 0x7f09035f
 
 .field public static final ymk_find_me:I = 0x7f090360
