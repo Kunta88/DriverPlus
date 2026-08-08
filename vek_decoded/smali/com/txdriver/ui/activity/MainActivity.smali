@@ -2129,16 +2129,45 @@
 .end method
 
 .method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$PacketReadEvent;)V
-    .locals 2
+    .locals 5
 
+    # 1. Получаем текущее время
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
     move-result-wide v0
 
+    # 2. Сохраняем время
     iput-wide v0, p0, Lcom/txdriver/ui/activity/MainActivity;->lastServerUpdateTime:J
 
-    invoke-direct {p0}, Lcom/txdriver/ui/activity/MainActivity;->updateLastServerUpdateText()V
+    # 3. Задаем формат времени "Часы:Минуты:Секунды"
+    const-string v2, "HH:mm:ss"
 
+    # 4. Форматируем время
+    invoke-static {v2, v0, v1}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;J)Ljava/lang/CharSequence;
+    move-result-object v2
+
+    # 5. Создаем StringBuilder для склейки строки
+    new-instance v3, Ljava/lang/StringBuilder;
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "Last update: "
+
+    # 6. Добавляем текст и время в StringBuilder
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
+
+    # 7. Превращаем результат в строку
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v3
+
+    # 8. Находим наш TextView
+    iget-object v4, p0, Lcom/txdriver/ui/activity/MainActivity;->serverLastUpdateText:Landroid/widget/TextView;
+
+    # 9. Если TextView существует, обновляем текст
+    if-eqz v4, :cond_0
+
+    invoke-virtual {v4, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_0
     return-void
 .end method
 
@@ -2176,61 +2205,6 @@
     move-result-object p1
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :cond_0
-    return-void
-.end method
-
-.method private updateLastServerUpdateText()V
-    .locals 6
-
-    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverLastUpdateText:Landroid/widget/TextView;
-
-    if-eqz v0, :cond_0
-
-    iget-wide v1, p0, Lcom/txdriver/ui/activity/MainActivity;->lastServerUpdateTime:J
-
-    const-wide/16 v3, 0x0
-
-    cmp-long v5, v1, v3
-
-    if-lez v5, :cond_0
-
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v3
-
-    sub-long/2addr v3, v1
-
-    const-wide/16 v1, 0x3e8
-
-    div-long/2addr v3, v1
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "Last update: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, " s"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     :cond_0
     return-void
