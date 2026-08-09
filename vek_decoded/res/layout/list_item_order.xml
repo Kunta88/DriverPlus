@@ -24,6 +24,6 @@
                 <TextView android:textSize="12.0sp" android:textColor="@color/accent" android:layout_gravity="center_vertical" android:id="@id/order_textView_distance" android:paddingLeft="16.0dp" android:visibility="gone" android:singleLine="true" style="@style/listSecondLine" />
             </LinearLayout>
         </LinearLayout>
-        <View android:background="@android:color/darker_gray" android:layout_width="match_parent" android:layout_height="1.0dp" />
+        <View android:background="@color/amoled_white_dim" android:layout_width="match_parent" android:layout_height="1.0dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

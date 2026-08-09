@@ -3,6 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:id="@id/chat_message_layout" android:paddingLeft="16.0dp" android:paddingTop="8.0dp" android:paddingRight="16.0dp" android:paddingBottom="8.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@android:color/black" android:id="@id/chat_message_textView_text" android:paddingRight="8.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="120.0dp" android:maxLines="10" android:singleLine="false" />
-        <TextView android:textSize="12.0sp" android:textColor="@android:color/darker_gray" android:layout_gravity="right" android:id="@id/chat_message_textView_time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/amoled_white_dim" android:layout_gravity="right" android:id="@id/chat_message_textView_time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

@@ -17,5 +17,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <View android:background="@android:color/darker_gray" android:layout_width="match_parent" android:layout_height="1.0dp" />
+    <View android:background="@color/amoled_white_dim" android:layout_width="match_parent" android:layout_height="1.0dp" />
 </LinearLayout>
