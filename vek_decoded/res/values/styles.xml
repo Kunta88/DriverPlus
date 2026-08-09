@@ -16,6 +16,10 @@
     <style name="AlertDialog" parent="@style/Theme.AppCompat.Dialog.Alert">
         <item name="android:buttonBarButtonStyle">@style/BorderlessButton</item>
         <item name="buttonBarButtonStyle">@style/BorderlessButton</item>
+        <item name="colorAccent">@color/amoled_white</item>
+        <item name="android:windowBackground">@drawable/abc_dialog_material_background_amoled_dark</item>
+        <item name="android:textColorPrimary">@color/amoled_white</item>
+        <item name="android:textColorSecondary">@color/amoled_white_dim</item>
     </style>
     <style name="AlertDialog.AppCompat" parent="@style/Base.AlertDialog.AppCompat" />
     <style name="AlertDialog.AppCompat.Light" parent="@style/Base.AlertDialog.AppCompat.Light" />
@@ -1607,7 +1611,7 @@
     <style name="Base.Widget.MaterialComponents.TextView" parent="@style/Widget.AppCompat.TextView" />
     <style name="BorderlessButton" parent="@style/Widget.AppCompat.Button.Borderless">
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/accent</item>
+        <item name="android:textColor">@color/amoled_white</item>
         <item name="android:layout_weight">10.0</item>
         <item name="android:textAllCaps">true</item>
     </style>
@@ -2364,17 +2368,31 @@
         <item name="android:textAppearanceSmallPopupMenu">@style/PopupMenuTextAppearanceSmall</item>
         <item name="android:alertDialogTheme">@style/AlertDialog</item>
         <item name="android:actionMenuTextAppearance">@style/actionTextAppearance</item>
-        <item name="android:actionMenuTextColor">@color/abc_primary_text_material_dark</item>
+        <item name="android:actionMenuTextColor">@color/amoled_white</item>
         <item name="actionBarSize">@dimen/ab_size</item>
         <item name="actionBarTabTextStyle">@style/ActionBarTabTextStyle.Dark</item>
         <item name="actionMenuTextAppearance">@style/actionTextAppearance</item>
-        <item name="actionMenuTextColor">@color/abc_primary_text_material_dark</item>
+        <item name="actionMenuTextColor">@color/amoled_white</item>
         <item name="actionOverflowButtonStyle">@style/Widget.AppCompat.Light.ActionButton.Overflow</item>
         <item name="alertDialogTheme">@style/AlertDialog</item>
         <item name="bg_section_header">@color/bg_section_header_dark</item>
         <item name="bottomSheetDialogTheme">@style/Theme.Design.BottomSheetDialog</item>
         <item name="bottomSheetStyle">@style/DarkBottomSheetStyle</item>
-        <item name="colorAccent">@color/accent</item>
+        <item name="colorAccent">@color/amoled_white</item>
+        <item name="colorPrimary">@color/amoled_black</item>
+        <item name="colorPrimaryDark">@color/amoled_black</item>
+        <item name="colorButtonNormal">@color/amoled_black</item>
+        <item name="colorControlNormal">@color/amoled_white_dim</item>
+        <item name="colorControlActivated">@color/amoled_white</item>
+        <item name="colorControlHighlight">@color/amoled_white_ripple</item>
+        <item name="android:windowBackground">@color/amoled_black</item>
+        <item name="android:colorBackground">@color/amoled_black</item>
+        <item name="android:textColorPrimary">@color/amoled_white</item>
+        <item name="android:textColorSecondary">@color/amoled_white_dim</item>
+        <item name="android:textColorPrimaryInverse">@color/amoled_black</item>
+        <item name="android:textColorHint">@color/amoled_white_dim</item>
+        <item name="android:statusBarColor">@color/amoled_black</item>
+        <item name="android:navigationBarColor">@color/amoled_black</item>
         <item name="listPreferredItemHeightSmall">@dimen/listPreferredItemHeightSmall</item>
         <item name="listSelector">@drawable/abc_list_selector_holo_dark</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat</item>
@@ -2387,7 +2405,10 @@
         <item name="android:textAppearanceSmall">@style/TextAppearance.Small</item>
         <item name="android:alertDialogTheme">@style/AlertDialog</item>
         <item name="alertDialogTheme">@style/AlertDialog</item>
-        <item name="colorAccent">@color/accent</item>
+        <item name="colorAccent">@color/amoled_white</item>
+        <item name="android:windowBackground">@drawable/abc_dialog_material_background_amoled_dark</item>
+        <item name="android:textColorPrimary">@color/amoled_white</item>
+        <item name="android:textColorSecondary">@color/amoled_white_dim</item>
     </style>
     <style name="Theme.MobileDriver.Dialog.Light" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textAppearance">@style/TextAppearance</item>

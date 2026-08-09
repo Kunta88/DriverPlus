@@ -135,4 +135,10 @@
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
     <color name="tooltip_background_dark">#e6616161</color>
     <color name="tooltip_background_light">#e6ffffff</color>
+
+    <!-- AMOLED dark theme: pure black/white only -->
+    <color name="amoled_black">#FF000000</color>
+    <color name="amoled_white">#FFFFFFFF</color>
+    <color name="amoled_white_dim">#B3FFFFFF</color>
+    <color name="amoled_white_ripple">#4DFFFFFF</color>
 </resources>
