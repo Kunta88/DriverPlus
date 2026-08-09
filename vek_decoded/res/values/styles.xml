@@ -3425,7 +3425,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
     <style name="sectionHeader" parent="@style/Text.Line">
-        <item name="android:textColor">@color/accent</item>
+        <item name="android:textColor">@color/amoled_white</item>
         <item name="android:ellipsize">end</item>
         <item name="android:paddingLeft">4.0dp</item>
         <item name="android:paddingTop">4.0dp</item>
