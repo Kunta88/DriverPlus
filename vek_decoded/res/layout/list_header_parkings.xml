@@ -8,7 +8,7 @@
     <androidx.core.widget.NestedScrollView android:id="@id/parkings_nested_scroll_view" android:layout_width="match_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:id="@id/parkings_LinearLayout_driver_parkings" android:layout_width="match_parent" android:layout_height="wrap_content">
             <com.txdriver.ui.view.DriverParkingsView android:orientation="vertical" android:id="@id/parkings_DriverParkingsView" android:layout_width="match_parent" android:layout_height="wrap_content" android:divider="?android:dividerHorizontal" android:showDividers="middle" />
-            <View android:id="@id/parkings_View_divider" android:background="@color/accent" android:visibility="gone" android:layout_width="match_parent" android:layout_height="2.0dp" />
+            <View android:id="@id/parkings_View_divider" android:background="@color/amoled_white" android:visibility="gone" android:layout_width="match_parent" android:layout_height="2.0dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

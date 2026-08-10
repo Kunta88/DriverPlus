@@ -4,7 +4,7 @@
     <LinearLayout android:orientation="horizontal" android:paddingLeft="8.0dp" android:paddingRight="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dp">
         <TextView android:layout_gravity="center_vertical" android:id="@id/fin_operation_textView_time" android:layout_width="wrap_content" android:text="12:00" android:singleLine="true" style="@style/listFirstLine" />
         <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="18.0sp" android:textColor="@color/accent" android:layout_gravity="right" android:id="@id/fin_operation_textView_sum" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="100 usd" style="@style/listFirstLine" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/amoled_white" android:layout_gravity="right" android:id="@id/fin_operation_textView_sum" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="100 usd" style="@style/listFirstLine" />
             <TextView android:textSize="12.0sp" android:layout_gravity="right" android:id="@id/fin_operation_textView_balance" android:text="hello" style="@style/listSecondLine" />
         </LinearLayout>
     </LinearLayout>

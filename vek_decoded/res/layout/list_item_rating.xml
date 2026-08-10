@@ -8,7 +8,7 @@
         </LinearLayout>
         <LinearLayout android:gravity="end" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
             <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:textColor="@color/accent" android:id="@id/rating_textView_points" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/listFirstLine" />
+                <TextView android:textColor="@color/amoled_white" android:id="@id/rating_textView_points" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/listFirstLine" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dp" android:text="@string/rating_points" style="@style/listSecondLine" />
             </LinearLayout>
             <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
