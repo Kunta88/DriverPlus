@@ -12,7 +12,7 @@
 
 
 # static fields
-.field private static final DEBUG:Z = false
+.field private static final DEBUG:Z
 
 .field static count:I
 

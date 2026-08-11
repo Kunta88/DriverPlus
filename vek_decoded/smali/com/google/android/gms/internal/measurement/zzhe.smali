@@ -6,7 +6,7 @@
 # static fields
 .field static final zza:Lcom/google/android/gms/internal/measurement/zzhe;
 
-.field private static volatile zzb:Z = false
+.field private static volatile zzb:Z
 
 .field private static volatile zzc:Lcom/google/android/gms/internal/measurement/zzhe;
 

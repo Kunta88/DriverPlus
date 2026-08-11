@@ -3,11 +3,11 @@
 
 
 # static fields
-.field public static c:Lru/yandex/au; = null
+.field public static c:Lru/yandex/au;
 
-.field public static d:Z = false
+.field public static d:Z
 
-.field public static e:Z = false
+.field public static e:Z
 
 
 # instance fields

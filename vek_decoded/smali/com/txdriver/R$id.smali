@@ -1300,6 +1300,12 @@
 
 .field public static final selector_of_car_layout:I = 0x7f090282
 
+.field public static final server_last_update_text:I = 0x7f090369
+
+.field public static final server_ping_text:I = 0x7f09036a
+
+.field public static final server_status_text:I = 0x7f09036b
+
 .field public static final sheet_item_driver_info:I = 0x7f090283
 
 .field public static final sheet_item_driver_info_icon:I = 0x7f090284
@@ -1739,12 +1745,6 @@
 .field public static final wrap:I = 0x7f09035d
 
 .field public static final wrap_content:I = 0x7f09035e
-
-.field public static final server_last_update_text:I = 0x7f090369
-
-.field public static final server_ping_text:I = 0x7f09036a
-
-.field public static final server_status_text:I = 0x7f09036b
 
 .field public static final ymk_balloon_text_view:I = 0x7f09035f
 

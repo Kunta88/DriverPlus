@@ -873,4 +873,7 @@
     <id name="ymk_zoom_out" />
     <id name="zero_corner_chip" />
     <id name="zoom" />
+    <id name="server_last_update_text" />
+    <id name="server_ping_text" />
+    <id name="server_status_text" />
 </resources>

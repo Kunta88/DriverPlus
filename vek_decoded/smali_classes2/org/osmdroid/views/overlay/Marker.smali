@@ -21,9 +21,9 @@
 
 .field public static final ANCHOR_RIGHT:F = 1.0f
 
-.field public static final ANCHOR_TOP:F = 0.0f
+.field public static final ANCHOR_TOP:F
 
-.field public static ENABLE_TEXT_LABELS_WHEN_NO_IMAGE:Z = false
+.field public static ENABLE_TEXT_LABELS_WHEN_NO_IMAGE:Z
 
 .field protected static mDefaultIcon:Landroid/graphics/drawable/Drawable;
 

@@ -1,5 +1,5 @@
-version: 3.0.2
-apkFileName: com.tx.driver.vek.znamenskoe-0.15.261.16062020-261.apk
+version: 3.0.3
+apkFileName: DriverPlus_mono5-aligned-debugSigned.apk
 usesFramework:
   ids:
   - 1

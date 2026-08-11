@@ -4,7 +4,7 @@
 
 
 # static fields
-.field public static useContextClassLoader:Z = false
+.field public static useContextClassLoader:Z
 
 
 # direct methods

@@ -4,9 +4,9 @@
 
 
 # static fields
-.field private static final DEBUG:Z = false
+.field private static final DEBUG:Z
 
-.field public static final USE_CHAIN_OPTIMIZATION:Z = false
+.field public static final USE_CHAIN_OPTIMIZATION:Z
 
 
 # direct methods

@@ -396,19 +396,13 @@
     new-array v0, v0, [B
 
     invoke-virtual {p1, v0}, Ljava/io/InputStream;->read([B)I
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    :try_start_1
     iget-object p1, p0, Lru/yandex/yandexmapkit/StartupController;->startupParser:Lru/yandex/yandexmapkit/StartupController$StartupParser;
 
     invoke-virtual {p1, v0}, Lru/yandex/yandexmapkit/StartupController$StartupParser;->parseStartup([B)Lru/yandex/br;
 
     move-result-object p1
-    :try_end_1
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
 
-    :try_start_2
     iget-boolean v0, p1, Lru/yandex/br;->g:Z
 
     if-nez v0, :cond_1
@@ -461,8 +455,8 @@
     check-cast v1, Lru/yandex/yandexmapkit/StartupController$StartupListener;
 
     invoke-interface {v1, p1}, Lru/yandex/yandexmapkit/StartupController$StartupListener;->onStartup(Lru/yandex/br;)V
-    :try_end_2
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_1
 

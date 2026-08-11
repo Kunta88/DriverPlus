@@ -6,12 +6,12 @@
 # static fields
 .field private static final zza:Ljava/lang/Object;
 
-.field private static volatile zzb:Lcom/google/android/gms/common/stats/ConnectionTracker; = null
+.field private static volatile zzb:Lcom/google/android/gms/common/stats/ConnectionTracker;
     .annotation runtime Ljavax/annotation/Nullable;
     .end annotation
 .end field
 
-.field private static zzc:Z = false
+.field private static zzc:Z
 
 
 # instance fields

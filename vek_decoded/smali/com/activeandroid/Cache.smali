@@ -4,13 +4,13 @@
 
 
 # static fields
-.field private static sContext:Landroid/content/Context; = null
+.field private static sContext:Landroid/content/Context;
 
-.field private static sDatabaseHelper:Lcom/activeandroid/DatabaseHelper; = null
+.field private static sDatabaseHelper:Lcom/activeandroid/DatabaseHelper;
 
-.field private static sEnabled:Z = false
+.field private static sEnabled:Z
 
-.field private static sEntities:Ljava/util/Set; = null
+.field private static sEntities:Ljava/util/Set;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/util/Set<",
@@ -20,7 +20,7 @@
     .end annotation
 .end field
 
-.field private static sIsInitialized:Z = false
+.field private static sIsInitialized:Z
 
 .field private static sModelInfo:Lcom/activeandroid/ModelInfo;
 

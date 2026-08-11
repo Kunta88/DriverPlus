@@ -1038,9 +1038,14 @@
     iget-object v0, p0, Lcom/txdriver/ui/activity/BaseActivity;->app:Lcom/txdriver/App;
 
     invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
-    const/4 v0, 0x7f1101ec
 
-    invoke-virtual {p0, v0}, Lcom/txdriver/ui/activity/BaseActivity;->setTheme(I)V  
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/txdriver/preferences/Preferences;->getCurrentTheme()I
+
+    move-result v0
+
+    invoke-virtual {p0, v0}, Lcom/txdriver/ui/activity/BaseActivity;->setTheme(I)V
 
     return-void
 .end method

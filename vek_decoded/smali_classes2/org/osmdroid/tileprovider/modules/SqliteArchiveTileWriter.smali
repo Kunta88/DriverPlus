@@ -7,7 +7,7 @@
 
 
 # static fields
-.field static hasInited:Z = false
+.field static hasInited:Z
 
 
 # instance fields

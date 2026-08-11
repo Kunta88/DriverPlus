@@ -14,7 +14,7 @@
 
 .field private static final MENU_ROTATE_CW:I
 
-.field private static final SHOW_ROTATE_MENU_ITEMS:Z = false
+.field private static final SHOW_ROTATE_MENU_ITEMS:Z
 
 
 # instance fields

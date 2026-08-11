@@ -13,7 +13,7 @@
 
 .field public static final DATABASE_FILENAME:Ljava/lang/String; = "cache.db"
 
-.field static hasInited:Z = false
+.field static hasInited:Z
 
 
 # instance fields

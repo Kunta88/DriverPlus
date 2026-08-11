@@ -23,7 +23,7 @@
     </style>
     <style name="AlertDialog.AppCompat" parent="@style/Base.AlertDialog.AppCompat" />
     <style name="AlertDialog.AppCompat.Light" parent="@style/Base.AlertDialog.AppCompat.Light" />
-    <style name="AlertDialog.Light" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+    <style name="AlertDialog.Light" parent="@style/AlertDialog">
         <item name="android:buttonBarButtonStyle">@style/BorderlessButton.Light</item>
         <item name="buttonBarButtonStyle">@style/BorderlessButton.Light</item>
     </style>
@@ -1615,16 +1615,16 @@
         <item name="android:layout_weight">10.0</item>
         <item name="android:textAllCaps">true</item>
     </style>
-    <style name="BorderlessButton.Light" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+    <style name="BorderlessButton.Light" parent="@style/BorderlessButton">
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/accent</item>
         <item name="android:layout_weight">10.0</item>
         <item name="android:textAllCaps">true</item>
     </style>
-    <style name="BottomSheetStyle" parent="@style/Theme.Design.Light.BottomSheetDialog">
+    <style name="BottomSheetStyle" parent="@style/Theme.Design.BottomSheetDialog">
         <item name="android:windowBackground">@android:color/primary_text_dark</item>
         <item name="android:textSize">16.0sp</item>
-        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
     </style>
     <style name="CardView" parent="@style/Base.CardView" />
     <style name="CardView.Dark" parent="@style/CardView">
@@ -1655,8 +1655,8 @@
     <style name="LightBottomSheetStyle" parent="@style/BottomSheetStyle">
         <item name="android:windowBackground">@android:color/primary_text_dark</item>
         <item name="android:textSize">16.0sp</item>
-        <item name="android:textColor">@android:color/secondary_text_light</item>
-        <item name="tint">@android:color/secondary_text_light</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="tint">@android:color/primary_text_dark</item>
     </style>
     <style name="MaterialAlertDialog.MaterialComponents" parent="@style/AlertDialog.AppCompat">
         <item name="android:layout">@layout/mtrl_alert_dialog</item>
@@ -2410,7 +2410,7 @@
         <item name="android:textColorPrimary">@color/amoled_white</item>
         <item name="android:textColorSecondary">@color/amoled_white_dim</item>
     </style>
-    <style name="Theme.MobileDriver.Dialog.Light" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+    <style name="Theme.MobileDriver.Dialog.Light" parent="@style/Theme.MobileDriver.Dialog.Dark">
         <item name="android:textAppearance">@style/TextAppearance</item>
         <item name="android:textAppearanceLarge">@style/TextAppearance.Large</item>
         <item name="android:textAppearanceMedium">@style/TextAppearance.Medium</item>
@@ -2419,7 +2419,7 @@
         <item name="alertDialogTheme">@style/AlertDialog.Light</item>
         <item name="colorAccent">@color/accent</item>
     </style>
-    <style name="Theme.MobileDriver.Light" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.MobileDriver.Light" parent="@style/Theme.MobileDriver.Dark">
         <item name="android:textAppearance">@style/TextAppearance</item>
         <item name="android:textAppearanceLarge">@style/TextAppearance.Large</item>
         <item name="android:textAppearanceMedium">@style/TextAppearance.Medium</item>
@@ -2442,7 +2442,7 @@
         <item name="bottomSheetStyle">@style/LightBottomSheetStyle</item>
         <item name="colorAccent">@color/accent</item>
         <item name="listPreferredItemHeightSmall">@dimen/listPreferredItemHeightSmall</item>
-        <item name="listSelector">@drawable/abc_list_selector_holo_light</item>
+        <item name="listSelector">@drawable/abc_list_selector_holo_dark</item>
         <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="toolbarStyle">@style/Toolbar</item>
     </style>

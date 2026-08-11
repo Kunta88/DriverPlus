@@ -11,7 +11,7 @@
 
 .field static final methodPrefixLen:I = 0x3
 
-.field public static useContextClassLoader:Z = false
+.field public static useContextClassLoader:Z
 
 
 # instance fields

@@ -2,6 +2,7 @@
 .super Ljava/lang/Object;
 .source "SocketEvents.java"
 
+
 # annotations
 .annotation system Ldalvik/annotation/EnclosingClass;
     value = Lcom/txdriver/socket/SocketEvents;
@@ -12,8 +13,10 @@
     name = "RttEvent"
 .end annotation
 
+
 # instance fields
 .field public rttMs:J
+
 
 # direct methods
 .method public constructor <init>(J)V

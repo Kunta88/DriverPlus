@@ -7,7 +7,7 @@
 
 
 # static fields
-.field static hasInited:Z = false
+.field static hasInited:Z
 
 .field private static mUsedCacheSpace:J
 

@@ -15,16 +15,16 @@
 
 
 # static fields
-.field public static final synthetic zzc:I = 0x0
+.field public static final synthetic zzc:I
 
 .field private static final zzd:Ljava/lang/Object;
 
-.field private static volatile zze:Lcom/google/android/gms/internal/measurement/zzff; = null
+.field private static volatile zze:Lcom/google/android/gms/internal/measurement/zzff;
     .annotation runtime Ljavax/annotation/Nullable;
     .end annotation
 .end field
 
-.field private static volatile zzf:Z = false
+.field private static volatile zzf:Z
 
 .field private static final zzg:Ljava/util/concurrent/atomic/AtomicReference;
     .annotation system Ldalvik/annotation/Signature;

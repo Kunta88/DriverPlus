@@ -38,13 +38,13 @@
 
 .field private driverParkingCount:Landroid/widget/TextView;
 
-.field private lastServerUpdateTime:J
-
 .field private driverParkingsCount:I
 
 .field private isNotificationReceived:Z
 
 .field private lastClickTime:J
+
+.field private lastServerUpdateTime:J
 
 .field private leaveParkingsButton:Landroid/widget/Button;
 
@@ -653,6 +653,8 @@
 
     :goto_1
     return-void
+
+    nop
 
     :array_0
     .array-data 4
@@ -2073,143 +2075,6 @@
     return-void
 .end method
 
-.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$ConnectionStateEvent;)V
-    .locals 2
-
-    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
-
-    if-eqz v0, :cond_2
-
-    iget p1, p1, Lcom/txdriver/socket/SocketEvents$ConnectionStateEvent;->state:I
-
-    const/4 v1, 0x4
-
-    if-ne p1, v1, :cond_0
-
-    const-string p1, "🟢 Server connected"
-
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    goto :goto_0
-
-    :cond_0
-    const/4 v1, 0x3
-
-    if-ne p1, v1, :cond_1
-
-    const-string p1, "🟡 Server connecting"
-
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    goto :goto_0
-
-    :cond_1
-    const-string p1, "🔴 Server disconnected"
-
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :cond_2
-    :goto_0
-    return-void
-.end method
-
-.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$ExceptionEvent;)V
-    .locals 1
-
-    iget-object p1, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
-
-    if-eqz p1, :cond_0
-
-    const-string v0, "🔴 Server disconnected"
-
-    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :cond_0
-    return-void
-.end method
-
-.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$PacketReadEvent;)V
-    .locals 5
-
-    # 1. Получаем текущее время
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-    move-result-wide v0
-
-    # 2. Сохраняем время
-    iput-wide v0, p0, Lcom/txdriver/ui/activity/MainActivity;->lastServerUpdateTime:J
-
-    # 3. Задаем формат времени "Часы:Минуты:Секунды"
-    const-string v2, "HH:mm:ss"
-
-    # 4. Форматируем время
-    invoke-static {v2, v0, v1}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;J)Ljava/lang/CharSequence;
-    move-result-object v2
-
-    # 5. Создаем StringBuilder для склейки строки
-    new-instance v3, Ljava/lang/StringBuilder;
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "Last update: "
-
-    # 6. Добавляем текст и время в StringBuilder
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
-
-    # 7. Превращаем результат в строку
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-    move-result-object v3
-
-    # 8. Находим наш TextView
-    iget-object v4, p0, Lcom/txdriver/ui/activity/MainActivity;->serverLastUpdateText:Landroid/widget/TextView;
-
-    # 9. Если TextView существует, обновляем текст
-    if-eqz v4, :cond_0
-
-    invoke-virtual {v4, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :cond_0
-    return-void
-.end method
-
-.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$RttEvent;)V
-    .locals 4
-
-    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverPingText:Landroid/widget/TextView;
-
-    if-eqz v0, :cond_0
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "Ping: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget-wide v2, p1, Lcom/txdriver/socket/SocketEvents$RttEvent;->rttMs:J
-
-    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object p1
-
-    const-string v1, " ms"
-
-    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p1
-
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :cond_0
-    return-void
-.end method
-
 .method protected onDestroy()V
     .locals 1
 
@@ -2389,6 +2254,139 @@
 .method public onEvent(Lcom/txdriver/socket/SocketEvents$AuthEvent;)V
     .locals 0
 
+    return-void
+.end method
+
+.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$ConnectionStateEvent;)V
+    .locals 2
+
+    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
+
+    if-eqz v0, :cond_2
+
+    iget p1, p1, Lcom/txdriver/socket/SocketEvents$ConnectionStateEvent;->state:I
+
+    const/4 v1, 0x4
+
+    if-ne p1, v1, :cond_0
+
+    const-string p1, "\ud83d\udfe2 Server connected"
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    goto :goto_0
+
+    :cond_0
+    const/4 v1, 0x3
+
+    if-ne p1, v1, :cond_1
+
+    const-string p1, "\ud83d\udfe1 Server connecting"
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    goto :goto_0
+
+    :cond_1
+    const-string p1, "\ud83d\udd34 Server disconnected"
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_2
+    :goto_0
+    return-void
+.end method
+
+.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$ExceptionEvent;)V
+    .locals 1
+
+    iget-object p1, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
+
+    if-eqz p1, :cond_0
+
+    const-string v0, "\ud83d\udd34 Server disconnected"
+
+    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_0
+    return-void
+.end method
+
+.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$PacketReadEvent;)V
+    .locals 5
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v0
+
+    iput-wide v0, p0, Lcom/txdriver/ui/activity/MainActivity;->lastServerUpdateTime:J
+
+    const-string v2, "HH:mm:ss"
+
+    invoke-static {v2, v0, v1}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;J)Ljava/lang/CharSequence;
+
+    move-result-object v2
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "Last update: "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    iget-object v4, p0, Lcom/txdriver/ui/activity/MainActivity;->serverLastUpdateText:Landroid/widget/TextView;
+
+    if-eqz v4, :cond_0
+
+    invoke-virtual {v4, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_0
+    return-void
+.end method
+
+.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$RttEvent;)V
+    .locals 4
+
+    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverPingText:Landroid/widget/TextView;
+
+    if-eqz v0, :cond_0
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Ping: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-wide v2, p1, Lcom/txdriver/socket/SocketEvents$RttEvent;->rttMs:J
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v1, " ms"
+
+    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_0
     return-void
 .end method
 

@@ -6,7 +6,7 @@
 # static fields
 .field public static final MAX_SDK_WHERE_REQUIRED:I = 0x14
 
-.field private static sCompatVectorFromResourcesEnabled:Z = false
+.field private static sCompatVectorFromResourcesEnabled:Z
 
 
 # instance fields

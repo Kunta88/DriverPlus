@@ -142,7 +142,7 @@
 
     move-result p1
 
-    if-eqz p1, :cond_0
+    if-eqz p1, :cond_1
 
     iget-wide v0, p0, Lcom/txdriver/socket/ResponseHandler;->pendingStartedAt:J
 
@@ -150,7 +150,7 @@
 
     cmp-long v4, v0, v2
 
-    if-lez v4, :cond_rtt
+    if-lez v4, :cond_0
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
@@ -166,15 +166,14 @@
 
     invoke-virtual {v0, v1}, Lde/greenrobot/event/EventBus;->post(Ljava/lang/Object;)V
 
-    :cond_rtt
-
+    :cond_0
     iget-object p1, p0, Lcom/txdriver/socket/ResponseHandler;->pendingQueue:Ljava/util/Set;
 
     invoke-interface {p1}, Ljava/util/Set;->isEmpty()Z
 
     move-result p1
 
-    if-eqz p1, :cond_0
+    if-eqz p1, :cond_1
 
     .line 35
     iget-object p1, p0, Lcom/txdriver/socket/ResponseHandler;->eventBus:Lde/greenrobot/event/EventBus;
@@ -194,7 +193,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    :cond_0
+    :cond_1
     return-void
 .end method
 

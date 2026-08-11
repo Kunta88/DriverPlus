@@ -15,9 +15,9 @@
 
 
 # static fields
-.field private static final DEBUG:Z = false
+.field private static final DEBUG:Z
 
-.field private static final FULL_NEW_CHECK:Z = false
+.field private static final FULL_NEW_CHECK:Z
 
 
 # instance fields

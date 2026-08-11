@@ -31,10 +31,14 @@
     move-result-object v0
 
     invoke-virtual {v0}, Lcom/txdriver/preferences/Preferences;->getCurrentTheme()I
-    const/4 v0, 0x7f1101ec
 
-    invoke-virtual {p0, v0}, Lcom/txdriver/ui/activity/BaseActivity;->setTheme(I)V
-    
+    move-result v0
+
+    const v1, 0x7f1101ef
+
+    if-ne v0, v1, :cond_0
+
+    const v0, 0x7f1101ae
 
     goto :goto_0
 

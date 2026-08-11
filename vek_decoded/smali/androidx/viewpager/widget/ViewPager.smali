@@ -64,7 +64,7 @@
 
 .field private static final TAG:Ljava/lang/String; = "ViewPager"
 
-.field private static final USE_CACHE:Z = false
+.field private static final USE_CACHE:Z
 
 .field private static final sInterpolator:Landroid/view/animation/Interpolator;
 

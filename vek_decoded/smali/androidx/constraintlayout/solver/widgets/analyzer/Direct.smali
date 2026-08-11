@@ -4,9 +4,9 @@
 
 
 # static fields
-.field private static final APPLY_MATCH_PARENT:Z = false
+.field private static final APPLY_MATCH_PARENT:Z
 
-.field private static final DEBUG:Z = false
+.field private static final DEBUG:Z
 
 .field private static measure:Landroidx/constraintlayout/solver/widgets/analyzer/BasicMeasure$Measure;
 
