@@ -909,44 +909,9 @@
 .end method
 
 .method public getCurrentTheme()I
-    .locals 3
-
-    .line 282
-    iget-object v0, p0, Lcom/txdriver/preferences/Preferences;->app:Landroid/app/Application;
-
-    const v1, 0x7f100102
-
-    invoke-virtual {v0, v1}, Landroid/app/Application;->getString(I)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v1, "pref_theme"
-
-    invoke-direct {p0, v1, v0}, Lcom/txdriver/preferences/Preferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 283
-    iget-object v1, p0, Lcom/txdriver/preferences/Preferences;->app:Landroid/app/Application;
-
-    const v2, 0x7f10009c
-
-    invoke-virtual {v1, v2}, Landroid/app/Application;->getString(I)Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
+    .locals 1
 
     const v0, 0x7f1101ec
-
-    return v0
-
-    :cond_0
-    const v0, 0x7f1101ef
 
     return v0
 .end method
