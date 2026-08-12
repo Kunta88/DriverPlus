@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" package="com.tx.driver.vek.znamenskoe" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <uses-feature android:name="android.hardware.location.gps"/>
+    <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+    <uses-feature android:name="android.hardware.microphone" android:required="false"/>
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-feature android:name="android.hardware.location.network" android:required="false"/>
+    <uses-feature android:name="android.hardware.wifi" android:required="false"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <application android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:name="com.txdriver.App" android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true">
+        <activity android:name="com.txdriver.ui.activity.photocontrol.PhotoControlProceedTaskActivity"/>
+        <activity android:name="com.txdriver.ui.activity.photocontrol.PhotoControlTasksListActivity"/>
+        <activity android:name="com.txdriver.ui.activity.registration.RegistrationChooseDriverGroupActivity"/>
+        <activity android:name="com.txdriver.ui.activity.registration.RegistrationEndActivity"/>
+        <activity android:name="com.txdriver.ui.activity.registration.RegistrationAddRefererActivity"/>
+        <activity android:name="com.txdriver.ui.activity.registration.RegistrationChooseCompanyActivity"/>
+        <activity android:name="com.txdriver.ui.activity.registration.RegistrationAddCarActivity"/>
+        <activity android:name="com.txdriver.ui.activity.registration.RegistrationAddDriverLicenceActivity"/>
+        <activity android:name="com.txdriver.ui.activity.registration.RegistrationAddNameActivity"/>
+        <activity android:name="com.txdriver.ui.activity.registration.RegistrationReceiveCodeActivity"/>
+        <activity android:name="com.txdriver.ui.activity.registration.RegistrationAddPhoneNumberActivity"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <service android:name="com.txdriver.service.MainService"/>
+        <activity android:name="com.txdriver.ui.activity.LaunchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.txdriver.ui.activity.AuthActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="com.txdriver.ui.activity.MainActivity"/>
+        <activity android:name="com.txdriver.ui.activity.OrderActivity"/>
+        <activity android:label="@string/driver_info" android:name="com.txdriver.ui.activity.DriverInfoActivity"/>
+        <activity android:label="@string/settings" android:name="com.txdriver.ui.activity.SettingsActivity"/>
+        <activity android:label="@string/filters" android:name="com.txdriver.ui.activity.BroadcastFilterSettingsActivity"/>
+        <activity android:name="com.txdriver.ui.activity.DriverFollowActivity"/>
+        <activity android:label="@string/taximeter" android:name="com.txdriver.ui.activity.TaximeterActivity"/>
+        <activity android:label="@string/store" android:name="com.txdriver.ui.activity.StoreActivity"/>
+        <activity android:label="@string/map" android:name="com.txdriver.ui.activity.DriversMapActivity"/>
+        <activity android:label="@string/newsletters" android:name="com.txdriver.ui.activity.NewslettersActivity"/>
+        <activity android:label="@string/drivers_ratings" android:name="com.txdriver.ui.activity.DriversRatingsActivity"/>
+        <activity android:label="@string/chat" android:name="com.txdriver.ui.activity.ChatActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="com.txdriver.ui.activity.AcceptOrderActivity" android:showOnLockScreen="true" android:turnScreenOn="true"/>
+        <receiver android:exported="true" android:name="com.txdriver.receiver.UpdateDownloadReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="false" android:name="com.txdriver.receiver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.txdriver.receiver.NewsletterAlarmReceiver"/>
+        <receiver android:exported="false" android:name="com.txdriver.receiver.PCTasksReceiver"/>
+        <meta-data android:name="AA_DB_NAME" android:value="TxDriver-20.db"/>
+        <meta-data android:name="AA_DB_VERSION" android:value="5"/>
+        <meta-data android:name="AA_MODELS" android:value="com.myapp.model.Item, com.myapp.model.Category"/>
+        <activity android:name="com.txdriver.ui.activity.OrderReminderActivity"/>
+        <activity android:label="@string/inbound_message" android:name="com.txdriver.ui.activity.InboundMessageActivity"/>
+        <activity android:name="com.txdriver.ui.activity.InboundQuestionActivity"/>
+        <activity android:name="com.txdriver.ui.activity.NotificationActivity"/>
+        <activity android:name="com.txdriver.ui.activity.DriverInDangerActivity"/>
+        <activity android:name="com.txdriver.ui.activity.UpdateAvailableActivity"/>
+        <activity android:name="com.txdriver.ui.activity.WebAppActivity"/>
+        <activity android:label="@string/empty" android:name="com.txdriver.ui.activity.QrCodeActivity"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <provider android:authorities="com.tx.driver.vek.znamenskoe.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+    </application>
+</manifest>
