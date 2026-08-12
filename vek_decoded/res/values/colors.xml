@@ -94,7 +94,7 @@
     <color name="material_grey_600">#ff757575</color>
     <color name="material_grey_800">#ff000000</color>
     <color name="material_grey_850">#ff000000</color>
-    <color name="material_grey_900">#ff212121</color>
+    <color name="material_grey_900">#ff000000</color>
     <color name="material_grey_light">#6d6d6d</color>
     <color name="material_orange">#e65100</color>
     <color name="material_orange_light">#ff9e40</color>
@@ -135,4 +135,5 @@
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
     <color name="tooltip_background_dark">#e6616161</color>
     <color name="tooltip_background_light">#e6ffffff</color>
+    <color name="amoled_white_dim">#FFFFFFFF</color>
 </resources>

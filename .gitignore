@@ -1,0 +1,20 @@
+```
+# Build artifacts and generated files
+vek_decoded/build/
+vek_decoded/res/drawable/$avd_hide_password__0.xml
+vek_decoded/res/drawable/$avd_hide_password__1.xml
+vek_decoded/res/drawable/$avd_hide_password__2.xml
+vek_decoded/res/drawable/$avd_show_password__0.xml
+vek_decoded/res/drawable/$avd_show_password__1.xml
+vek_decoded/res/drawable/$avd_show_password__2.xml
+
+# APK build outputs
+vek_decoded/build/apk/
+
+# Compiled classes
+vek_decoded/build/apk/classes.dex
+vek_decoded/build/apk/classes2.dex
+
+# Resources archive
+vek_decoded/build/resources.zip
+```
