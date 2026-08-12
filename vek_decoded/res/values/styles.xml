@@ -1622,7 +1622,7 @@
         <item name="android:textAllCaps">true</item>
     </style>
     <style name="BottomSheetStyle" parent="@style/Theme.Design.BottomSheetDialog">
-        <item name="android:windowBackground">@android:color/primary_text_dark</item>
+        <item name="android:windowBackground">@color/amoled_black</item>
         <item name="android:textSize">16.0sp</item>
         <item name="android:textColor">@android:color/primary_text_dark</item>
     </style>
@@ -1646,14 +1646,14 @@
         <item name="android:gravity">right</item>
     </style>
     <style name="DarkBottomSheetStyle" parent="@style/BottomSheetStyle">
-        <item name="android:windowBackground">@android:color/primary_text_light</item>
+        <item name="android:windowBackground">@color/amoled_black</item>
         <item name="android:textSize">16.0sp</item>
         <item name="android:textColor">@android:color/primary_text_dark</item>
         <item name="tint">@android:color/primary_text_dark</item>
     </style>
     <style name="EmptyTheme" />
     <style name="LightBottomSheetStyle" parent="@style/BottomSheetStyle">
-        <item name="android:windowBackground">@android:color/primary_text_dark</item>
+        <item name="android:windowBackground">@color/amoled_black</item>
         <item name="android:textSize">16.0sp</item>
         <item name="android:textColor">@android:color/primary_text_dark</item>
         <item name="tint">@android:color/primary_text_dark</item>
