@@ -30,9 +30,7 @@
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lcom/txdriver/preferences/Preferences;->getCurrentTheme()I
-
-    move-result v0
+    const v0, 0x7f1101ec
 
     const v1, 0x7f1101ef
 

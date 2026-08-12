@@ -43,16 +43,13 @@
 .method private applyTheme()V
     .locals 2
 
-    .line 70
     iget-object v0, p0, Lcom/txdriver/ui/activity/BroadcastFilterSettingsActivity;->app:Lcom/txdriver/App;
 
     invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lcom/txdriver/preferences/Preferences;->getCurrentTheme()I
 
-    move-result v0
 
     const v1, 0x7f1101ef
 
@@ -66,6 +63,7 @@
     const v0, 0x7f11019f
 
     :goto_0
+    const v0, 0x7f1101ec
     invoke-virtual {p0, v0}, Lcom/txdriver/ui/activity/BroadcastFilterSettingsActivity;->setTheme(I)V
 
     return-void

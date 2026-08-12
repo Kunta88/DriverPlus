@@ -69,44 +69,12 @@
 .end method
 
 .method setBaseTheme()V
-    .locals 2
+    .locals 1
 
-    .line 25
-    iget-object v0, p0, Lcom/txdriver/ui/activity/BaseDialogActivity;->app:Lcom/txdriver/App;
+    const v0, 0x7f1101ec
 
-    invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Lcom/txdriver/preferences/Preferences;->getCurrentTheme()I
-
-    move-result v0
-
-    const v1, 0x7f1101ec
-
-    if-eq v0, v1, :cond_1
-
-    const v1, 0x7f1101ef
-
-    if-eq v0, v1, :cond_0
-
-    goto :goto_0
-
-    :cond_0
-    const v0, 0x7f1101ee
-
-    .line 27
     invoke-virtual {p0, v0}, Lcom/txdriver/ui/activity/BaseDialogActivity;->setTheme(I)V
 
-    goto :goto_0
-
-    :cond_1
-    const v0, 0x7f1101ed
-
-    .line 30
-    invoke-virtual {p0, v0}, Lcom/txdriver/ui/activity/BaseDialogActivity;->setTheme(I)V
-
-    :goto_0
     return-void
 .end method
 
