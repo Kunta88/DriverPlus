@@ -119,29 +119,6 @@
 
     invoke-static {p1, v0}, Lcom/txdriver/db/ChatMessage;->create(Ljava/lang/String;Lcom/txdriver/db/ChatMessage$Type;)Lcom/txdriver/db/ChatMessage;
 
-    .line 30
-    invoke-direct {p0}, Lcom/txdriver/socket/handler/MessageHandler;->isShowDialog()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_2
-
-    .line 31
-    invoke-direct {p0, p1}, Lcom/txdriver/socket/handler/MessageHandler;->notifyDriver(Ljava/lang/String;)V
-
-    goto :goto_1
-
-    .line 33
-    :cond_2
-    iget-object p1, p0, Lcom/txdriver/socket/handler/MessageHandler;->app:Lcom/txdriver/App;
-
-    invoke-virtual {p1}, Lcom/txdriver/App;->getSoundManager()Lcom/txdriver/notification/SoundManager;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Lcom/txdriver/notification/SoundManager;->playIcqSound()V
-
-    :goto_1
     return-void
 .end method
 
