@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:id="@id/scrollview" android:scrollbars="none" android:descendantFocusability="beforeDescendants" android:layout_width="match_parent" android:layout_height="match_parent"
+<LinearLayout android:id="@id/scrollview" android:orientation="vertical" android:padding="12.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8.0dp">
-            <TextView android:textSize="96.0sp" android:textColor="@color/amoled_white" android:id="@id/taximeter_textView_price_int" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_00" android:singleLine="true" />
-            <TextView android:textSize="48.0sp" android:id="@id/taximeter_textView_price_fractional" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@string/_00" android:singleLine="true" />
+        <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0" android:layout_margin="8.0dp">
+            <TextView android:textSize="168.0sp" android:textColor="@color/amoled_white" android:id="@id/taximeter_textView_price_int" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:includeFontPadding="false" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="24.0sp" android:autoSizeMaxTextSize="400.0sp" android:autoSizeStepGranularity="2.0sp" android:text="@string/_00" android:maxLines="1" android:scrollHorizontally="false" />
+            <TextView android:id="@id/taximeter_textView_price_fractional" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/_00" />
         </LinearLayout>
+        <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="vertical">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
         <LinearLayout android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:layout_marginBottom="8.0dp" android:baselineAligned="false">
             <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <TextView android:textAppearance="?android:textAppearanceLarge" android:gravity="start|center" android:id="@id/taximeter_textView_time" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4.0dp" android:text="@string/_00_00_00" android:singleLine="true" android:drawableLeft="@drawable/ic_idle_time" android:drawablePadding="6.0dp" android:drawableStart="@drawable/ic_idle_time" />
@@ -14,17 +15,19 @@
                     <TextView android:textAppearance="?android:textAppearanceLarge" android:textColor="@color/amoled_white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/distance_unit" />
                 </LinearLayout>
             </LinearLayout>
-            <FrameLayout android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0">
-                <Button android:textColor="@color/amoled_white" android:layout_gravity="end" android:id="@id/taximeter_button_start" android:layout_width="96.0dp" android:layout_height="match_parent" android:layout_marginRight="4.0dp" android:text="@string/start" android:drawableTop="@drawable/ic_start" />
-                <LinearLayout android:layout_gravity="end" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginRight="4.0dp">
-                    <Button android:textColor="@color/amoled_white" android:id="@id/taximeter_button_idle" android:layout_width="96.0dp" android:layout_height="match_parent" android:text="@string/idle" android:drawableTop="@drawable/ic_idle_off" />
-                    <Button android:textColor="@color/amoled_white" android:id="@id/taximeter_button_receipt" android:layout_width="96.0dp" android:layout_height="match_parent" android:text="@string/receipt" android:drawableTop="@drawable/ic_receipt" />
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <LinearLayout android:gravity="end" android:id="@id/taximeter_LinearLayout_speed" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8.0dp">
+                    <TextView android:textSize="24.0sp" android:id="@id/taximeter_textView_speed" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <TextView android:textSize="18.0sp" android:textColor="@color/amoled_white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/speed_unit" />
                 </LinearLayout>
-                <LinearLayout android:gravity="end" android:id="@id/taximeter_LinearLayout_speed" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="8.0dp">
-                    <TextView android:textSize="36.0sp" android:id="@id/taximeter_textView_speed" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                    <TextView android:textSize="28.0sp" android:textColor="@color/amoled_white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/speed_unit" />
+            <FrameLayout android:layout_width="match_parent" android:layout_height="64.0dp">
+                <Button android:textColor="@color/amoled_white" android:layout_gravity="end" android:id="@id/taximeter_button_start" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginRight="4.0dp" android:text="@string/start" android:drawableTop="@drawable/ic_start" />
+                <LinearLayout android:layout_gravity="end" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginRight="4.0dp">
+                    <Button android:textColor="@color/amoled_white" android:id="@id/taximeter_button_idle" android:layout_width="0.0dp" android:layout_weight="1.0" android:layout_height="match_parent" android:text="@string/idle" android:drawableTop="@drawable/ic_idle_off" />
+                    <Button android:textColor="@color/amoled_white" android:id="@id/taximeter_button_receipt" android:layout_width="0.0dp" android:layout_weight="1.0" android:layout_height="match_parent" android:text="@string/receipt" android:drawableTop="@drawable/ic_receipt" />
                 </LinearLayout>
             </FrameLayout>
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
             <TextView android:layout_width="0.0dp" android:text="@string/tariff" android:layout_weight="1.0" style="@style/sectionListHeader" />
@@ -60,5 +63,6 @@
             <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/amoled_white" android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/start_charge" />
             <TextView android:textAppearance="?android:textAppearanceMedium" android:gravity="center_horizontal" android:id="@id/taximeter_textView_extra_charge" android:layout_width="match_parent" android:layout_height="wrap_content" />
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+        </ScrollView>
+</LinearLayout>

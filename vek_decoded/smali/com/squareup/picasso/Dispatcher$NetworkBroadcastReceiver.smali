@@ -148,7 +148,7 @@
 
     iget-object v1, v1, Lcom/squareup/picasso/Dispatcher;->context:Landroid/content/Context;
 
-    invoke-virtual {v1, p0, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    invoke-static {v1, p0, v0}, Lcom/txdriver/compat/CompatIntents;->registerReceiver(Landroid/content/Context;Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
     return-void
 .end method

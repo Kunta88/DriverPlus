@@ -736,6 +736,8 @@
 
     .line 81
     :cond_0
+    const/4 p1, 0x0
+    invoke-static {p0, p1}, Lcom/txdriver/compat/CloseApplication;->setStopped(Landroid/content/Context;Z)V
     iget-object p1, p0, Lcom/txdriver/ui/activity/LaunchActivity;->app:Lcom/txdriver/App;
 
     invoke-virtual {p1}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
@@ -764,6 +766,15 @@
 
     if-nez p1, :cond_1
 
+    iget-object p1, p0, Lcom/txdriver/ui/activity/LaunchActivity;->app:Lcom/txdriver/App;
+    invoke-static {p1}, Lcom/txdriver/compat/SavedLogin;->canStart(Lcom/txdriver/App;)Z
+    move-result p1
+    if-eqz p1, :manual_login
+    invoke-static {p0}, Lcom/txdriver/ui/activity/MainActivity;->startWithSavedLogin(Landroid/content/Context;)V
+    invoke-virtual {p0}, Lcom/txdriver/ui/activity/LaunchActivity;->finish()V
+    return-void
+
+    :manual_login
     .line 82
     invoke-static {p0}, Lcom/txdriver/ui/activity/AuthActivity;->start(Landroid/content/Context;)V
 

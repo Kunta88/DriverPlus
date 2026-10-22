@@ -217,6 +217,10 @@
 
     iput-object p1, p0, Lcom/txdriver/notification/SoundManager;->mRingtone:Landroid/media/Ringtone;
 
+    iget-object v0, p0, Lcom/txdriver/notification/SoundManager;->mContext:Landroid/content/Context;
+
+    invoke-static {v0, p1}, Lcom/txdriver/compat/AlertAudio;->prepare(Landroid/content/Context;Landroid/media/Ringtone;)V
+
     return-void
 .end method
 
@@ -322,6 +326,12 @@
     new-instance v6, Landroid/media/MediaPlayer;
 
     invoke-direct {v6}, Landroid/media/MediaPlayer;-><init>()V
+
+    iget-object v0, p0, Lcom/txdriver/notification/SoundManager;->mContext:Landroid/content/Context;
+
+    invoke-static {v0, v6}, Lcom/txdriver/compat/AlertAudio;->prepare(Landroid/content/Context;Landroid/media/MediaPlayer;)V
+
+    const/high16 p2, 0x3f800000
 
     .line 57
     invoke-virtual {p1}, Landroid/content/res/AssetFileDescriptor;->getFileDescriptor()Ljava/io/FileDescriptor;
@@ -720,6 +730,16 @@
     return-void
 .end method
 
+.method public playAutoAcceptSound()V
+    .locals 1
+
+    iget-object v0, p0, Lcom/txdriver/notification/SoundManager;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/txdriver/compat/AutoAcceptAlert;->play(Landroid/content/Context;)V
+
+    return-void
+.end method
+
 .method public playNotificationSound()V
     .locals 1
 
@@ -834,6 +854,14 @@
     if-eqz v0, :cond_1
 
     .line 192
+    invoke-static {}, Lcom/txdriver/compat/AutoAcceptAlert;->isActive()Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    iget-object v0, p0, Lcom/txdriver/notification/SoundManager;->mVibrator:Landroid/os/Vibrator;
+
     invoke-virtual {v0}, Landroid/os/Vibrator;->cancel()V
 
     .line 194

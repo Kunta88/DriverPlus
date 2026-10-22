@@ -62,48 +62,25 @@
 .method public isAutoAccept()Z
     .locals 1
 
-    .line 29
-    iget-object v0, p0, Lcom/txdriver/filter/BroadcastOrderFilter;->tab:Lcom/txdriver/db/OrderTab;
+    iget-object v0, p0, Lcom/txdriver/filter/BroadcastOrderFilter;->app:Lcom/txdriver/App;
 
-    if-eqz v0, :cond_1
+    invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
 
-    iget-object v0, p0, Lcom/txdriver/filter/BroadcastOrderFilter;->preferences:Lcom/txdriver/filter/FilterPreferences;
+    move-result-object v0
 
-    invoke-virtual {v0}, Lcom/txdriver/filter/FilterPreferences;->isAutoAcceptFilterEnabled()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/txdriver/filter/BroadcastOrderFilter;->preferences:Lcom/txdriver/filter/FilterPreferences;
-
-    invoke-virtual {v0}, Lcom/txdriver/filter/FilterPreferences;->isFilterEnabled()Z
+    invoke-virtual {v0}, Lcom/txdriver/preferences/Preferences;->isAutoAcceptOrdersEnabled()Z
 
     move-result v0
-
-    if-nez v0, :cond_0
-
-    goto :goto_0
-
-    .line 32
-    :cond_0
-    iget-object v0, p0, Lcom/txdriver/filter/BroadcastOrderFilter;->preferences:Lcom/txdriver/filter/FilterPreferences;
-
-    invoke-virtual {v0}, Lcom/txdriver/filter/FilterPreferences;->isAutoAccept()Z
-
-    move-result v0
-
-    return v0
-
-    :cond_1
-    :goto_0
-    const/4 v0, 0x0
 
     return v0
 .end method
 
 .method public isFilter()Z
     .locals 12
+
+    const/4 v0, 0x0
+
+    return v0
 
     .line 40
     iget-object v0, p0, Lcom/txdriver/filter/BroadcastOrderFilter;->tab:Lcom/txdriver/db/OrderTab;

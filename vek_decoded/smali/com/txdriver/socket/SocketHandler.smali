@@ -1066,8 +1066,32 @@
 
 
 # virtual methods
+.method public getSessionEpoch()J
+    .locals 2
+    iget-object v0, p0, Lcom/txdriver/socket/SocketHandler;->app:Lcom/txdriver/App;
+    invoke-virtual {v0}, Lcom/txdriver/App;->getClient()Lcom/txdriver/socket/Client;
+    move-result-object v0
+    invoke-virtual {v0}, Lcom/txdriver/socket/Client;->getSessionId()J
+    move-result-wide v0
+    return-wide v0
+.end method
+
+.method public onPacketFailure()V
+    .locals 2
+    const-string v0, "DriverTransport"
+    const-string v1, "Packet handler failed; refreshing connection"
+    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    iget-object v0, p0, Lcom/txdriver/socket/SocketHandler;->app:Lcom/txdriver/App;
+    invoke-virtual {v0}, Lcom/txdriver/App;->getClient()Lcom/txdriver/socket/Client;
+    move-result-object v0
+    invoke-virtual {v0}, Lcom/txdriver/socket/Client;->reconn()V
+    return-void
+.end method
+
 .method public onConnected(Lcom/txdriver/socket/Client;)V
     .locals 3
+
+    invoke-static {}, Lcom/txdriver/socket/ConnectionHealth;->connected()V
 
     .line 206
     sget-object v0, Lcom/txdriver/socket/SocketHandler;->TAG:Ljava/lang/String;
@@ -1150,6 +1174,10 @@
 .method public onDisconnected(Lcom/txdriver/socket/Client;)V
     .locals 2
 
+    invoke-static {}, Lcom/txdriver/compat/ChatDraft;->disconnected()V
+    const/4 v0, 0x0
+    sput-boolean v0, Lcom/txdriver/socket/ConnectionHealth;->authenticated:Z
+
     .line 217
     sget-object v0, Lcom/txdriver/socket/SocketHandler;->TAG:Ljava/lang/String;
 
@@ -1221,6 +1249,8 @@
 
 .method public onRead(Lcom/txdriver/socket/Client;Lcom/txdriver/socket/Packet;)V
     .locals 3
+
+    invoke-static {}, Lcom/txdriver/socket/ConnectionHealth;->read()V
 
     .line 168
     check-cast p2, Lcom/txdriver/socket/packet/ServerPacket;
@@ -1374,6 +1404,8 @@
 
 .method public onWrite(Lcom/txdriver/socket/Client;Lcom/txdriver/socket/Packet;)V
     .locals 3
+
+    invoke-static {}, Lcom/txdriver/socket/ConnectionHealth;->wrote()V
 
     .line 193
     sget-object v0, Lcom/txdriver/socket/SocketHandler;->TAG:Ljava/lang/String;

@@ -2213,7 +2213,27 @@
     <style name="TextAppearance.Widget.AppCompat.ExpandedMenu.Item" parent="@style/Base.TextAppearance.Widget.AppCompat.ExpandedMenu.Item" />
     <style name="TextAppearance.Widget.AppCompat.Toolbar.Subtitle" parent="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Subtitle" />
     <style name="TextAppearance.Widget.AppCompat.Toolbar.Title" parent="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title" />
-    <style name="Theme.AppCompat" parent="@style/Base.Theme.AppCompat" />
+    <style name="Theme.AppCompat" parent="@style/Base.Theme.AppCompat">
+        <item name="android:windowBackground">@color/amoled_black</item>
+        <item name="android:colorBackground">@color/amoled_black</item>
+        <item name="android:textColorPrimary">@color/amoled_white</item>
+        <item name="android:textColorSecondary">@color/amoled_white</item>
+        <item name="android:textColorHint">@color/amoled_white</item>
+        <item name="android:textColorLink">@color/amoled_white</item>
+        <item name="colorAccent">@color/amoled_white</item>
+        <item name="colorControlNormal">@color/amoled_white</item>
+        <item name="colorControlActivated">@color/amoled_white</item>
+        <item name="colorPrimary">@color/amoled_black</item>
+        <item name="colorPrimaryDark">@color/amoled_black</item>
+        <item name="colorButtonNormal">@color/amoled_black</item>
+        <item name="android:statusBarColor">@color/amoled_black</item>
+        <item name="android:navigationBarColor">@color/amoled_black</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:enforceStatusBarContrast">false</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+    </style>
     <style name="Theme.AppCompat.CompactMenu" parent="@style/Base.Theme.AppCompat.CompactMenu" />
     <style name="Theme.AppCompat.DayNight" parent="@style/Theme.AppCompat.Light" />
     <style name="Theme.AppCompat.DayNight.DarkActionBar" parent="@style/Theme.AppCompat.Light.DarkActionBar" />

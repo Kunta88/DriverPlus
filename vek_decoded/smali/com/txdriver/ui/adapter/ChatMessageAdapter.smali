@@ -295,12 +295,12 @@
 
     if-ne p1, v0, :cond_2
 
-    const p1, 0x7f0800e8
+    const p1, 0x7f080060
 
     goto :goto_2
 
     :cond_2
-    const p1, 0x7f0800e9
+    const p1, 0x7f080060
 
     :goto_2
     invoke-virtual {p3, p1}, Landroid/widget/LinearLayout;->setBackgroundResource(I)V

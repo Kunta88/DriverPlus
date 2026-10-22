@@ -18,6 +18,12 @@
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
     .locals 0
 
+    invoke-static {p1}, Lcom/txdriver/compat/CloseApplication;->isStopped(Landroid/content/Context;)Z
+    move-result p2
+    if-eqz p2, :running
+    return-void
+    :running
+
     .line 15
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 

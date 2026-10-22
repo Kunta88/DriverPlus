@@ -126,7 +126,7 @@
 
     iget-object v2, p0, Lcom/txdriver/ui/activity/DriverInDangerActivity$DriverInDangerActivityRunner;->driverStatusBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-    invoke-virtual {v1, v2, v0}, Lcom/txdriver/App;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    invoke-static {v1, v2, v0}, Lcom/txdriver/compat/CompatIntents;->registerReceiver(Landroid/content/Context;Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
     return-void
 .end method
@@ -206,7 +206,7 @@
 
     const/high16 v5, 0x8000000
 
-    invoke-static {v4, v3, v2, v5}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {v4, v3, v2, v5}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v2
 

@@ -46,6 +46,8 @@
 
 .field private lastServerUpdateTime:J
 
+.field private healthIndicator:Lcom/txdriver/ui/activity/ConnectionHealthIndicator;
+
 .field private leaveParkingsButton:Landroid/widget/Button;
 
 .field private mBroadcastCountViews:Ljava/util/Map;
@@ -459,6 +461,8 @@
     check-cast v0, Landroid/widget/TextView;
 
     iput-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverLastUpdateText:Landroid/widget/TextView;
+
+    invoke-direct {p0}, Lcom/txdriver/ui/activity/MainActivity;->startHealthIndicator()V
 
     .line 149
     invoke-virtual {p0}, Lcom/txdriver/ui/activity/MainActivity;->getResources()Landroid/content/res/Resources;
@@ -926,6 +930,9 @@
     iget-object v1, p0, Lcom/txdriver/ui/activity/MainActivity;->viewPager:Landroidx/viewpager2/widget/ViewPager2;
 
     invoke-virtual {v1, v0}, Landroidx/viewpager2/widget/ViewPager2;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V
+
+    const/4 v0, 0x0
+    invoke-virtual {v1, v0}, Landroidx/viewpager2/widget/ViewPager2;->setUserInputEnabled(Z)V
 
     .line 170
     new-instance v0, Lcom/google/android/material/tabs/TabLayoutMediator;
@@ -1615,6 +1622,70 @@
     return-void
 .end method
 
+.method public static startWithSavedLogin(Landroid/content/Context;)V
+    .locals 3
+    new-instance v0, Landroid/content/Intent;
+    const-class v1, Lcom/txdriver/ui/activity/MainActivity;
+    invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+    const-string v1, "driverplus_saved_login"
+    const/4 v2, 0x1
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+    const/high16 v1, 0x14000000
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
+    invoke-virtual {p0, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+    return-void
+.end method
+
+.method private connectWithSavedLogin()V
+    .locals 2
+    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->app:Lcom/txdriver/App;
+    invoke-static {v0}, Lcom/txdriver/compat/SavedLogin;->canStart(Lcom/txdriver/App;)Z
+    move-result v0
+    if-eqz v0, :done_saved_login
+    new-instance v0, Lcom/txdriver/http/request/AppConfigRequest;
+    iget-object v1, p0, Lcom/txdriver/ui/activity/MainActivity;->app:Lcom/txdriver/App;
+    invoke-direct {v0, v1}, Lcom/txdriver/http/request/AppConfigRequest;-><init>(Lcom/txdriver/App;)V
+    new-instance v1, Lcom/txdriver/compat/SavedLoginConfigCallback;
+    invoke-direct {v1, p0}, Lcom/txdriver/compat/SavedLoginConfigCallback;-><init>(Lcom/txdriver/ui/activity/MainActivity;)V
+    invoke-virtual {v0, v1}, Lcom/txdriver/http/request/AppConfigRequest;->setOnResponseListener(Lcom/txdriver/http/request/HttpRequest$OnResponseListener;)V
+    iget-object v1, p0, Lcom/txdriver/ui/activity/MainActivity;->app:Lcom/txdriver/App;
+    invoke-virtual {v1}, Lcom/txdriver/App;->getRequestManager()Lcom/txdriver/http/RequestManager;
+    move-result-object v1
+    invoke-virtual {v1, v0}, Lcom/txdriver/http/RequestManager;->execute(Lcom/txdriver/http/request/HttpRequest;)V
+    :done_saved_login
+    return-void
+.end method
+
+.method public startSavedLoginService()V
+    .locals 2
+    invoke-virtual {p0}, Lcom/txdriver/ui/activity/MainActivity;->isFinishing()Z
+    move-result v0
+    if-nez v0, :saved_service_done
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+    const/16 v1, 0x11
+    if-lt v0, v1, :saved_activity_alive
+    invoke-virtual {p0}, Lcom/txdriver/ui/activity/MainActivity;->isDestroyed()Z
+    move-result v0
+    if-nez v0, :saved_service_done
+    :saved_activity_alive
+    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->app:Lcom/txdriver/App;
+    invoke-static {v0}, Lcom/txdriver/compat/SavedLogin;->canStart(Lcom/txdriver/App;)Z
+    move-result v0
+    if-eqz v0, :saved_service_done
+    new-instance v0, Landroid/content/Intent;
+    const-class v1, Lcom/txdriver/service/MainService;
+    invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+    invoke-static {p0, v0}, Lcom/txdriver/compat/ModernCompat;->startService(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;
+    move-result-object v0
+    if-eqz v0, :saved_service_done
+    invoke-virtual {p0}, Lcom/txdriver/ui/activity/MainActivity;->getIntent()Landroid/content/Intent;
+    move-result-object v0
+    const-string v1, "driverplus_saved_login"
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->removeExtra(Ljava/lang/String;)V
+    :saved_service_done
+    return-void
+.end method
+
 .method private stopAnimation()V
     .locals 4
 
@@ -1960,6 +2031,12 @@
     .end sparse-switch
 .end method
 
+.method public closeApplication(Landroid/view/View;)V
+    .locals 0
+    invoke-static {p0}, Lcom/txdriver/compat/CloseApplication;->confirm(Landroid/app/Activity;)V
+    return-void
+.end method
+
 .method public onClickWebApp(Landroid/view/View;)V
     .locals 3
 
@@ -2017,7 +2094,7 @@
 .end method
 
 .method public onCreate(Landroid/os/Bundle;)V
-    .locals 1
+    .locals 3
 
     .line 129
     invoke-super {p0, p1}, Lcom/txdriver/ui/activity/BaseActivity;->onCreate(Landroid/os/Bundle;)V
@@ -2072,11 +2149,47 @@
     .line 142
     invoke-direct {p0}, Lcom/txdriver/ui/activity/MainActivity;->stopAnimation()V
 
+    invoke-virtual {p0}, Lcom/txdriver/ui/activity/MainActivity;->getIntent()Landroid/content/Intent;
+    move-result-object v0
+    const-string v1, "driverplus_saved_login"
+    const/4 v2, 0x0
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+    move-result v2
+    if-eqz v2, :saved_login_started
+    invoke-direct {p0}, Lcom/txdriver/ui/activity/MainActivity;->connectWithSavedLogin()V
+    :saved_login_started
+    return-void
+.end method
+
+.method public onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+    .locals 1
+    invoke-super {p0, p1, p2, p3}, Lcom/txdriver/ui/activity/BaseActivity;->onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+    const/16 v0, 0x3e8
+    if-ne p1, v0, :permission_done
+    const-string p1, "android.permission.ACCESS_FINE_LOCATION"
+    invoke-static {p0, p1}, Landroidx/core/content/ContextCompat;->checkSelfPermission(Landroid/content/Context;Ljava/lang/String;)I
+    move-result p1
+    if-eqz p1, :permission_connect
+    const-string p1, "android.permission.ACCESS_COARSE_LOCATION"
+    invoke-static {p0, p1}, Landroidx/core/content/ContextCompat;->checkSelfPermission(Landroid/content/Context;Ljava/lang/String;)I
+    move-result p1
+    if-nez p1, :permission_done
+    :permission_connect
+    invoke-direct {p0}, Lcom/txdriver/ui/activity/MainActivity;->connectWithSavedLogin()V
+    :permission_done
     return-void
 .end method
 
 .method protected onDestroy()V
     .locals 1
+
+    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->healthIndicator:Lcom/txdriver/ui/activity/ConnectionHealthIndicator;
+
+    if-eqz v0, :health_stopped
+
+    invoke-virtual {v0}, Lcom/txdriver/ui/activity/ConnectionHealthIndicator;->stop()V
+
+    :health_stopped
 
     .line 571
     invoke-super {p0}, Lcom/txdriver/ui/activity/BaseActivity;->onDestroy()V
@@ -2091,8 +2204,29 @@
     return-void
 .end method
 
+.method private startHealthIndicator()V
+    .locals 5
+
+    new-instance v0, Lcom/txdriver/ui/activity/ConnectionHealthIndicator;
+
+    iget-object v1, p0, Lcom/txdriver/ui/activity/MainActivity;->app:Lcom/txdriver/App;
+
+    iget-object v2, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
+
+    iget-object v3, p0, Lcom/txdriver/ui/activity/MainActivity;->serverLastUpdateText:Landroid/widget/TextView;
+
+    iget-object v4, p0, Lcom/txdriver/ui/activity/MainActivity;->serverPingText:Landroid/widget/TextView;
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lcom/txdriver/ui/activity/ConnectionHealthIndicator;-><init>(Lcom/txdriver/App;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;)V
+
+    iput-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->healthIndicator:Lcom/txdriver/ui/activity/ConnectionHealthIndicator;
+
+    return-void
+.end method
+
 .method public onEvent(Lcom/txdriver/news/NewsEvents$NewsEventCounter;)V
     .locals 2
+    return-void
 
     .line 544
     new-instance v0, Ljava/lang/StringBuilder;
@@ -2173,6 +2307,7 @@
 
 .method public onEvent(Lcom/txdriver/news/NewsEvents$PCTasksEventCounter;)V
     .locals 2
+    return-void
 
     .line 557
     new-instance v0, Ljava/lang/StringBuilder;
@@ -2251,142 +2386,35 @@
     return-void
 .end method
 
-.method public onEvent(Lcom/txdriver/socket/SocketEvents$AuthEvent;)V
+.method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$AuthEvent;)V
     .locals 0
+
+    invoke-virtual {p0}, Lcom/txdriver/ui/activity/MainActivity;->updateButtons()V
 
     return-void
 .end method
 
 .method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$ConnectionStateEvent;)V
-    .locals 2
+    .locals 0
 
-    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
-
-    if-eqz v0, :cond_2
-
-    iget p1, p1, Lcom/txdriver/socket/SocketEvents$ConnectionStateEvent;->state:I
-
-    const/4 v1, 0x4
-
-    if-ne p1, v1, :cond_0
-
-    const-string p1, "\ud83d\udfe2 Server connected"
-
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    goto :goto_0
-
-    :cond_0
-    const/4 v1, 0x3
-
-    if-ne p1, v1, :cond_1
-
-    const-string p1, "\ud83d\udfe1 Server connecting"
-
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    goto :goto_0
-
-    :cond_1
-    const-string p1, "\ud83d\udd34 Server disconnected"
-
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :cond_2
-    :goto_0
     return-void
 .end method
 
 .method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$ExceptionEvent;)V
-    .locals 1
+    .locals 0
 
-    iget-object p1, p0, Lcom/txdriver/ui/activity/MainActivity;->serverStatusText:Landroid/widget/TextView;
-
-    if-eqz p1, :cond_0
-
-    const-string v0, "\ud83d\udd34 Server disconnected"
-
-    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :cond_0
     return-void
 .end method
 
 .method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$PacketReadEvent;)V
-    .locals 5
+    .locals 0
 
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v0
-
-    iput-wide v0, p0, Lcom/txdriver/ui/activity/MainActivity;->lastServerUpdateTime:J
-
-    const-string v2, "HH:mm:ss"
-
-    invoke-static {v2, v0, v1}, Landroid/text/format/DateFormat;->format(Ljava/lang/CharSequence;J)Ljava/lang/CharSequence;
-
-    move-result-object v2
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "Last update: "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    iget-object v4, p0, Lcom/txdriver/ui/activity/MainActivity;->serverLastUpdateText:Landroid/widget/TextView;
-
-    if-eqz v4, :cond_0
-
-    invoke-virtual {v4, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :cond_0
     return-void
 .end method
 
 .method public onEventMainThread(Lcom/txdriver/socket/SocketEvents$RttEvent;)V
-    .locals 4
+    .locals 0
 
-    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity;->serverPingText:Landroid/widget/TextView;
-
-    if-eqz v0, :cond_0
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "Ping: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget-wide v2, p1, Lcom/txdriver/socket/SocketEvents$RttEvent;->rttMs:J
-
-    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object p1
-
-    const-string v1, " ms"
-
-    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p1
-
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :cond_0
     return-void
 .end method
 

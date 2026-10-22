@@ -42,7 +42,7 @@
     .line 21
     iget-object v0, p0, Lorg/osmdroid/tileprovider/util/SimpleRegisterReceiver;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v0, p1, p2}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    invoke-static {v0, p1, p2}, Lcom/txdriver/compat/CompatIntents;->registerReceiver(Landroid/content/Context;Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
     move-result-object p1
 

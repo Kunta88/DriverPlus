@@ -41,6 +41,11 @@
     .locals 2
 
     .line 22
+    invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
+    move-result v0
+    invoke-static {v0}, Lcom/txdriver/compat/ManualBreak;->server(Z)V
+    return-void
+
     iget-object v0, p0, Lcom/txdriver/socket/handler/BreakHandler;->app:Lcom/txdriver/App;
 
     invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;

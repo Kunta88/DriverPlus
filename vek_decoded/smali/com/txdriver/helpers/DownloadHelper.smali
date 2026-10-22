@@ -1,9 +1,12 @@
 .class public Lcom/txdriver/helpers/DownloadHelper;
 .super Ljava/lang/Object;
+
 .source "DownloadHelper.java"
 
 
 # instance fields
+.field private timer:Ljava/util/Timer;
+
 .field private final TAG:Ljava/lang/String;
 
 .field private app:Lcom/txdriver/App;
@@ -184,6 +187,8 @@
 
     invoke-direct {v0}, Ljava/util/Timer;-><init>()V
 
+    iput-object v0, p0, Lcom/txdriver/helpers/DownloadHelper;->timer:Ljava/util/Timer;
+
     new-instance v1, Lcom/txdriver/helpers/DownloadHelper$2;
 
     invoke-direct {v1, p0}, Lcom/txdriver/helpers/DownloadHelper$2;-><init>(Lcom/txdriver/helpers/DownloadHelper;)V
@@ -194,5 +199,16 @@
 
     invoke-virtual/range {v0 .. v5}, Ljava/util/Timer;->scheduleAtFixedRate(Ljava/util/TimerTask;JJ)V
 
+    return-void
+.end method
+
+.method public stop()V
+    .locals 1
+    iget-object v0, p0, Lcom/txdriver/helpers/DownloadHelper;->timer:Ljava/util/Timer;
+    if-eqz v0, :done
+    invoke-virtual {v0}, Ljava/util/Timer;->cancel()V
+    const/4 v0, 0x0
+    iput-object v0, p0, Lcom/txdriver/helpers/DownloadHelper;->timer:Ljava/util/Timer;
+    :done
     return-void
 .end method

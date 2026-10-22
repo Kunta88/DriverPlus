@@ -896,7 +896,7 @@
 
     invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    invoke-virtual {p0, p1}, Lcom/txdriver/ui/activity/AuthActivity;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+    invoke-static {p0, p1}, Lcom/txdriver/compat/ModernCompat;->startService(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;
 
     return-void
 .end method
@@ -940,6 +940,14 @@
 
     .line 332
     invoke-super {p0, p1, p2, p3}, Lcom/txdriver/ui/activity/BaseActivity;->onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+
+    array-length v0, p3
+
+    if-nez v0, :permissions_present
+
+    return-void
+
+    :permissions_present
 
     const/16 p2, 0x3e8
 
@@ -1040,7 +1048,7 @@
 
     invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    invoke-virtual {p0, p1}, Lcom/txdriver/ui/activity/AuthActivity;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+    invoke-static {p0, p1}, Lcom/txdriver/compat/ModernCompat;->startService(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;
 
     :goto_0
     return-void

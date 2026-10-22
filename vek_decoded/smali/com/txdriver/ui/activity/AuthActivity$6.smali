@@ -41,19 +41,7 @@
     .line 308
     iget-object p1, p0, Lcom/txdriver/ui/activity/AuthActivity$6;->this$0:Lcom/txdriver/ui/activity/AuthActivity;
 
-    const/4 p2, 0x1
-
-    new-array p2, p2, [Ljava/lang/String;
-
-    const/4 v0, 0x0
-
-    const-string v1, "android.permission.ACCESS_BACKGROUND_LOCATION"
-
-    aput-object v1, p2, v0
-
-    const/16 v0, 0x3ee
-
-    invoke-static {p1, p2, v0}, Landroidx/core/app/ActivityCompat;->requestPermissions(Landroid/app/Activity;[Ljava/lang/String;I)V
+    invoke-static {p1}, Lcom/txdriver/compat/CompatIntents;->requestBackground(Landroid/app/Activity;)V
 
     return-void
 .end method

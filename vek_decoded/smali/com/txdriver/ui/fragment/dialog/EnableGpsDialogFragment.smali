@@ -2,6 +2,8 @@
 .super Lcom/txdriver/ui/fragment/dialog/BaseDialogFragment;
 .source "EnableGpsDialogFragment.java"
 
+.field private gpsWatcher:Lcom/txdriver/compat/GpsDialogWatcher;
+
 
 # direct methods
 .method public constructor <init>()V
@@ -74,6 +76,28 @@
 
 
 # virtual methods
+.method public onStart()V
+    .locals 1
+    invoke-super {p0}, Lcom/txdriver/ui/fragment/dialog/BaseDialogFragment;->onStart()V
+    new-instance v0, Lcom/txdriver/compat/GpsDialogWatcher;
+    invoke-direct {v0, p0}, Lcom/txdriver/compat/GpsDialogWatcher;-><init>(Landroidx/fragment/app/DialogFragment;)V
+    iput-object v0, p0, Lcom/txdriver/ui/fragment/dialog/EnableGpsDialogFragment;->gpsWatcher:Lcom/txdriver/compat/GpsDialogWatcher;
+    invoke-virtual {v0}, Lcom/txdriver/compat/GpsDialogWatcher;->run()V
+    return-void
+.end method
+
+.method public onStop()V
+    .locals 1
+    iget-object v0, p0, Lcom/txdriver/ui/fragment/dialog/EnableGpsDialogFragment;->gpsWatcher:Lcom/txdriver/compat/GpsDialogWatcher;
+    if-eqz v0, :stopped
+    invoke-virtual {v0}, Lcom/txdriver/compat/GpsDialogWatcher;->stop()V
+    const/4 v0, 0x0
+    iput-object v0, p0, Lcom/txdriver/ui/fragment/dialog/EnableGpsDialogFragment;->gpsWatcher:Lcom/txdriver/compat/GpsDialogWatcher;
+    :stopped
+    invoke-super {p0}, Lcom/txdriver/ui/fragment/dialog/BaseDialogFragment;->onStop()V
+    return-void
+.end method
+
 .method public onCreateDialog(Landroid/os/Bundle;)Landroid/app/Dialog;
     .locals 2
 

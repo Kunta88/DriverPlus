@@ -427,6 +427,8 @@
     .line 116
     iput-object v0, p0, Lcom/txdriver/location/LocationManager;->lastLocation:Landroid/location/Location;
 
+    invoke-static {}, Lcom/txdriver/order/AutoPickup;->signal()V
+
     :cond_0
     return-void
 .end method

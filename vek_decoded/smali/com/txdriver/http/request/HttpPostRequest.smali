@@ -159,6 +159,12 @@
     .end annotation
 
     .line 58
+    invoke-static {p0}, Lcom/txdriver/compat/DisabledFeatures;->request(Ljava/lang/Object;)Z
+    move-result v0
+    if-eqz v0, :feature_enabled
+    const/4 v0, 0x0
+    return-object v0
+    :feature_enabled
     iget-object p1, p0, Lcom/txdriver/http/request/HttpPostRequest;->response:Ljava/lang/Object;
 
     const/4 v0, 0x0
@@ -176,6 +182,7 @@
 
     .line 62
     :cond_0
+    invoke-static {p0}, Lcom/txdriver/compat/WebDiagnostics;->begin(Ljava/lang/Object;)V
     :try_start_0
     new-instance p1, Lcom/txdriver/http/request/HttpPostRequest$RequestResult;
 
@@ -187,13 +194,14 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
+    invoke-static {}, Lcom/txdriver/compat/WebDiagnostics;->end()V
     return-object p1
 
     :catch_0
     move-exception p1
 
     .line 64
-    invoke-virtual {p1}, Ljava/lang/Exception;->printStackTrace()V
+    invoke-static {p0, p1}, Lcom/txdriver/compat/WebDiagnostics;->failed(Ljava/lang/Object;Ljava/lang/Throwable;)V
 
     .line 65
     new-instance v1, Lcom/txdriver/http/request/HttpPostRequest$RequestResult;
@@ -272,6 +280,11 @@
     .end annotation
 
     .line 71
+    invoke-static {p0}, Lcom/txdriver/compat/DisabledFeatures;->request(Ljava/lang/Object;)Z
+    move-result v0
+    if-eqz v0, :feature_enabled
+    return-void
+    :feature_enabled
     invoke-super {p0, p1}, Landroid/os/AsyncTask;->onPostExecute(Ljava/lang/Object;)V
 
     .line 72

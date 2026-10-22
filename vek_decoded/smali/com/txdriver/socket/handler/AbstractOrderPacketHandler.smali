@@ -172,6 +172,10 @@
     if-eqz v5, :cond_0
 
     .line 47
+    iget v5, v4, Lcom/txdriver/db/Order;->orderId:I
+
+    invoke-static {v5}, Lcom/txdriver/compat/EventGuard;->autoAccepted(I)V
+
     iget-object v5, v0, Lcom/txdriver/socket/handler/AbstractOrderPacketHandler;->app:Lcom/txdriver/App;
 
     invoke-virtual {v5}, Lcom/txdriver/App;->getOrderAcceptManager()Lcom/txdriver/filter/OrderAcceptManager;

@@ -195,7 +195,7 @@
     const/4 v2, 0x0
 
     .line 5
-    invoke-static {v0, v2, v1, v2}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {v0, v2, v1, v2}, Lcom/txdriver/compat/CompatIntents;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v0
 

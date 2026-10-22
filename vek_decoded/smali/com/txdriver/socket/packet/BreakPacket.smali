@@ -30,6 +30,9 @@
     .line 13
     invoke-direct {p0}, Lcom/txdriver/socket/packet/ClientPacket;-><init>()V
 
+    # All constructor call sites are the three explicit MainActivity button actions.
+    invoke-static {p1}, Lcom/txdriver/compat/ManualBreak;->manual(Z)V
+
     .line 14
     iput-boolean p1, p0, Lcom/txdriver/socket/packet/BreakPacket;->mBreak:Z
 

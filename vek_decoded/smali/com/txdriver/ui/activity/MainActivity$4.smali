@@ -114,6 +114,9 @@
 
     invoke-virtual {p1}, Lcom/txdriver/ui/adapter/NewTabsAdapter;->resetTabs()V
 
+    # Only the first server-provided broadcast (Эфир) page remains visible.
+    goto :cond_0
+
     .line 256
     iget-object p1, p0, Lcom/txdriver/ui/activity/MainActivity$4;->this$0:Lcom/txdriver/ui/activity/MainActivity;
 
@@ -177,6 +180,13 @@
     move-result-object p2
 
     check-cast p2, Lcom/txdriver/db/OrderTab;
+
+    iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity$4;->this$0:Lcom/txdriver/ui/activity/MainActivity;
+    invoke-static {v0}, Lcom/txdriver/ui/activity/MainActivity;->access$300(Lcom/txdriver/ui/activity/MainActivity;)Lcom/txdriver/ui/adapter/NewTabsAdapter;
+    move-result-object v0
+    invoke-virtual {v0}, Lcom/txdriver/ui/adapter/NewTabsAdapter;->getItemCount()I
+    move-result v1
+    if-nez v1, :goto_0
 
     .line 261
     iget-object v0, p0, Lcom/txdriver/ui/activity/MainActivity$4;->this$0:Lcom/txdriver/ui/activity/MainActivity;

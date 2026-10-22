@@ -21,6 +21,7 @@
 
 .method public static start(Landroid/content/Context;)V
     .locals 2
+    return-void
 
     .line 24
     new-instance v0, Landroid/content/Intent;

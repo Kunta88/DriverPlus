@@ -259,7 +259,7 @@
     const/4 v0, 0x0
 
     .line 489
-    invoke-static {p1, v0, p4, v0}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {p1, v0, p4, v0}, Lcom/txdriver/compat/CompatIntents;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object p4
 

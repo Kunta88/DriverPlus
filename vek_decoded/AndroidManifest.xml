@@ -4,19 +4,22 @@
     <uses-feature android:name="android.hardware.telephony" android:required="false"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
     <uses-permission android:name="android.permission.READ_LOGS"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
@@ -31,9 +34,19 @@
     <uses-feature android:name="android.hardware.wifi" android:required="false"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
-    <application android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:name="com.txdriver.App" android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true">
-        <activity android:name="com.txdriver.ui.activity.photocontrol.PhotoControlProceedTaskActivity"/>
-        <activity android:name="com.txdriver.ui.activity.photocontrol.PhotoControlTasksListActivity"/>
+    <queries>
+        <package android:name="ru.yandex.yandexnavi"/>
+        <package android:name="ru.yandex.taximeter"/>
+        <package android:name="com.google.android.apps.maps"/>
+        <package android:name="net.osmand"/>
+        <package android:name="net.osmand.plus"/>
+        <intent><action android:name="android.intent.action.VIEW"/><data android:scheme="geo"/></intent>
+        <intent><action android:name="android.intent.action.VIEW"/><data android:scheme="https"/></intent>
+        <intent><action android:name="android.intent.action.CALL"/><data android:scheme="tel"/></intent>
+    </queries>
+    <application android:fullBackupContent="@xml/compat_backup_rules" android:dataExtractionRules="@xml/compat_extraction_rules" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:name="com.txdriver.App" android:usesCleartextTraffic="true">
+        <activity android:enabled="false" android:name="com.txdriver.ui.activity.photocontrol.PhotoControlProceedTaskActivity"/>
+        <activity android:enabled="false" android:name="com.txdriver.ui.activity.photocontrol.PhotoControlTasksListActivity"/>
         <activity android:name="com.txdriver.ui.activity.registration.RegistrationChooseDriverGroupActivity"/>
         <activity android:name="com.txdriver.ui.activity.registration.RegistrationEndActivity"/>
         <activity android:name="com.txdriver.ui.activity.registration.RegistrationAddRefererActivity"/>
@@ -44,8 +57,11 @@
         <activity android:name="com.txdriver.ui.activity.registration.RegistrationReceiveCodeActivity"/>
         <activity android:name="com.txdriver.ui.activity.registration.RegistrationAddPhoneNumberActivity"/>
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-        <service android:name="com.txdriver.service.MainService"/>
-        <activity android:name="com.txdriver.ui.activity.LaunchActivity">
+        <service android:name="com.txdriver.service.MainService" android:exported="false" android:foregroundServiceType="location"/>
+        <provider android:name="androidx.core.content.FileProvider" android:authorities="com.tx.driver.vek.znamenskoe.updates" android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/compat_update_paths" />
+        </provider>
+        <activity android:name="com.txdriver.ui.activity.LaunchActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -56,12 +72,13 @@
         <activity android:name="com.txdriver.ui.activity.OrderActivity"/>
         <activity android:label="@string/driver_info" android:name="com.txdriver.ui.activity.DriverInfoActivity"/>
         <activity android:label="@string/settings" android:name="com.txdriver.ui.activity.SettingsActivity"/>
+        <activity android:label="Энергоэффективность" android:name="com.txdriver.energy.EnergySettingsActivity" android:exported="false"/>
         <activity android:label="@string/filters" android:name="com.txdriver.ui.activity.BroadcastFilterSettingsActivity"/>
         <activity android:name="com.txdriver.ui.activity.DriverFollowActivity"/>
         <activity android:label="@string/taximeter" android:name="com.txdriver.ui.activity.TaximeterActivity"/>
         <activity android:label="@string/store" android:name="com.txdriver.ui.activity.StoreActivity"/>
         <activity android:label="@string/map" android:name="com.txdriver.ui.activity.DriversMapActivity"/>
-        <activity android:label="@string/newsletters" android:name="com.txdriver.ui.activity.NewslettersActivity"/>
+        <activity android:enabled="false" android:label="@string/newsletters" android:name="com.txdriver.ui.activity.NewslettersActivity"/>
         <activity android:label="@string/drivers_ratings" android:name="com.txdriver.ui.activity.DriversRatingsActivity"/>
         <activity android:label="@string/chat" android:name="com.txdriver.ui.activity.ChatActivity" android:windowSoftInputMode="stateHidden"/>
         <activity android:name="com.txdriver.ui.activity.AcceptOrderActivity" android:showOnLockScreen="true" android:turnScreenOn="true"/>
@@ -70,13 +87,13 @@
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
             </intent-filter>
         </receiver>
-        <receiver android:enabled="false" android:name="com.txdriver.receiver.BootReceiver">
+        <receiver android:enabled="false" android:exported="false" android:name="com.txdriver.receiver.BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-        <receiver android:exported="false" android:name="com.txdriver.receiver.NewsletterAlarmReceiver"/>
-        <receiver android:exported="false" android:name="com.txdriver.receiver.PCTasksReceiver"/>
+        <receiver android:enabled="false" android:exported="false" android:name="com.txdriver.receiver.NewsletterAlarmReceiver"/>
+        <receiver android:enabled="false" android:exported="false" android:name="com.txdriver.receiver.PCTasksReceiver"/>
         <meta-data android:name="AA_DB_NAME" android:value="TxDriver-20.db"/>
         <meta-data android:name="AA_DB_VERSION" android:value="5"/>
         <meta-data android:name="AA_MODELS" android:value="com.myapp.model.Item, com.myapp.model.Category"/>

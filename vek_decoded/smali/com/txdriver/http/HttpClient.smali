@@ -72,119 +72,36 @@
 
 # virtual methods
 .method public get(Ljava/lang/String;)Ljava/lang/String;
-    .locals 1
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
-
-    .line 34
-    new-instance v0, Lorg/apache/http/client/methods/HttpGet;
-
-    invoke-direct {v0, p1}, Lorg/apache/http/client/methods/HttpGet;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {p0, v0}, Lcom/txdriver/http/HttpClient;->request(Lorg/apache/http/client/methods/HttpRequestBase;)Ljava/lang/String;
-
+    .locals 0
+    invoke-static {p1}, Lcom/txdriver/compat/SafeHttp;->get(Ljava/lang/String;)Ljava/lang/String;
     move-result-object p1
-
     return-object p1
 .end method
 
 .method public get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    .locals 1
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
-
-    .line 38
-    new-instance v0, Lorg/apache/http/client/methods/HttpGet;
-
-    invoke-direct {v0, p1}, Lorg/apache/http/client/methods/HttpGet;-><init>(Ljava/lang/String;)V
-
-    const-string p1, "uuid"
-
-    .line 39
-    invoke-virtual {v0, p1, p2}, Lorg/apache/http/client/methods/HttpGet;->setHeader(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 40
-    invoke-virtual {p0, v0}, Lcom/txdriver/http/HttpClient;->request(Lorg/apache/http/client/methods/HttpRequestBase;)Ljava/lang/String;
-
+    .locals 0
+    invoke-static {p1, p2}, Lcom/txdriver/compat/SafeHttp;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     move-result-object p1
-
     return-object p1
 .end method
 
 .method public post(Ljava/lang/String;Lorg/json/JSONObject;)Ljava/lang/String;
     .locals 1
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
-
-    .line 44
-    new-instance v0, Lorg/apache/http/client/methods/HttpPost;
-
-    invoke-direct {v0, p1}, Lorg/apache/http/client/methods/HttpPost;-><init>(Ljava/lang/String;)V
-
-    .line 45
-    new-instance p1, Lorg/apache/http/entity/StringEntity;
-
-    invoke-virtual {p2}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
-
-    move-result-object p2
-
-    invoke-direct {p1, p2}, Lorg/apache/http/entity/StringEntity;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v0, p1}, Lorg/apache/http/client/methods/HttpPost;->setEntity(Lorg/apache/http/HttpEntity;)V
-
-    .line 46
-    invoke-virtual {p0, v0}, Lcom/txdriver/http/HttpClient;->request(Lorg/apache/http/client/methods/HttpRequestBase;)Ljava/lang/String;
-
+    const/4 v0, 0x0
+    invoke-virtual {p0, p1, p2, v0}, Lcom/txdriver/http/HttpClient;->post(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
     move-result-object p1
-
     return-object p1
 .end method
 
 .method public post(Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
     .locals 1
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
-
-    .line 50
-    new-instance v0, Lorg/apache/http/client/methods/HttpPost;
-
-    invoke-direct {v0, p1}, Lorg/apache/http/client/methods/HttpPost;-><init>(Ljava/lang/String;)V
-
-    const-string p1, "uuid"
-
-    .line 51
-    invoke-virtual {v0, p1, p3}, Lorg/apache/http/client/methods/HttpPost;->setHeader(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 52
-    new-instance p1, Lorg/apache/http/entity/StringEntity;
-
     invoke-virtual {p2}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
-
     move-result-object p2
-
-    const-string p3, "UTF-8"
-
-    invoke-direct {p1, p2, p3}, Lorg/apache/http/entity/StringEntity;-><init>(Ljava/lang/String;Ljava/lang/String;)V
-
-    invoke-virtual {v0, p1}, Lorg/apache/http/client/methods/HttpPost;->setEntity(Lorg/apache/http/HttpEntity;)V
-
-    .line 53
-    invoke-virtual {p0, v0}, Lcom/txdriver/http/HttpClient;->request(Lorg/apache/http/client/methods/HttpRequestBase;)Ljava/lang/String;
-
+    const-string v0, "UTF-8"
+    invoke-virtual {p2, v0}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
+    move-result-object p2
+    invoke-static {p1, p3, p2}, Lcom/txdriver/compat/SafeHttp;->request(Ljava/lang/String;Ljava/lang/String;[B)Ljava/lang/String;
     move-result-object p1
-
     return-object p1
 .end method
 

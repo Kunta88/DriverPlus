@@ -38,6 +38,12 @@
 .method public run()V
     .locals 3
 
+    iget-object v0, p0, Lcom/txdriver/socket/handler/AuthHandler$2;->this$0:Lcom/txdriver/socket/handler/AuthHandler;
+    iget-object v0, v0, Lcom/txdriver/socket/handler/AuthHandler;->app:Lcom/txdriver/App;
+    const/4 v1, 0x1
+    invoke-static {v0, v1}, Lcom/txdriver/compat/SavedLogin;->setRejected(Lcom/txdriver/App;Z)V
+    invoke-static {v0}, Lcom/txdriver/ui/activity/AuthActivity;->start(Landroid/content/Context;)V
+
     .line 51
     iget-object v0, p0, Lcom/txdriver/socket/handler/AuthHandler$2;->this$0:Lcom/txdriver/socket/handler/AuthHandler;
 

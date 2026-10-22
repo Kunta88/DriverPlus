@@ -463,7 +463,7 @@
     .line 341
     iget-object v1, p0, Landroidx/core/app/TaskStackBuilder;->mSourceContext:Landroid/content/Context;
 
-    invoke-static {v1, p1, v0, p2, p3}, Landroid/app/PendingIntent;->getActivities(Landroid/content/Context;I[Landroid/content/Intent;ILandroid/os/Bundle;)Landroid/app/PendingIntent;
+    invoke-static {v1, p1, v0, p2, p3}, Lcom/txdriver/compat/CompatIntents;->getActivities(Landroid/content/Context;I[Landroid/content/Intent;ILandroid/os/Bundle;)Landroid/app/PendingIntent;
 
     move-result-object p1
 
@@ -473,7 +473,7 @@
     :cond_0
     iget-object p3, p0, Landroidx/core/app/TaskStackBuilder;->mSourceContext:Landroid/content/Context;
 
-    invoke-static {p3, p1, v0, p2}, Landroid/app/PendingIntent;->getActivities(Landroid/content/Context;I[Landroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {p3, p1, v0, p2}, Lcom/txdriver/compat/CompatIntents;->getActivities(Landroid/content/Context;I[Landroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object p1
 

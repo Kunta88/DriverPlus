@@ -65,6 +65,9 @@
     <string name="auto_accept">Автовзятие</string>
     <string name="auto_accept_disabled">Автовзятие отключено</string>
     <string name="auto_accept_enabled">Автовзятие включено</string>
+    <string name="auto_accept_orders">Автопринятие заказа</string>
+    <string name="auto_accept_orders_on">Автоматическое принятие заказов включено</string>
+    <string name="auto_accept_orders_off">Автоматическое принятие заказов отключено</string>
     <string name="auto_brand">Марка</string>
     <string name="auto_class">Класс</string>
     <string name="auto_color">Цвет</string>
@@ -146,7 +149,7 @@
     <string name="complete_break">Закончить перерыв</string>
     <string name="conditioner">Кондиционер</string>
     <string name="conecting_message">Подключение к серверу</string>
-    <string name="config_server_url">http://bill-mobile-ru.ligataxi.com/api/v1</string>
+    <string name="config_server_url">https://bill-mobile-ru.ligataxi.com/api/v1</string>
     <string name="connected">Подключен к серверу</string>
     <string name="connecting">Подключение</string>
     <string name="connecting_atempt">Попытка %1$s из %2$s</string>
@@ -532,7 +535,7 @@
     <string name="select_company">Выберите службу такси</string>
     <string name="send">Отправить</string>
     <string name="sendingSMSError">При отправке запроса произошла ошибка. Повторите попытку позже.</string>
-    <string name="server_address">dev.novatel.biz</string>
+    <string name="server_address">api-21vek-ze.ligataxi.com</string>
     <string name="session">Смена</string>
     <string name="set_application_theme">Установите тему оформления</string>
     <string name="set_map_provider">Выберите поставщика карт</string>

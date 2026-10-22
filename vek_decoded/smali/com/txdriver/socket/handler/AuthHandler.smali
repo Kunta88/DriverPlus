@@ -170,7 +170,12 @@
 
     .line 31
     :cond_3
+    const/4 v0, 0x1
+    sput-boolean v0, Lcom/txdriver/socket/ConnectionHealth;->authenticated:Z
     iget-object v0, p0, Lcom/txdriver/socket/handler/AuthHandler;->app:Lcom/txdriver/App;
+
+    const/4 v1, 0x0
+    invoke-static {v0, v1}, Lcom/txdriver/compat/SavedLogin;->setRejected(Lcom/txdriver/App;Z)V
 
     invoke-virtual {v0}, Lcom/txdriver/App;->getEventBus()Lde/greenrobot/event/EventBus;
 

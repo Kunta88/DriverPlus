@@ -2202,6 +2202,8 @@
     .line 166
     iput p1, p0, Lcom/txdriver/taximeter/Taximeter;->status:I
 
+    invoke-static {}, Lcom/txdriver/energy/Energy;->signal()V
+
     .line 167
     invoke-direct {p0, p1}, Lcom/txdriver/taximeter/Taximeter;->onTaximeterStatusChanged(I)V
 

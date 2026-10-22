@@ -2,16 +2,23 @@
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference android:entries="@array/settings_themes" android:title="@string/theme" android:key="pref_theme" android:summary="@string/set_application_theme" android:defaultValue="@string/light" android:entryValues="@array/settings_themes" />
-    <ListPreference android:entries="@array/settings_maps" android:title="@string/map" android:key="pref_map" android:summary="@string/set_map_provider" android:defaultValue="@string/osm" android:entryValues="@array/settings_maps" />
     <ListPreference android:entries="@array/settings_navigator" android:title="@string/navigator" android:key="pref_navigator" android:summary="@string/set_navigator" android:defaultValue="@string/default_navigator" android:entryValues="@array/settings_navigator" />
     <CheckBoxPreference android:title="@string/map_visibility" android:key="pref_accept_order_map_visibility" android:defaultValue="true" android:summaryOn="@string/map_visibility_on" android:summaryOff="@string/map_visibility_off" />
+    <CheckBoxPreference android:title="@string/auto_accept_orders" android:key="pref_auto_accept_orders" android:defaultValue="true" android:summaryOn="@string/auto_accept_orders_on" android:summaryOff="@string/auto_accept_orders_off" />
+    <CheckBoxPreference android:title="Автоприбытие и посадка" android:key="pref_auto_arrival" android:defaultValue="true" android:summaryOn="На месте автоматически; посадка через 5 минут" android:summaryOff="Прибытие и посадка вручную; автоотсчёт отменён" />
     <CheckBoxPreference android:title="@string/action_confirm" android:key="pref_action_confirm" android:defaultValue="true" android:summaryOn="@string/action_confirm_on" android:summaryOff="@string/action_confirm_off" />
-    <CheckBoxPreference android:title="@string/driver_parkings" android:key="pref_driver_parkings" android:defaultValue="true" android:summaryOn="@string/driver_parkings_on" android:summaryOff="@string/driver_parkings_off" />
+    <Preference android:title="Энергоэффективность" android:key="pref_energy_settings" android:summary="Настройка расхода аккумулятора">
+        <intent android:targetPackage="com.tx.driver.vek.znamenskoe" android:targetClass="com.txdriver.energy.EnergySettingsActivity" />
+    </Preference>
     <PreferenceCategory android:title="@string/notification">
+        <Preference android:title="Системные уведомления" android:key="pref_system_notifications" android:summary="Разрешение уведомлений и настройки Android">
+            <intent android:action="android.settings.APP_NOTIFICATION_SETTINGS">
+                <extra android:name="android.provider.extra.APP_PACKAGE" android:value="com.tx.driver.vek.znamenskoe" />
+            </intent>
+        </Preference>
         <RingtonePreference android:title="@string/personal_order" android:key="pref_personal_order_sound" android:summary="@string/set_notification_sound" android:showSilent="false" />
         <RingtonePreference android:title="@string/live_now" android:key="pref_live_now_sound" android:summary="@string/set_notification_sound" android:showSilent="true" />
         <SwitchPreference android:title="@string/vibrate" android:key="pref_vibrate" android:defaultValue="true" android:summaryOn="@string/vibrate_on" android:summaryOff="@string/vibrate_off" />
-        <SwitchPreference android:title="@string/parkings" android:key="pref_parking_moving_notify" android:defaultValue="true" android:summaryOn="@string/parking_notification_on" android:summaryOff="@string/parking_notification_off" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/push_notification">
         <ListPreference android:entries="@array/settings_notification_type" android:title="@string/notification_type_title" android:key="pref_type_notifications_for_broadcast_order" android:summary="@string/notification_type" android:defaultValue="@string/notification_toast" android:entryValues="@array/settings_notification_type" />

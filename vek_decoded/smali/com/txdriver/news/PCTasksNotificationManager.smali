@@ -109,7 +109,7 @@
 
     const/4 v1, 0x0
 
-    invoke-static {p1, v1, v0, v1}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {p1, v1, v0, v1}, Lcom/txdriver/compat/CompatIntents;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v0
 
@@ -133,12 +133,12 @@
 
     move-result-object p1
 
-    invoke-virtual {p1, p0}, Lde/greenrobot/event/EventBus;->register(Ljava/lang/Object;)V
+    invoke-virtual {p0}, Lcom/txdriver/news/PCTasksNotificationManager;->cancelAlarm()V
 
     return-void
 .end method
 
-.method private cancelAlarm()V
+.method public cancelAlarm()V
     .locals 2
 
     .line 71
@@ -153,6 +153,7 @@
 
 .method private showNotification(Ljava/util/ArrayList;)V
     .locals 16
+    return-void
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -209,7 +210,7 @@
 
     const/high16 v8, 0x10000000
 
-    invoke-static {v5, v7, v3, v8}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {v5, v7, v3, v8}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v5
 
@@ -228,7 +229,7 @@
     .line 93
     iget-object v3, v0, Lcom/txdriver/news/PCTasksNotificationManager;->app:Lcom/txdriver/App;
 
-    invoke-static {v3, v6, v7, v6}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {v3, v6, v7, v6}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v3
 
@@ -564,6 +565,7 @@
 
 .method public fetchPCTasks()V
     .locals 3
+    return-void
 
     .line 153
     new-instance v0, Lcom/txdriver/http/request/PhotoControlTasksListRequest;
@@ -595,6 +597,7 @@
 
 .method public onEvent(Lcom/txdriver/socket/SocketEvents$AuthEvent;)V
     .locals 2
+    return-void
 
     .line 58
     new-instance p1, Landroid/content/ComponentName;
@@ -661,6 +664,7 @@
     .end annotation
 
     .line 76
+    return-void
     invoke-virtual {p1}, Ljava/util/ArrayList;->isEmpty()Z
 
     move-result v0
@@ -699,9 +703,11 @@
 
 .method public scheduleAlarm()V
     .locals 9
+    invoke-virtual {p0}, Lcom/txdriver/news/PCTasksNotificationManager;->cancelAlarm()V
+    return-void
 
     .line 66
-    invoke-direct {p0}, Lcom/txdriver/news/PCTasksNotificationManager;->cancelAlarm()V
+    invoke-virtual {p0}, Lcom/txdriver/news/PCTasksNotificationManager;->cancelAlarm()V
 
     .line 67
     iget-object v0, p0, Lcom/txdriver/news/PCTasksNotificationManager;->alarmManager:Landroid/app/AlarmManager;

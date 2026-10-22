@@ -11,6 +11,8 @@
 
 .field private static final PREF_ACTION_CONFIRM:Ljava/lang/String; = "pref_action_confirm"
 
+.field private static final PREF_AUTO_ACCEPT_ORDERS:Ljava/lang/String; = "pref_auto_accept_orders"
+
 .field public static final PREF_ALLOW_CANCEL_ORDER:Ljava/lang/String; = "pref_allow_cancel_order"
 
 .field public static final PREF_ALLOW_EXIT_WHEN_SESSION_OPENED:Ljava/lang/String; = "pref_allow_exit_when_session_opened"
@@ -196,6 +198,9 @@
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    invoke-static {v0}, Ljava/util/Collections;->synchronizedMap(Ljava/util/Map;)Ljava/util/Map;
+    move-result-object v0
 
     iput-object v0, p0, Lcom/txdriver/preferences/Preferences;->cache:Ljava/util/Map;
 
@@ -1171,15 +1176,9 @@
     .line 445
     iget-object v0, p0, Lcom/txdriver/preferences/Preferences;->app:Landroid/app/Application;
 
-    const v1, 0x7f10009f
+    const v1, 0x7f1000e9
 
     invoke-virtual {v0, v1}, Landroid/app/Application;->getString(I)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v1, "pref_map"
-
-    invoke-direct {p0, v1, v0}, Lcom/txdriver/preferences/Preferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -1297,30 +1296,14 @@
 
 .method public getNotificationsNewsCounter()I
     .locals 2
-
-    const-string v0, "pref_notifications_counter_news"
-
-    const/4 v1, -0x1
-
-    .line 782
-    invoke-direct {p0, v0, v1}, Lcom/txdriver/preferences/Preferences;->getInt(Ljava/lang/String;I)I
-
-    move-result v0
+    const/4 v0, 0x0
 
     return v0
 .end method
 
 .method public getNotificationsPcTasksCounter()I
     .locals 2
-
-    const-string v0, "pref_notifications_counter_pc_tasks"
-
-    const/4 v1, -0x1
-
-    .line 789
-    invoke-direct {p0, v0, v1}, Lcom/txdriver/preferences/Preferences;->getInt(Ljava/lang/String;I)I
-
-    move-result v0
+    const/4 v0, 0x0
 
     return v0
 .end method
@@ -1334,6 +1317,12 @@
 
     .line 336
     invoke-direct {p0, v0, v1}, Lcom/txdriver/preferences/Preferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/txdriver/preferences/Preferences;->app:Landroid/app/Application;
+
+    invoke-static {v1, v0}, Lcom/txdriver/compat/SecureStore;->decode(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -1762,6 +1751,15 @@
     return-object v0
 .end method
 
+.method public isAutoArrivalEnabled()Z
+    .locals 2
+    const-string v0, "pref_auto_arrival"
+    const/4 v1, 0x1
+    invoke-direct {p0, v0, v1}, Lcom/txdriver/preferences/Preferences;->getBoolean(Ljava/lang/String;Z)Z
+    move-result v0
+    return v0
+.end method
+
 .method public isAcceptOrderMapVisible()Z
     .locals 2
 
@@ -1830,6 +1828,27 @@
     const/4 v1, 0x0
 
     .line 667
+    invoke-direct {p0, v0, v1}, Lcom/txdriver/preferences/Preferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public isAutoAcceptOrdersEnabled()Z
+    .locals 2
+
+    invoke-virtual {p0}, Lcom/txdriver/preferences/Preferences;->isTakeBreak()Z
+    move-result v0
+    if-eqz v0, :not_on_break
+    const/4 v0, 0x0
+    return v0
+    :not_on_break
+
+    const-string v0, "pref_auto_accept_orders"
+
+    const/4 v1, 0x1
+
     invoke-direct {p0, v0, v1}, Lcom/txdriver/preferences/Preferences;->getBoolean(Ljava/lang/String;Z)Z
 
     move-result v0
@@ -2002,30 +2021,14 @@
 
 .method public isNotifyParkingMoving()Z
     .locals 2
-
-    const-string v0, "pref_parking_moving_notify"
-
-    const/4 v1, 0x1
-
-    .line 344
-    invoke-direct {p0, v0, v1}, Lcom/txdriver/preferences/Preferences;->getBoolean(Ljava/lang/String;Z)Z
-
-    move-result v0
+    const/4 v0, 0x1
 
     return v0
 .end method
 
 .method public isPhotoControlActive()Z
     .locals 2
-
-    const-string v0, "pref_photo_control"
-
-    const/4 v1, 0x0
-
-    .line 771
-    invoke-direct {p0, v0, v1}, Lcom/txdriver/preferences/Preferences;->getBoolean(Ljava/lang/String;Z)Z
-
-    move-result v0
+    const/4 v0, 0x0
 
     return v0
 .end method
@@ -2077,15 +2080,7 @@
 
 .method public isShowDriverParkings()Z
     .locals 2
-
-    const-string v0, "pref_driver_parkings"
-
-    const/4 v1, 0x1
-
-    .line 663
-    invoke-direct {p0, v0, v1}, Lcom/txdriver/preferences/Preferences;->getBoolean(Ljava/lang/String;Z)Z
-
-    move-result v0
+    const/4 v0, 0x1
 
     return v0
 .end method
@@ -2689,10 +2684,9 @@
 .method public setPassword(Ljava/lang/String;)V
     .locals 1
 
-    const-string v0, "password_pref"
+    iget-object v0, p0, Lcom/txdriver/preferences/Preferences;->app:Landroid/app/Application;
 
-    .line 340
-    invoke-direct {p0, v0, p1}, Lcom/txdriver/preferences/Preferences;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, p1}, Lcom/txdriver/compat/SecureStore;->storePassword(Landroid/content/Context;Ljava/lang/String;)V
 
     return-void
 .end method
@@ -2841,6 +2835,13 @@
 .end method
 
 .method public setTakeBreak(Z)V
+    .locals 0
+    # Server handlers, order arrival, bans and reconnect reset cannot change driver intent.
+    invoke-static {p1}, Lcom/txdriver/compat/ManualBreak;->automaticIgnored(Z)V
+    return-void
+.end method
+
+.method public setManualBreak(Z)V
     .locals 1
 
     const-string v0, "pref_take_a_break"

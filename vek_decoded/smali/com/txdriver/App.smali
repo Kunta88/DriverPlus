@@ -371,6 +371,11 @@
     .line 54
     invoke-super {p0}, Landroid/app/Application;->onCreate()V
 
+    const/4 v0, 0x0
+    invoke-virtual {p0, v0}, Lcom/txdriver/App;->getExternalFilesDir(Ljava/lang/String;)Ljava/io/File;
+    move-result-object v0
+    invoke-static {v0}, Lcom/txdriver/compat/WebDiagnostics;->init(Ljava/io/File;)V
+
     const-string v0, "java.net.preferIPv4Stack"
 
     const-string v1, "true"
@@ -390,6 +395,8 @@
 
     .line 58
     invoke-direct {p0}, Lcom/txdriver/App;->createPrefecences()V
+
+    invoke-static {p0}, Lcom/txdriver/compat/ManualBreak;->init(Lcom/txdriver/App;)V
 
     .line 59
     invoke-direct {p0}, Lcom/txdriver/App;->createEventBus()V
@@ -426,6 +433,10 @@
 
     .line 71
     invoke-static {p0}, Lcom/txdriver/utils/EventLogger;->create(Lcom/txdriver/App;)V
+
+    invoke-static {p0}, Lcom/txdriver/compat/ModernCompat;->install(Lcom/txdriver/App;)V
+
+    invoke-static {p0}, Lcom/txdriver/order/AutoPickup;->start(Lcom/txdriver/App;)V
 
     return-void
 .end method

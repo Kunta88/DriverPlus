@@ -2200,6 +2200,12 @@
     invoke-virtual {v0, v4}, Landroid/widget/Button;->setVisibility(I)V
 
     :goto_7
+    iget-object v0, p0, Lcom/txdriver/ui/activity/OrderActivity;->order:Lcom/txdriver/db/Order;
+
+    iget-object v1, p0, Lcom/txdriver/ui/activity/OrderActivity;->arrivedButton:Landroid/widget/Button;
+
+    invoke-static {v0, v1}, Lcom/txdriver/order/AutoPickup;->bind(Lcom/txdriver/db/Order;Landroid/widget/Button;)V
+
     return-void
 
     .line 415

@@ -27,13 +27,44 @@
 
 .field private positiveButton:Landroid/widget/Button;
 
+.field public autoSubmitAttempted:Z
+
+.field public autoSubmitSucceeded:Z
+
 
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
-    .line 46
     invoke-direct {p0}, Lcom/txdriver/ui/fragment/dialog/BaseDialogFragment;-><init>()V
+
+    return-void
+.end method
+
+.method private hideAutomaticConfirmationWindow(Landroid/app/Dialog;)V
+    .locals 2
+
+    invoke-virtual {p1}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
+
+    move-result-object v0
+
+    if-eqz v0, :done
+
+    invoke-virtual {v0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+
+    move-result-object v1
+
+    const/4 p1, 0x0
+
+    iput p1, v1, Landroid/view/WindowManager$LayoutParams;->alpha:F
+
+    invoke-virtual {v0, v1}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
+
+    const/4 p1, 0x2
+
+    invoke-virtual {v0, p1}, Landroid/view/Window;->clearFlags(I)V
+
+    :done
 
     return-void
 .end method
@@ -1435,6 +1466,8 @@
     invoke-direct/range {v2 .. v7}, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment$2;-><init>(Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;Landroidx/appcompat/app/AlertDialog;Landroid/widget/LinearLayout;D)V
 
     invoke-virtual {p1, v0}, Landroidx/appcompat/app/AlertDialog;->setOnShowListener(Landroid/content/DialogInterface$OnShowListener;)V
+
+    invoke-direct {p0, p1}, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;->hideAutomaticConfirmationWindow(Landroid/app/Dialog;)V
 
     return-object p1
 .end method

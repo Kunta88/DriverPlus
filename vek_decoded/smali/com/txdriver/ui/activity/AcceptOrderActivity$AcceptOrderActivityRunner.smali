@@ -224,7 +224,7 @@
 
     const/high16 v6, 0x8000000
 
-    invoke-static {v4, v5, v3, v6}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {v4, v5, v3, v6}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v3
 

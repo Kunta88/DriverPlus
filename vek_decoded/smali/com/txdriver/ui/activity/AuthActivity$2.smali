@@ -44,6 +44,11 @@
 
     if-eqz p1, :cond_1
 
+    iget-object p1, p0, Lcom/txdriver/ui/activity/AuthActivity$2;->this$0:Lcom/txdriver/ui/activity/AuthActivity;
+    iget-object p1, p1, Lcom/txdriver/ui/activity/AuthActivity;->app:Lcom/txdriver/App;
+    const/4 v0, 0x0
+    invoke-static {p1, v0}, Lcom/txdriver/compat/SavedLogin;->setRejected(Lcom/txdriver/App;Z)V
+
     .line 82
     iget-object p1, p0, Lcom/txdriver/ui/activity/AuthActivity$2;->this$0:Lcom/txdriver/ui/activity/AuthActivity;
 
@@ -122,7 +127,7 @@
 
     invoke-direct {v0, v1, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    invoke-virtual {p1, v0}, Lcom/txdriver/ui/activity/AuthActivity;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+    invoke-static {p1, v0}, Lcom/txdriver/compat/ModernCompat;->startService(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;
 
     goto :goto_0
 

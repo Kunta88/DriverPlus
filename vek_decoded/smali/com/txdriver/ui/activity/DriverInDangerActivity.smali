@@ -88,7 +88,7 @@
     .line 73
     iget-object v1, p0, Lcom/txdriver/ui/activity/DriverInDangerActivity;->driverStatusBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-    invoke-virtual {p0, v1, v0}, Lcom/txdriver/ui/activity/DriverInDangerActivity;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    invoke-static {p0, v1, v0}, Lcom/txdriver/compat/CompatIntents;->registerReceiver(Landroid/content/Context;Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
     return-void
 .end method

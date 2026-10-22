@@ -60,30 +60,9 @@
 .end method
 
 .method private createWakeLock()V
-    .locals 3
+    .locals 0
 
-    const-string v0, "power"
-
-    .line 98
-    invoke-virtual {p0, v0}, Lcom/txdriver/service/MainService;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/os/PowerManager;
-
-    .line 99
-    sget-object v1, Lcom/txdriver/service/MainService;->TAG:Ljava/lang/String;
-
-    const v2, 0x3000001a
-
-    invoke-virtual {v0, v2, v1}, Landroid/os/PowerManager;->newWakeLock(ILjava/lang/String;)Landroid/os/PowerManager$WakeLock;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/txdriver/service/MainService;->mWakeLock:Landroid/os/PowerManager$WakeLock;
-
-    .line 100
-    invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->acquire()V
+    invoke-static {p0}, Lcom/txdriver/energy/Energy;->start(Landroid/content/Context;)V
 
     return-void
 .end method
@@ -132,7 +111,7 @@
     const/4 v2, 0x0
 
     .line 171
-    invoke-static {p0, v2, v0, v1}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {p0, v2, v0, v1}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v0
 
@@ -259,7 +238,7 @@
     const/high16 v0, 0x8000000
 
     .line 194
-    invoke-static {p0, v1, p2, v0}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {p0, v1, p2, v0}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object p2
 
@@ -391,7 +370,7 @@
     const/4 v2, 0x0
 
     .line 127
-    invoke-static {p0, v2, v0, v1}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {p0, v2, v0, v1}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v0
 
@@ -518,7 +497,7 @@
     const/high16 v0, 0x8000000
 
     .line 150
-    invoke-static {p0, v1, p2, v0}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {p0, v1, p2, v0}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object p2
 
@@ -610,13 +589,9 @@
     .locals 2
 
     .line 119
-    invoke-direct {p0}, Lcom/txdriver/service/MainService;->getConnectedNotification()Landroid/app/Notification;
+    const/4 v0, 0x1
 
-    move-result-object v0
-
-    const/16 v1, 0x3e9
-
-    invoke-virtual {p0, v1, v0}, Lcom/txdriver/service/MainService;->startForeground(ILandroid/app/Notification;)V
+    invoke-static {p0, v0}, Lcom/txdriver/compat/ModernCompat;->foreground(Landroid/app/Service;Z)V
 
     return-void
 .end method
@@ -625,13 +600,9 @@
     .locals 2
 
     .line 115
-    invoke-direct {p0}, Lcom/txdriver/service/MainService;->getConnectingNotification()Landroid/app/Notification;
+    const/4 v0, 0x0
 
-    move-result-object v0
-
-    const/16 v1, 0x3e9
-
-    invoke-virtual {p0, v1, v0}, Lcom/txdriver/service/MainService;->startForeground(ILandroid/app/Notification;)V
+    invoke-static {p0, v0}, Lcom/txdriver/compat/ModernCompat;->foreground(Landroid/app/Service;Z)V
 
     return-void
 .end method
@@ -648,6 +619,7 @@
     invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->release()V
 
     :cond_0
+    invoke-static {}, Lcom/txdriver/energy/Energy;->stop()V
     return-void
 .end method
 
@@ -747,6 +719,8 @@
 
     iput-object v0, p0, Lcom/txdriver/service/MainService;->app:Lcom/txdriver/App;
 
+    invoke-static {p0}, Lcom/txdriver/compat/ModernCompat;->serviceCreated(Landroid/app/Service;)V
+
     .line 52
     invoke-virtual {v0}, Lcom/txdriver/App;->getClient()Lcom/txdriver/socket/Client;
 
@@ -788,6 +762,21 @@
 
 .method public onDestroy()V
     .locals 2
+
+    invoke-static {}, Lcom/txdriver/compat/ModernCompat;->serviceDestroyed()V
+
+    iget-object v0, p0, Lcom/txdriver/service/MainService;->app:Lcom/txdriver/App;
+    invoke-virtual {v0}, Lcom/txdriver/App;->getClient()Lcom/txdriver/socket/Client;
+    move-result-object v0
+    invoke-virtual {v0}, Lcom/txdriver/socket/Client;->close()V
+
+    iget-object v0, p0, Lcom/txdriver/service/MainService;->downloadHelper:Lcom/txdriver/helpers/DownloadHelper;
+
+    if-eqz v0, :downloads_stopped
+
+    invoke-virtual {v0}, Lcom/txdriver/helpers/DownloadHelper;->stop()V
+
+    :downloads_stopped
 
     .line 75
     sget-object v0, Lcom/txdriver/service/MainService;->TAG:Ljava/lang/String;
@@ -862,13 +851,9 @@
     .locals 1
 
     .line 211
-    invoke-direct {p0}, Lcom/txdriver/service/MainService;->getConnectingNotification()Landroid/app/Notification;
+    const/4 v0, 0x0
 
-    move-result-object p1
-
-    const/16 v0, 0x3e9
-
-    invoke-virtual {p0, v0, p1}, Lcom/txdriver/service/MainService;->startForeground(ILandroid/app/Notification;)V
+    invoke-static {p0, v0}, Lcom/txdriver/compat/ModernCompat;->foreground(Landroid/app/Service;Z)V
 
     return-void
 .end method
@@ -876,8 +861,25 @@
 .method public onStartCommand(Landroid/content/Intent;II)I
     .locals 0
 
+    invoke-static {p0}, Lcom/txdriver/compat/CloseApplication;->isStopped(Landroid/content/Context;)Z
+    move-result p1
+    if-eqz p1, :user_running
+    invoke-virtual {p0}, Landroid/app/Service;->stopSelf()V
+    const/4 p1, 0x2
+    return p1
+    :user_running
+
+    invoke-static {p0}, Lcom/txdriver/compat/ModernCompat;->ensureStartedService(Landroid/app/Service;)Z
+    move-result p1
+    if-nez p1, :foreground_ready
+    const/4 p1, 0x2
+    return p1
+    :foreground_ready
+
     .line 67
     invoke-virtual {p0}, Lcom/txdriver/service/MainService;->connect()V
+
+    invoke-static {}, Lcom/txdriver/compat/ModernCompat;->connectionStarted()V
 
     .line 68
     iget-object p1, p0, Lcom/txdriver/service/MainService;->app:Lcom/txdriver/App;

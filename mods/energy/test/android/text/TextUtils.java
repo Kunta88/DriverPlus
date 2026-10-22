@@ -1,0 +1,2 @@
+package android.text;
+public class TextUtils {public static boolean equals(CharSequence a,CharSequence b){return a==b || a!=null&&b!=null&&a.toString().equals(b.toString());}}

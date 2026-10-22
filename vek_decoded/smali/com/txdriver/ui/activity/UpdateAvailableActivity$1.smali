@@ -69,7 +69,7 @@
 
     invoke-direct {v0, v1, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    invoke-virtual {p1, v0}, Lcom/txdriver/App;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+    invoke-static {p1, v0}, Lcom/txdriver/compat/ModernCompat;->startService(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;
 
     .line 35
     :goto_0

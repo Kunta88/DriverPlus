@@ -443,6 +443,10 @@
 
     iget-object v1, v1, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment$2;->this$0:Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;
 
+    const/4 v2, 0x1
+
+    iput-boolean v2, v1, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;->autoSubmitSucceeded:Z
+
     invoke-virtual {v1}, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;->dismiss()V
 
     return-void

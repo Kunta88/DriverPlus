@@ -827,53 +827,8 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 103
-    iget-boolean v0, p0, Lcom/txdriver/ui/activity/BaseActivity;->EXECUTED_CHECK_READ_PHONE_STATE_PERMISSION:Z
-
     const/4 v1, 0x1
 
-    if-nez v0, :cond_0
-
-    const-string v0, "android.permission.READ_PHONE_STATE"
-
-    invoke-static {p0, v0}, Landroidx/core/content/ContextCompat;->checkSelfPermission(Landroid/content/Context;Ljava/lang/String;)I
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    .line 104
-    iput-boolean v1, p0, Lcom/txdriver/ui/activity/BaseActivity;->EXECUTED_CHECK_READ_PHONE_STATE_PERMISSION:Z
-
-    .line 105
-    invoke-virtual {p0}, Lcom/txdriver/ui/activity/BaseActivity;->checkPhonePermission()V
-
-    goto :goto_0
-
-    .line 106
-    :cond_0
-    iget-boolean v0, p0, Lcom/txdriver/ui/activity/BaseActivity;->EXECUTED_CHECK_EXTERNAL_STORAGE_PERMISSION:Z
-
-    if-nez v0, :cond_1
-
-    const-string v0, "android.permission.WRITE_EXTERNAL_STORAGE"
-
-    invoke-static {p0, v0}, Landroidx/core/content/ContextCompat;->checkSelfPermission(Landroid/content/Context;Ljava/lang/String;)I
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    .line 107
-    iput-boolean v1, p0, Lcom/txdriver/ui/activity/BaseActivity;->EXECUTED_CHECK_EXTERNAL_STORAGE_PERMISSION:Z
-
-    .line 108
-    invoke-virtual {p0}, Lcom/txdriver/ui/activity/BaseActivity;->checkExternalStoragePermission()V
-
-    goto :goto_0
-
-    .line 109
-    :cond_1
     iget-boolean v0, p0, Lcom/txdriver/ui/activity/BaseActivity;->EXECUTED_CHECK_INSTALLED_APPS:Z
 
     if-nez v0, :cond_2

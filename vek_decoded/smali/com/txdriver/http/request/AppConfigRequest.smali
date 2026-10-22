@@ -27,6 +27,21 @@
 
 
 # virtual methods
+.method public request()Ljava/lang/Object;
+    .locals 3
+
+    invoke-virtual {p0}, Lcom/txdriver/http/request/AppConfigRequest;->getUrl()Ljava/lang/String;
+    move-result-object v0
+    invoke-static {v0}, Lcom/txdriver/compat/ConfigHttp;->get(Ljava/lang/String;)Ljava/lang/String;
+    move-result-object v0
+    new-instance v1, Lcom/google/gson/Gson;
+    invoke-direct {v1}, Lcom/google/gson/Gson;-><init>()V
+    const-class v2, Lcom/txdriver/json/AppConfig;
+    invoke-virtual {v1, v0, v2}, Lcom/google/gson/Gson;->fromJson(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+    move-result-object v0
+    return-object v0
+.end method
+
 .method public getUrl()Ljava/lang/String;
     .locals 6
 
@@ -157,47 +172,15 @@
 .end method
 
 .method public onResponse(Lcom/txdriver/json/AppConfig;)V
-    .locals 2
-
-    if-eqz p1, :cond_0
-
-    .line 33
+    .locals 4
+    if-eqz p1, :done
     iget-object v0, p0, Lcom/txdriver/http/request/AppConfigRequest;->app:Lcom/txdriver/App;
-
-    invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
-
-    move-result-object v0
-
     iget-object v1, p1, Lcom/txdriver/json/AppConfig;->server:Ljava/lang/String;
-
-    invoke-virtual {v0, v1}, Lcom/txdriver/preferences/Preferences;->setPrimaryServerAddress(Ljava/lang/String;)V
-
-    .line 34
-    iget-object v0, p0, Lcom/txdriver/http/request/AppConfigRequest;->app:Lcom/txdriver/App;
-
-    invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
-
-    move-result-object v0
-
-    iget v1, p1, Lcom/txdriver/json/AppConfig;->port:I
-
-    invoke-virtual {v0, v1}, Lcom/txdriver/preferences/Preferences;->setPrimaryServerPort(I)V
-
-    .line 35
-    iget-object v0, p0, Lcom/txdriver/http/request/AppConfigRequest;->app:Lcom/txdriver/App;
-
-    invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
-
-    move-result-object v0
-
-    iget-object v1, p1, Lcom/txdriver/json/AppConfig;->webServer:Ljava/lang/String;
-
-    invoke-virtual {v0, v1}, Lcom/txdriver/preferences/Preferences;->setWebServer(Ljava/lang/String;)V
-
-    .line 37
-    :cond_0
+    iget v2, p1, Lcom/txdriver/json/AppConfig;->port:I
+    iget-object v3, p1, Lcom/txdriver/json/AppConfig;->webServer:Ljava/lang/String;
+    invoke-static {v0, v1, v2, v3}, Lcom/txdriver/compat/ConfigHttp;->apply(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;)V
+    :done
     invoke-super {p0, p1}, Lcom/txdriver/http/request/HttpRequest;->onResponse(Ljava/lang/Object;)V
-
     return-void
 .end method
 

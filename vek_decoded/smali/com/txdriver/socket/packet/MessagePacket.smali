@@ -86,5 +86,7 @@
 
     invoke-static {v0, v1}, Lcom/txdriver/db/ChatMessage;->create(Ljava/lang/String;Lcom/txdriver/db/ChatMessage$Type;)Lcom/txdriver/db/ChatMessage;
 
+    invoke-static {v0}, Lcom/txdriver/compat/ChatDraft;->sent(Ljava/lang/String;)V
+
     return-void
 .end method

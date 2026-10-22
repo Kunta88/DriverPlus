@@ -1,4 +1,4 @@
-.class public Lcom/txdriver/socket/SocketFrameDecoder;
+.class public final Lcom/txdriver/socket/SocketFrameDecoder;
 .super Ljava/lang/Object;
 .source "SocketFrameDecoder.java"
 
@@ -6,261 +6,222 @@
 .implements Lcom/txdriver/socket/FrameDecoder;
 
 
-# static fields
-.field private static final PACKET_PREFIX_LENGTH:I = 0x2
-
-.field private static final TAG:Ljava/lang/String; = "SocketFrameDecoder"
-
-
 # instance fields
-.field private buffer:Ljava/nio/ByteBuffer;
+.field private body:Ljava/nio/ByteBuffer;
+
+.field private expected:I
+
+.field private first:I
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 0
-
-    return-void
-.end method
-
 .method public constructor <init>()V
-    .locals 0
+    .registers 2
 
-    .line 9
+    .line 6
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 7
+    const/4 v0, -0x1
+
+    iput v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->first:I
+
     return-void
-.end method
-
-.method private decodeLast(Ljava/nio/ByteBuffer;)Lcom/txdriver/socket/Packet;
-    .locals 3
-
-    .line 43
-    iget-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->limit()I
-
-    move-result v0
-
-    iget-object v1, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    invoke-virtual {v1}, Ljava/nio/ByteBuffer;->position()I
-
-    move-result v1
-
-    sub-int/2addr v0, v1
-
-    .line 44
-    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->remaining()I
-
-    move-result v1
-
-    const/4 v2, 0x0
-
-    if-lt v1, v0, :cond_0
-
-    .line 45
-    iget-object v1, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    invoke-direct {p0, p1, v0}, Lcom/txdriver/socket/SocketFrameDecoder;->getBytes(Ljava/nio/ByteBuffer;I)[B
-
-    move-result-object p1
-
-    invoke-virtual {v1, p1}, Ljava/nio/ByteBuffer;->put([B)Ljava/nio/ByteBuffer;
-
-    .line 46
-    iget-object p1, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->flip()Ljava/nio/Buffer;
-
-    .line 47
-    iget-object p1, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->getShort()S
-
-    move-result p1
-
-    const v0, 0xffff
-
-    and-int/2addr p1, v0
-
-    .line 48
-    iget-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    .line 49
-    iput-object v2, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    .line 50
-    invoke-direct {p0, v0, p1}, Lcom/txdriver/socket/SocketFrameDecoder;->decodePacket(Ljava/nio/ByteBuffer;I)Lcom/txdriver/socket/Packet;
-
-    move-result-object p1
-
-    return-object p1
-
-    .line 52
-    :cond_0
-    iget-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->remaining()I
-
-    move-result v1
-
-    invoke-direct {p0, p1, v1}, Lcom/txdriver/socket/SocketFrameDecoder;->getBytes(Ljava/nio/ByteBuffer;I)[B
-
-    move-result-object p1
-
-    invoke-virtual {v0, p1}, Ljava/nio/ByteBuffer;->put([B)Ljava/nio/ByteBuffer;
-
-    return-object v2
-.end method
-
-.method private decodePacket(Ljava/nio/ByteBuffer;I)Lcom/txdriver/socket/Packet;
-    .locals 1
-
-    .line 37
-    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->get()B
-
-    move-result v0
-
-    add-int/lit8 p2, p2, -0x1
-
-    .line 38
-    invoke-direct {p0, p1, p2}, Lcom/txdriver/socket/SocketFrameDecoder;->getBytes(Ljava/nio/ByteBuffer;I)[B
-
-    move-result-object p1
-
-    .line 39
-    new-instance p2, Lcom/txdriver/socket/packet/ServerPacket;
-
-    invoke-direct {p2, v0, p1}, Lcom/txdriver/socket/packet/ServerPacket;-><init>(B[B)V
-
-    return-object p2
-.end method
-
-.method private getBytes(Ljava/nio/ByteBuffer;I)[B
-    .locals 0
-
-    .line 57
-    new-array p2, p2, [B
-
-    .line 58
-    invoke-virtual {p1, p2}, Ljava/nio/ByteBuffer;->get([B)Ljava/nio/ByteBuffer;
-
-    return-object p2
 .end method
 
 
 # virtual methods
 .method public decode(Ljava/nio/ByteBuffer;)Lcom/txdriver/socket/Packet;
-    .locals 5
+    .registers 8
 
-    .line 16
-    iget-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
+    .line 11
+    nop
 
-    if-eqz v0, :cond_0
-
-    .line 17
-    invoke-direct {p0, p1}, Lcom/txdriver/socket/SocketFrameDecoder;->decodeLast(Ljava/nio/ByteBuffer;)Lcom/txdriver/socket/Packet;
-
-    move-result-object p1
-
-    return-object p1
-
-    .line 19
-    :cond_0
-    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->getShort()S
+    :goto_1
+    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->hasRemaining()Z
 
     move-result v0
 
-    const v1, 0xffff
+    const/4 v1, 0x0
 
-    and-int/2addr v1, v0
+    if-eqz v0, :cond_8e
+
+    .line 12
+    iget-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->body:Ljava/nio/ByteBuffer;
+
+    const/4 v2, 0x1
+
+    if-nez v0, :cond_48
+
+    .line 13
+    iget v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->first:I
+
+    if-gez v0, :cond_20
+
+    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->get()B
+
+    move-result v0
+
+    and-int/lit16 v0, v0, 0xff
+
+    iput v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->first:I
+
+    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->hasRemaining()Z
+
+    move-result v0
+
+    if-nez v0, :cond_20
+
+    return-object v1
+
+    .line 14
+    :cond_20
+    iget v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->first:I
+
+    shl-int/lit8 v0, v0, 0x8
+
+    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->get()B
+
+    move-result v3
+
+    and-int/lit16 v3, v3, 0xff
+
+    or-int/2addr v0, v3
+
+    iput v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->expected:I
+
+    const/4 v0, -0x1
+
+    iput v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->first:I
+
+    .line 15
+    iget v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->expected:I
+
+    if-lt v0, v2, :cond_3d
+
+    .line 16
+    iget v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->expected:I
+
+    invoke-static {v0}, Ljava/nio/ByteBuffer;->allocate(I)Ljava/nio/ByteBuffer;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->body:Ljava/nio/ByteBuffer;
+
+    goto :goto_48
+
+    .line 15
+    :cond_3d
+    invoke-virtual {p0}, Lcom/txdriver/socket/SocketFrameDecoder;->reset()V
+
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    const-string v0, "Invalid zero-length fleet frame"
+
+    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    .line 18
+    :cond_48
+    :goto_48
+    iget-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->body:Ljava/nio/ByteBuffer;
+
+    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->remaining()I
+
+    move-result v0
+
+    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->remaining()I
+
+    move-result v3
+
+    invoke-static {v0, v3}, Ljava/lang/Math;->min(II)I
+
+    move-result v0
+
+    .line 19
+    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->limit()I
+
+    move-result v3
+
+    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->position()I
+
+    move-result v4
+
+    add-int/2addr v4, v0
+
+    invoke-virtual {p1, v4}, Ljava/nio/ByteBuffer;->limit(I)Ljava/nio/Buffer;
+
+    iget-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->body:Ljava/nio/ByteBuffer;
+
+    invoke-virtual {v0, p1}, Ljava/nio/ByteBuffer;->put(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
+
+    invoke-virtual {p1, v3}, Ljava/nio/ByteBuffer;->limit(I)Ljava/nio/Buffer;
+
+    .line 20
+    iget-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->body:Ljava/nio/ByteBuffer;
+
+    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->hasRemaining()Z
+
+    move-result v0
+
+    if-nez v0, :cond_8c
 
     .line 21
-    sget-object v2, Lcom/txdriver/socket/SocketFrameDecoder;->TAG:Ljava/lang/String;
+    iget-object p1, p0, Lcom/txdriver/socket/SocketFrameDecoder;->body:Ljava/nio/ByteBuffer;
 
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v4, "[decode] signedLength:"
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    const-string v4, " unsignedLength:"
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 22
-    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->remaining()I
-
-    move-result v2
-
-    if-ge v2, v1, :cond_1
-
-    add-int/lit8 v1, v1, 0x2
-
-    .line 23
-    invoke-static {v1}, Ljava/nio/ByteBuffer;->allocate(I)Ljava/nio/ByteBuffer;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    .line 24
-    invoke-virtual {v1, v0}, Ljava/nio/ByteBuffer;->putShort(S)Ljava/nio/ByteBuffer;
-
-    .line 25
-    iget-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
-
-    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->remaining()I
-
-    move-result v1
-
-    invoke-direct {p0, p1, v1}, Lcom/txdriver/socket/SocketFrameDecoder;->getBytes(Ljava/nio/ByteBuffer;I)[B
+    invoke-virtual {p1}, Ljava/nio/ByteBuffer;->array()[B
 
     move-result-object p1
-
-    invoke-virtual {v0, p1}, Ljava/nio/ByteBuffer;->put([B)Ljava/nio/ByteBuffer;
-
-    const/4 p1, 0x0
-
-    return-object p1
-
-    .line 28
-    :cond_1
-    invoke-direct {p0, p1, v1}, Lcom/txdriver/socket/SocketFrameDecoder;->decodePacket(Ljava/nio/ByteBuffer;I)Lcom/txdriver/socket/Packet;
-
-    move-result-object p1
-
-    return-object p1
-.end method
-
-.method public reset()V
-    .locals 1
 
     const/4 v0, 0x0
 
-    .line 33
-    iput-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->buffer:Ljava/nio/ByteBuffer;
+    aget-byte v3, p1, v0
+
+    array-length v4, p1
+
+    sub-int/2addr v4, v2
+
+    new-array v5, v4, [B
+
+    .line 22
+    invoke-static {p1, v2, v5, v0, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    iput-object v1, p0, Lcom/txdriver/socket/SocketFrameDecoder;->body:Ljava/nio/ByteBuffer;
+
+    iput v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->expected:I
+
+    .line 23
+    new-instance p1, Lcom/txdriver/socket/packet/ServerPacket;
+
+    invoke-direct {p1, v3, v5}, Lcom/txdriver/socket/packet/ServerPacket;-><init>(B[B)V
+
+    return-object p1
+
+    .line 25
+    :cond_8c
+    goto/16 :goto_1
+
+    .line 26
+    :cond_8e
+    return-object v1
+.end method
+
+.method public reset()V
+    .registers 2
+
+    .line 9
+    const/4 v0, -0x1
+
+    iput v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->first:I
+
+    const/4 v0, 0x0
+
+    iput v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->expected:I
+
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/txdriver/socket/SocketFrameDecoder;->body:Ljava/nio/ByteBuffer;
 
     return-void
 .end method

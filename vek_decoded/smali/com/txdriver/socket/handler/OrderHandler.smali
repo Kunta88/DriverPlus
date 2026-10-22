@@ -95,28 +95,52 @@
 
     move-result-object p1
 
-    .line 29
+    iget-object v0, p0, Lcom/txdriver/socket/handler/OrderHandler;->app:Lcom/txdriver/App;
+
+    invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/txdriver/preferences/Preferences;->isAutoAcceptOrdersEnabled()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_manual_accept
+
+    iget-object v0, p0, Lcom/txdriver/socket/handler/OrderHandler;->app:Lcom/txdriver/App;
+
+    invoke-virtual {v0}, Lcom/txdriver/App;->getOrderAcceptManager()Lcom/txdriver/filter/OrderAcceptManager;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Lcom/txdriver/filter/OrderAcceptManager;->add(Lcom/txdriver/db/Order;)V
+
+    invoke-virtual {v0}, Lcom/txdriver/filter/OrderAcceptManager;->accept()V
+
+    goto :goto_after_accept_choice
+
+    :cond_manual_accept
     iget-object v0, p0, Lcom/txdriver/socket/handler/OrderHandler;->acceptTask:Lcom/txdriver/ui/activity/AcceptOrderActivity$AcceptOrderActivityRunner;
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_start_accept_activity
 
     invoke-virtual {v0}, Lcom/txdriver/ui/activity/AcceptOrderActivity$AcceptOrderActivityRunner;->getCounter()I
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_start_accept_task
 
-    .line 30
-    :cond_0
+    :cond_start_accept_activity
     iget v0, p1, Lcom/txdriver/db/Order;->orderId:I
 
     int-to-long v0, v0
 
     invoke-direct {p0, v0, v1}, Lcom/txdriver/socket/handler/OrderHandler;->startActivity(J)V
 
-    .line 32
-    :cond_1
+    :cond_start_accept_task
     invoke-direct {p0, p1}, Lcom/txdriver/socket/handler/OrderHandler;->startTask(Lcom/txdriver/db/Order;)V
+
+    :goto_after_accept_choice
 
     .line 33
     iget-object p1, p0, Lcom/txdriver/socket/handler/OrderHandler;->app:Lcom/txdriver/App;

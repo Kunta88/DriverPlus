@@ -140,5 +140,61 @@
 
     invoke-virtual {p1, v0}, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;->setNeutralButtonVisibility(Landroid/widget/LinearLayout;)V
 
+    iget-boolean v0, p1, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;->autoSubmitAttempted:Z
+
+    if-nez v0, :restore_if_needed
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p1, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;->autoSubmitAttempted:Z
+
+    iget-object v0, p1, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;->app:Lcom/txdriver/App;
+
+    invoke-virtual {v0}, Lcom/txdriver/App;->getClient()Lcom/txdriver/socket/Client;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/txdriver/socket/Client;->isSocketConnected()Z
+
+    move-result v0
+
+    if-eqz v0, :restore_if_needed
+
+    invoke-static {p1}, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;->access$000(Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;)Landroid/widget/Button;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Button;->performClick()Z
+
+    :restore_if_needed
+    iget-object p1, p0, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment$2;->this$0:Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;
+
+    iget-boolean v0, p1, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment;->autoSubmitSucceeded:Z
+
+    if-nez v0, :auto_done
+
+    iget-object p1, p0, Lcom/txdriver/ui/fragment/dialog/OrderPriceDialogFragment$2;->val$dialog:Landroidx/appcompat/app/AlertDialog;
+
+    invoke-virtual {p1}, Landroidx/appcompat/app/AlertDialog;->getWindow()Landroid/view/Window;
+
+    move-result-object p1
+
+    if-eqz p1, :auto_done
+
+    invoke-virtual {p1}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+
+    move-result-object v0
+
+    const/high16 v1, 0x3f800000
+
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->alpha:F
+
+    invoke-virtual {p1, v0}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
+
+    const/4 v0, 0x2
+
+    invoke-virtual {p1, v0}, Landroid/view/Window;->addFlags(I)V
+
+    :auto_done
     return-void
 .end method

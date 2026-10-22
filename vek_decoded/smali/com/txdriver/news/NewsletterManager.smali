@@ -109,7 +109,7 @@
 
     const/4 v1, 0x0
 
-    invoke-static {p1, v1, v0, v1}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {p1, v1, v0, v1}, Lcom/txdriver/compat/CompatIntents;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v0
 
@@ -133,13 +133,16 @@
 
     move-result-object p1
 
-    invoke-virtual {p1, p0}, Lde/greenrobot/event/EventBus;->register(Ljava/lang/Object;)V
+    invoke-virtual {p0}, Lcom/txdriver/news/NewsletterManager;->cancelAlarm()V
+    iget-object v0, p0, Lcom/txdriver/news/NewsletterManager;->app:Lcom/txdriver/App;
+    invoke-static {v0}, Lcom/txdriver/compat/DisabledModuleCleanup;->notifications(Landroid/content/Context;)V
 
     return-void
 .end method
 
 .method private showNotification(Lcom/txdriver/json/Newsletter;)V
     .locals 14
+    return-void
 
     .line 88
     iget-object v0, p1, Lcom/txdriver/json/Newsletter;->title:Ljava/lang/String;
@@ -195,7 +198,7 @@
 
     const/high16 v6, 0x10000000
 
-    invoke-static {v4, v5, v1, v6}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {v4, v5, v1, v6}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v4
 
@@ -219,7 +222,7 @@
 
     const/4 v2, 0x0
 
-    invoke-static {v1, v2, v5, v2}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    invoke-static {v1, v2, v5, v2}, Lcom/txdriver/compat/CompatIntents;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v1
 
@@ -536,6 +539,7 @@
 
 .method public fetchNewsletters()V
     .locals 3
+    return-void
 
     .line 163
     new-instance v0, Lcom/txdriver/http/request/NewslettersRequest;
@@ -561,6 +565,7 @@
 
 .method public newsletterRead(Lcom/txdriver/json/Newsletter;)V
     .locals 3
+    return-void
 
     .line 154
     new-instance v0, Lcom/txdriver/http/request/NewsletterReadRequest;
@@ -585,6 +590,7 @@
 
 .method public onEvent(Lcom/txdriver/socket/SocketEvents$AuthEvent;)V
     .locals 2
+    return-void
 
     .line 61
     new-instance p1, Landroid/content/ComponentName;
@@ -640,6 +646,7 @@
     .end annotation
 
     .line 79
+    return-void
     iget-object v0, p1, Lcom/txdriver/json/Response;->objects:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
@@ -713,6 +720,8 @@
 
 .method public scheduleAlarm()V
     .locals 9
+    invoke-virtual {p0}, Lcom/txdriver/news/NewsletterManager;->cancelAlarm()V
+    return-void
 
     .line 69
     invoke-virtual {p0}, Lcom/txdriver/news/NewsletterManager;->cancelAlarm()V

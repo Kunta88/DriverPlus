@@ -83,7 +83,9 @@
 
 # virtual methods
 .method public handle(Lcom/txdriver/socket/data/MessageData;)V
-    .locals 1
+    .locals 2
+
+    iget v1, p1, Lcom/txdriver/socket/data/MessageData;->messageId:I
 
     .line 23
     iget v0, p1, Lcom/txdriver/socket/data/MessageData;->messageId:I
@@ -115,9 +117,23 @@
 
     .line 29
     :cond_1
+    const-string v0, "dispatcher"
+    invoke-static {v0, v1}, Lcom/txdriver/compat/EventGuard;->first(Ljava/lang/String;I)Z
+    move-result v0
+    if-nez v0, :new_message
+    return-void
+    :new_message
     sget-object v0, Lcom/txdriver/db/ChatMessage$Type;->INBOUND:Lcom/txdriver/db/ChatMessage$Type;
 
     invoke-static {p1, v0}, Lcom/txdriver/db/ChatMessage;->create(Ljava/lang/String;Lcom/txdriver/db/ChatMessage$Type;)Lcom/txdriver/db/ChatMessage;
+
+    iget-object v0, p0, Lcom/txdriver/socket/handler/MessageHandler;->app:Lcom/txdriver/App;
+
+    invoke-virtual {v0}, Lcom/txdriver/App;->getSoundManager()Lcom/txdriver/notification/SoundManager;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/txdriver/notification/SoundManager;->playIcqSound()V
 
     return-void
 .end method

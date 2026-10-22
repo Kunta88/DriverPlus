@@ -148,14 +148,7 @@
 
     invoke-direct {v1, v2, p1}, Lcom/txdriver/socket/packet/MessagePacket;-><init>(ILjava/lang/String;)V
 
-    invoke-virtual {v0, v1}, Lcom/txdriver/socket/Client;->send(Lcom/txdriver/socket/Packet;)V
-
-    .line 82
-    iget-object p1, p0, Lcom/txdriver/ui/fragment/ChatFragment;->messageEditText:Landroid/widget/EditText;
-
-    const-string v0, ""
-
-    invoke-virtual {p1, v0}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
+    invoke-static {v0, v1, p1}, Lcom/txdriver/compat/ChatDraft;->send(Lcom/txdriver/socket/Client;Lcom/txdriver/socket/Packet;Ljava/lang/String;)Z
 
     return-void
 .end method
@@ -223,6 +216,8 @@
     check-cast p2, Landroid/widget/EditText;
 
     iput-object p2, p0, Lcom/txdriver/ui/fragment/ChatFragment;->messageEditText:Landroid/widget/EditText;
+
+    invoke-static {p2}, Lcom/txdriver/compat/ChatDraft;->bind(Landroid/widget/EditText;)V
 
     const p2, 0x7f09008b
 

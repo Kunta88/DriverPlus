@@ -52,8 +52,18 @@
 
 
 # virtual methods
-.method public accept()V
+.method public declared-synchronized accept()V
     .locals 5
+
+    iget-object v0, p0, Lcom/txdriver/filter/OrderAcceptManager;->app:Lcom/txdriver/App;
+    invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
+    move-result-object v0
+    invoke-virtual {v0}, Lcom/txdriver/preferences/Preferences;->isTakeBreak()Z
+    move-result v0
+    if-eqz v0, :not_on_break
+    invoke-virtual {p0}, Lcom/txdriver/filter/OrderAcceptManager;->clearPending()V
+    return-void
+    :not_on_break
 
     .line 51
     invoke-static {}, Lcom/txdriver/db/Order;->getCurrentOrder()Lcom/txdriver/db/Order;
@@ -115,8 +125,25 @@
     return-void
 .end method
 
-.method public add(Lcom/txdriver/db/Order;)V
+.method public declared-synchronized clearPending()V
+    .locals 1
+    iget-object v0, p0, Lcom/txdriver/filter/OrderAcceptManager;->packets:Ljava/util/LinkedList;
+    invoke-virtual {v0}, Ljava/util/LinkedList;->clear()V
+    return-void
+.end method
+
+.method public declared-synchronized add(Lcom/txdriver/db/Order;)V
     .locals 3
+
+    iget-object v0, p0, Lcom/txdriver/filter/OrderAcceptManager;->app:Lcom/txdriver/App;
+    invoke-virtual {v0}, Lcom/txdriver/App;->getPreferences()Lcom/txdriver/preferences/Preferences;
+    move-result-object v0
+    invoke-virtual {v0}, Lcom/txdriver/preferences/Preferences;->isTakeBreak()Z
+    move-result v0
+    if-eqz v0, :not_on_break
+    invoke-virtual {p0}, Lcom/txdriver/filter/OrderAcceptManager;->clearPending()V
+    return-void
+    :not_on_break
 
     .line 32
     sget-object v0, Lcom/txdriver/filter/OrderAcceptManager$1;->$SwitchMap$com$txdriver$db$Order$Source:[I

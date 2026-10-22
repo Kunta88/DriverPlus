@@ -114,6 +114,9 @@
         }
     .end annotation
 
+    # Do not append web, reserved or own-orders pages to the broadcast screen.
+    goto :broadcast_only
+
     .line 288
     invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
@@ -179,6 +182,7 @@
 
     invoke-virtual {p1, v1, v2, v0}, Lcom/txdriver/ui/adapter/NewTabsAdapter;->addFragment(Landroidx/fragment/app/Fragment;Ljava/lang/String;I)V
 
+    :broadcast_only
     .line 292
     iget-object p1, p0, Lcom/txdriver/ui/activity/MainActivity$5;->this$0:Lcom/txdriver/ui/activity/MainActivity;
 

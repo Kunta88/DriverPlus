@@ -221,86 +221,10 @@
 
 # virtual methods
 .method public getFile(Lcom/txdriver/App;)Ljava/io/File;
-    .locals 3
-
-    .line 56
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    const/4 v1, 0x0
-
-    const/16 v2, 0x13
-
-    if-lt v0, v2, :cond_0
-
-    .line 57
-    invoke-virtual {p1}, Lcom/txdriver/App;->getBaseContext()Landroid/content/Context;
-
-    move-result-object p1
-
-    invoke-virtual {p1, v1}, Landroid/content/Context;->getExternalFilesDirs(Ljava/lang/String;)[Ljava/io/File;
-
-    move-result-object p1
-
-    .line 58
-    array-length v0, p1
-
-    add-int/lit8 v0, v0, -0x1
-
-    aget-object p1, p1, v0
-
-    goto :goto_0
-
-    .line 61
-    :cond_0
-    invoke-virtual {p1}, Lcom/txdriver/App;->getBaseContext()Landroid/content/Context;
-
-    move-result-object p1
-
-    invoke-virtual {p1, v1}, Landroid/content/Context;->getExternalFilesDir(Ljava/lang/String;)Ljava/io/File;
-
-    move-result-object p1
-
-    .line 64
-    :goto_0
-    invoke-virtual {p1}, Ljava/io/File;->exists()Z
-
-    move-result v0
-
-    if-nez v0, :cond_1
-
-    .line 65
-    invoke-virtual {p1}, Ljava/io/File;->mkdir()Z
-
-    .line 68
-    :cond_1
-    new-instance v0, Ljava/io/File;
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    iget v2, p0, Lcom/txdriver/db/AudioFile;->id:I
-
-    invoke-static {v2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, ".mp3"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-direct {v0, p1, v1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-
+    .locals 1
+    iget v0, p0, Lcom/txdriver/db/AudioFile;->id:I
+    invoke-static {p1, v0}, Lcom/txdriver/compat/ModernCompat;->audioFile(Landroid/content/Context;I)Ljava/io/File;
+    move-result-object v0
     return-object v0
 .end method
 

@@ -883,6 +883,8 @@
     .line 127
     invoke-virtual {p0}, Lcom/txdriver/db/Order;->save()V
 
+    invoke-static {}, Lcom/txdriver/energy/Energy;->signal()V
+
     return-void
 .end method
 
@@ -1115,6 +1117,8 @@
     .line 246
     :goto_0
     invoke-virtual {p1}, Lcom/txdriver/db/Order;->save()V
+
+    invoke-static {}, Lcom/txdriver/energy/Energy;->signal()V
 
     :cond_4
     return-object p1

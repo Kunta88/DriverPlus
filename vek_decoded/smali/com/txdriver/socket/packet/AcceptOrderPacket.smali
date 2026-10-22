@@ -21,6 +21,20 @@
 
 
 # virtual methods
+.method public onWrite()V
+    .locals 1
+    invoke-super {p0}, Lcom/txdriver/socket/packet/AbstractAcceptOrderPacket;->onWrite()V
+    invoke-virtual {p0}, Lcom/txdriver/socket/packet/AcceptOrderPacket;->getData()Lcom/txdriver/socket/data/AcceptOrderWithDeliveryTimeData;
+    move-result-object v0
+    iget-object v0, v0, Lcom/txdriver/socket/data/AcceptOrderWithDeliveryTimeData;->orderId:Ljava/lang/Integer;
+    if-eqz v0, :done
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+    move-result v0
+    invoke-static {v0}, Lcom/txdriver/compat/EventGuard;->autoAccepted(I)V
+    :done
+    return-void
+.end method
+
 .method public getCode()B
     .locals 1
 
