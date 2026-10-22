@@ -26,6 +26,7 @@ obj/
 
 # Android specific
 *.apk
+!downloads/DriverPlus-0.15.277.coreonly.apk
 *.aab
 local.properties
 .proguard/

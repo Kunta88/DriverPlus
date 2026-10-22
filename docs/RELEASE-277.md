@@ -8,6 +8,12 @@
 
 Файл выпуска: `DriverPlus-0.15.277.coreonly.apk`.
 
+[Скачать подписанную APK](https://github.com/Kunta88/DriverPlus/raw/refs/heads/main/downloads/DriverPlus-0.15.277.coreonly.apk).
+
+APK хранится в `downloads/`: загрузка вложения через GitHub Releases была
+недоступна из среды публикации. Это готовая подписанная версия, а не файл
+из промежуточного каталога сборки.
+
 SHA-256:
 `199c8eaf6013b769ff4ce0e6bca23e004dde98080eff79e3c396cec44a010df1`.
 
